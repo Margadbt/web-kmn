@@ -1,0 +1,31 @@
+header{
+    display: flex;
+    justify-content: center;
+    background-color: var(--color-card-bg);
+    box-shadow: 0 5px 25px rgb(0, 0, 0, 0.0);
+    align-items: center;
+    height: 4em;
+    border: var(--border-card);
+}
+header ul{
+    display: flex;
+    align-items: center;
+}
+header ul li{
+    list-style-type: none;
+    margin-right: 5em;
+}
+header ul li.last{
+    margin-right: 0;
+}
+ul li a{
+    text-decoration: none;
+    color: black;
+    font-weight: 600;
+}
+
+nav ul li.active{
+    background-color: rgba(112, 151, 116, 0.74);
+    padding: 8px 15px;
+    border-radius: 8px;
+}

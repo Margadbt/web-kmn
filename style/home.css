@@ -1,0 +1,133 @@
+
+main{
+    margin: 50px 20%;
+}
+
+.card{
+    background-color: var(--color-card-bg);
+    border: var(--border-card);
+    border-radius: var(--border-rad);
+    margin-top: 1em;
+    box-shadow: var(--shadow-card);
+}
+
+section{
+    margin-bottom: 50px;
+}
+
+.first-card .card{
+    display: flex;
+    align-items: center;
+    padding: 30px 60px;
+    justify-content: space-between;
+}
+
+.card .left{
+    width: 50%;
+}
+
+.first-card .card img{
+    width: 100px;
+}
+
+.second-card .card{
+    display: flex;
+    padding: 30px 60px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.second-card .card .big{
+    width: 25%;
+    height: 100%;
+    margin-right: 50px;
+}
+
+.left h1, .right p{
+    margin-bottom: 20px;
+}
+
+ul.tests{
+    display: flex;
+    margin-bottom: 20px;
+    justify-content: space-between;
+}
+ul.tests li{
+    list-style-type: none;
+    color: black;
+    margin-right: 3em;
+    background-color: var(--color-main-bg);
+    width: 100%;
+    font-weight: 700;
+    padding: 10px 10px;
+    border-radius: 10px;
+    font-size: 0.8em;
+    border: var(--border-card);
+    cursor: pointer;
+}
+ul.tests li div p{
+    margin: 0;
+    display: inline;
+}
+
+ul.tests li div{
+    display: flex;
+    align-items: center;
+}
+
+ul.tests li.active{
+    background-color: var(--color-main);
+    
+}
+
+ul.tests li.last{
+    list-style-type: none;
+    margin-right: 0;
+}
+
+button.green{
+    background-color: var(--color-main);
+}
+
+button{
+    border: 0;
+    padding: 8px 15px;
+    font-size: 1em;
+    font-weight: 700;
+    border-radius: 5px;
+    border: var(--border-card);
+    cursor: pointer;
+}
+
+li.active .icon{
+    background-color: black;
+    color: white;
+    border-radius: 5px;
+    margin-right: 10px;
+    width: 25px;
+    height: 25px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.icon{
+    background-color: var(--color-main);
+    color: black;
+    border-radius: 5px;
+    margin-right: 10px;
+    width: 25px;
+    height: 25px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2em;
+}
+
+div.icon img{
+    width: 80%;
+}
+
+.right h2{
+    margin-bottom: 18px;
+}
