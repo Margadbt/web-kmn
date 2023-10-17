@@ -37,3 +37,26 @@ h2{
 h3{
     font-size: var(--fsize-s);
 }
+
+button.green{
+    background-color: var(--color-main);
+}
+
+button{
+    border: 0;
+    padding: 8px 15px;
+    font-size: 1em;
+    font-weight: 700;
+    border-radius: 5px;
+    border: var(--border-card);
+    cursor: pointer;
+}
+
+.card{
+    display: inline-block;
+    background-color: var(--color-card-bg);
+    border: var(--border-card);
+    border-radius: var(--border-rad);
+    margin-top: 1em;
+    box-shadow: var(--shadow-card);
+}

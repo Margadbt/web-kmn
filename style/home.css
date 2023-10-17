@@ -3,11 +3,11 @@ main{
 }
 
 .card{
-    background-color: var(--color-card-bg);
+    /* background-color: var(--color-card-bg);
     border: var(--border-card);
     border-radius: var(--border-rad);
     margin-top: 1em;
-    box-shadow: var(--shadow-card);
+    box-shadow: var(--shadow-card); */
 
     & .left{
         width: 50%;
@@ -94,20 +94,6 @@ ul.tests{
         list-style-type: none;
         margin-right: 0;
     }
-}
-
-button.green{
-    background-color: var(--color-main);
-}
-
-button{
-    border: 0;
-    padding: 8px 15px;
-    font-size: 1em;
-    font-weight: 700;
-    border-radius: 5px;
-    border: var(--border-card);
-    cursor: pointer;
 }
 
 .icon{
