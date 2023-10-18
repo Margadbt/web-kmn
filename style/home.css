@@ -39,7 +39,13 @@ section{
     & .big{
         width: 25%;
         height: 100%;
-        margin-right: 50px;
+        margin-right: 10%;
+    }
+}
+
+@media(max-width:768px) {
+    .second-card .card .big{
+        display: none;
     }
 }
 
@@ -48,6 +54,15 @@ section{
     margin-bottom: 20px;
 }
 
+main h1{
+    font-size: 2vw;
+}
+
+
+.category{
+    display: flex;
+    width: 100%;
+}
 ul.tests{
     display: flex;
     margin-bottom: 20px;
@@ -56,9 +71,7 @@ ul.tests{
     & li{
         list-style-type: none;
         color: black;
-        margin-right: 3em;
         background-color: var(--color-main-bg);
-        width: 100%;
         font-weight: 700;
         padding: 10px 10px;
         border-radius: 10px;
@@ -88,6 +101,9 @@ ul.tests{
             display: inline-flex;
             justify-content: center;
             align-items: center;
+            & .enne{
+                fill: white;
+            }
         }
     }
     & li.last{
@@ -115,4 +131,11 @@ div.icon img{
 
 .right h2{
     margin-bottom: 18px;
+}
+
+.ina{
+    display: none;
+}
+.act{
+    display: block;
 }
