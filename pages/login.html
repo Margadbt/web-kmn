@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="MBTI Personality test and other fun activities you can do in community">
+    <title>Community - MBTI</title>
+    <link rel="stylesheet" href="../style/home.css" />
+    <link rel="stylesheet" href="../style/header.css" />
+    <link rel="stylesheet" href="../style/var.css" />
+    <link rel="stylesheet" href="../style/form.css">
+    <title>Login - MBTI</title>
+</head>
+<body>
+    <header>
+        <!-- logo -->
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/pages/test.html">Test</a></li>
+                <li class="active"><a href="/pages/community.html">Community</a></li>
+                <li class="last"><a href="/pages/plan.html">Plan</a></li>
+            </ul>
+        </nav>
+        <!-- profile -->
+    </header>
+    <!-- Login modal -->
+    <main>
+        <section class="second-card">
+            <div class="card">
+                <h2>Login</h2>
+                <form action="login.js" method="post">
+                    <label for="username">Username:</label>
+                    <input type="text" id="username" name="username" required><br><br>
+            
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" required><br><br>
+            
+                    <input class="login-btn" type="submit" value="Login">
+                </form>
+            </div>
+        </section>
+    </main>
+</body>
+</html>
