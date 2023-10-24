@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="style/home.css" />
+    <link rel="stylesheet" href="style/var.css" />
+    <link rel="stylesheet" href="style/header.css" />
+  </head>
+  <body>
+    <nav>
+      <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/pages/test.html">Test</a></li>
+          <li class="active"><a href="/pages/community.html">Community</a></li>
+          <li class="last"><a href="/pages/plan.html">Plan</a></li>
+      </ul>
+  </nav>
+    <div class="about-test-types">
+      <div class="div">
+        <div class="overlap-group">
+          <h2 class="tempTitle ina">MBTI</h2>
+          <p class="text-wrapper">
+            Уг тестийг Jungian Typology буюу Cognitive personality theory-ээс эх аван хийсэн. Өөрийнхөө жинхэнэ зан
+            чанараа олж мэдэхийн тулд цаг заваа гаргаж, шударгаар хариулаарай.
+            <button class="green">MBTI</button>
+          </p>
+        </div>
+        <div class="overlap">
+          <h2 class="tempTitle ina">ТЕМПРАМЕНТ</h2>
+          <p class="p">
+            Энэхүү богино тест нь таны сонгодог зан чанарын төрлийг тодорхойлоход туслах зорилготой юм: Сангвиник,
+            Флегматик, Холерик эсвэл Меланхолик. Тест нь зөвхөн найман асуултаас бүрдэнэ; Алдаа гаргахгүйн тулд өөрийн
+            хамгийн ердийн зан үйлийн талаар бодож, зохих ёсоор хариулаарай. Таны давамгайлах даруу бол хамгийн өндөр
+            оноо авсан зан чанар юм.
+            <button class="green">ТЕМПРАМЕНТ</button>
+          </p>
+          <h2 class="tempTitle ina">ENNEAGRAM</h2>
+          <p class="text-wrapper-2">
+            Enneagram нь хувь хүн, бүлэг, хамт олонд гүн гүнзгий ойлголт өгөх есөн төрлөөс бүрдсэн архетип бүтэц юм. 3
+            Тагнуулын төв, 9 Enneagram төрөл, Далавч, 27 Дэд төрөл болон бусад зүйлсээс бүрдэх энэхүү загвар нь хувь
+            хүний ​​хөгжлийн баялаг газрын зургийг санал болгодог.
+            <button class="green">ENNEAGRAM</button>
+          </p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
