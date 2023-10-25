@@ -1,16 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="MBTI Personality test and other fun activities you can do in community">
-    <title>Нэвтрэх - MBTI</title>
+    <title>Бүртгүүлэх - MBTI</title>
     <link rel="stylesheet" href="../style/home.css" />
     <link rel="stylesheet" href="../style/header.css" />
     <link rel="stylesheet" href="../style/var.css" />
     <link rel="stylesheet" href="../style/form.css">
-    <title>Login - MBTI</title>
+    <title>Register - MBTI</title>
 </head>
+
 <body>
     <header>
         <!-- logo -->
@@ -18,7 +20,7 @@
             <ul>
                 <li><a href="/">Home</a></li>
                 <li><a href="/pages/test.html">Test</a></li>
-                <li><a href="/pages/community.html">Community</a></li>
+                <li class="active"><a href="/pages/community.html">Community</a></li>
                 <li class="last"><a href="/pages/plan.html">Plan</a></li>
             </ul>
         </nav>
@@ -28,18 +30,19 @@
     <main>
         <section class="second-card">
             <div class="card">
-                <div class="left">
-                    <h2>Нэвтрэх</h2>
-                    <form action="login.js" method="post">
-                        <input type="email" id="email" name="email" required placeholder="Цахим шуудан:"><br><br>
-                        <input type="password" id="password" name="password" required placeholder="Нууц үг:"><br><br>
-                    
-                        <input class="lgn-btn" type="submit" value="Нэвтрэх">
-                        <input class="lgn-btn-2nd" type="submit" value="Бүртгүүлэх">
-                    </form>
-                </div>
+                <h2>Login</h2>
+                <form action="register.js" method="post">
+                    <input type="text" id="username" name="username" required placeholder="Нэр"><br><br>
+                    <input type="email" id="email" name="email" required placeholder="Цахим шуудан"><br><br>
+                    <input type="password" id="password" name="password" required placeholder="Нууц үг"><br><br>
+                    <input type="password" id="password" name="password" required placeholder="Нууц үг давтан оруулах"><br><br>
+
+                    <input class="lgn-btn" type="submit" value="Бүртгүүлэх">
+                    <input class="lgn-btn-2nd" type="submit" value="Нэвтрэх">
+                </form>
             </div>
         </section>
     </main>
 </body>
+
 </html>
