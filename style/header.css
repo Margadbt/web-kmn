@@ -1,6 +1,7 @@
 header{
+    padding: 0 100px;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     background-color: var(--color-card-bg);
     box-shadow: 0 5px 25px rgb(0, 0, 0, 0.0);
     align-items: center;
@@ -34,4 +35,10 @@ header{
             }
         }
     }
+}
+#logo{
+    height: 30px;
+}
+#pfp{
+    height: 40px;
 }
