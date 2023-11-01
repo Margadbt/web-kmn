@@ -70,7 +70,7 @@ div.icon img{
 
 @media(max-width:1050px) {
     .first-card .card{
-        padding: 15px 30px;
+        padding: 2rem 2eem;
         width: 100%;
     
         & img{
@@ -80,21 +80,16 @@ div.icon img{
     .second-card .card .big{
         display: none;
     }
+    .second-card .card{
+        padding: 30px 30px;
+    }
 
-    ul.tests{      
-        & li{
-            font-size: 0.8em;
-            padding: 4px 4px;
-            border-radius: 6px;
-        }
-    }
-    .icon{
-        border-radius: 3px;
-    }
     main h1{
         font-size: 1.2em;
     }
-
+    .card{
+        padding: 15px 30px;
+    }
 }
 
 @media screen and (max-width: 762px){
