@@ -1,9 +1,22 @@
-form {
+.planner {
+    display: flex;
+    /* width: 1080px; */
+    justify-content: space-around;
+    /* padding-left: 10vw;  */
+}
 
+.plan-card {
+    
+    width: 23.25rem;
+    height: 42.75rem;
+    flex-shrink: 0;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    border-radius: 2rem;
+    border: 1px solid var(--card-stroke, rgba(0, 0, 0, 0.15));
+    background: var(--card-Background, #FFF);
 
     ::placeholder {
         color: rgba(0, 0, 0, 0.40);
@@ -18,11 +31,9 @@ form {
         justify-content: center;
         align-items: center;
         padding: 0 20px;
-        width: 100%;
-        height: 60px;
-        border-radius: 8px;
-        background: #67B26F;
-        box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+        width: 17.125rem;
+        height: 3.611rem;
+        flex-shrink: 0;
         font-size: 16px;
         color: #fff;
         line-height: 1.2;
@@ -30,6 +41,10 @@ form {
         position: relative;
         z-index: 1;
         cursor: pointer;
+        border-radius: 1rem;
+        border: 1px solid #23BADB;
+        background: var(--color-main, #67B26F);
+        box-shadow: 0px 7.36207px 13.14655px 0px rgba(0, 0, 0, 0.02);
     }
 
     & .lgn-btn::before {
@@ -85,7 +100,9 @@ form {
         cursor: pointer;
     }
 }
+
 .card {
+
     /* width: 920px; */
     & .left {
         height: 720px;
