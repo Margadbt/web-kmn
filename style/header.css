@@ -42,3 +42,17 @@ header{
 #pfp{
     height: 40px;
 }
+.mobile{
+    display: none;
+}
+
+@media screen and (max-width:762px){
+    .desktop{
+        display: none;
+    }
+    .mobile{
+
+    }
+    header{
+        padding: 0 10%;
+}

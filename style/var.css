@@ -60,3 +60,10 @@ button{
     margin-top: 1em;
     box-shadow: var(--shadow-card);
 }
+
+@media(max-width:768px){
+    button{
+        font-size: 0.7em;
+        padding: 4px 7px;
+    }
+}

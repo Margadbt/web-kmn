@@ -1,88 +1,83 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <meta
-        name="description"
-        content="MBTI Personality test and other fun activities you can do in community">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      name="description"
+      content="MBTI Personality test and other fun activities you can do in community"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Home - Mbti</title>
     <link rel="stylesheet" href="style/home.css" />
     <link rel="stylesheet" href="style/var.css" />
     <link rel="stylesheet" href="style/header.css" />
-</head>
-<body>
+  </head>
+  <body>
     <header>
-        <img id="logo" src="/assets/logoT.svg">
-        <nav>
-            <ul>
-                <li class="active"><a href="/">Home</a></li>
-                <li><a href="/pages/test.html">Test</a></li>
-                <li><a href="/pages/community.html">Community</a></li>
-                <li class="last"><a href="/pages/plan.html">Plan</a></li>
-            </ul>
-        </nav>
-        <img id="pfp" src="/assets/pfp.png">
+      <img id="logo" src="/assets/logoT.svg" />
+      <nav class="desktop">
+        <ul>
+          <li class="active"><a href="/">Home</a></li>
+          <li><a href="/pages/test.html">Test</a></li>
+          <li><a href="/pages/community.html">Community</a></li>
+          <li class="last"><a href="/pages/plan.html">Plan</a></li>
+        </ul>
+      </nav>
+      <nav class="mobile">
+        <ul>
+          <li class="active"><a href="/">Home</a></li>
+          <li><a href="/pages/test.html">Test</a></li>
+          <li><a href="/pages/community.html">Community</a></li>
+          <li class="last"><a href="/pages/plan.html">Plan</a></li>
+        </ul>
+      </nav>
+      <img id="pfp" src="/assets/pfp.png" />
     </header>
     <main>
-        <section class="first-card">
-            <div class="card">
-                <div class="left">
-                    <h1>ИЖИЛ СОНИРХОЛТОЙ ХҮМҮҮСТЭЙГЭЭ МЭДЭЭЛЭЛ ХУВААЛЦАХ</h1>
-                    <button class="green">Нэгдэх</button>
-                </div>
-                <img alt="hero image" src="assets/hero-img.png" />
-            </div>
-        </section>
-        <section class="second-card">
-            <h1>Зан чанарын тестүүд</h1>
-            <div class="card">
-                <img alt="another hero image" class="big" src="assets/test-hero-img.png" />
-                <div class="right">
-                    <ul class="tests">
-                        <li id="mbti" class="active">
-                            <div>
-                                <div class="icon">16</div>
-                                <p>MBTI</p>
-                            </div>
-                        </li>
-                        <li id="temprament">
-                            <div>
-                                <div class="icon">4</div>
-                                <p>Temprament</p>
-                            </div>
-                        </li>
-                        <li id="enne">
-                            <div>
-                                <div class="icon">E</div>
-                                <p>Enneagram</p>
-                            </div>
-                        </li>
-                    </ul>
-                    
-                    <h2 class="mbtiTitle">Myers-Briggs Type Indicator</h2>
-                    <h2 class="tempTitle ina">Temprament</h2>
-                    <h2 class="enneTitle ina">Enneagram</h2>
-                    <p>Lorem Ipsum is simply dummy text of the printing
-                        and typesetting industry. Lorem Ipsum has been
-                        the industry's standard dummy text ever since
-                        the 1500s, when an unknown printer took a galley
-                        of type and scrambled it to make a type specimen
-                        book. It has survived not only five centuries,
-                        but also the leap into electronic typesetting,
-                        remaining essentially unchanged. It was
-                        popularised in the 1960s with the release of
-                        Letraset sheets containing Lorem Ipsum passages,
-                        and more recently with desktop publishing
-                        software like Aldus PageMaker including versions
-                        of Lorem Ipsum.
-                    </p>
-                    
-                    <button class="green">Тест өгөх</button>
-                </div>
-            </div>
-        </section>
+      <section class="first-card">
+        <div class="card">
+          <div class="left">
+            <h1>ИЖИЛ СОНИРХОЛТОЙ ХҮМҮҮСТЭЙГЭЭ МЭДЭЭЛЭЛ ХУВААЛЦАХ</h1>
+            <button class="green">Нэгдэх</button>
+          </div>
+          <img alt="hero image" src="assets/hero-img.png" />
+        </div>
+      </section>
+      <section class="second-card">
+        <h1>Зан чанарын тестүүд</h1>
+        <div class="card">
+          <img
+            alt="another hero image"
+            class="big"
+            src="assets/test-hero-img.png"
+          />
+          <div class="right">
+
+            <button id="mbti">MBTI</button>
+            <button id="temprament">Temprament</button>
+            <button id="enne">Enneagram</button>
+
+            <h2 class="mbtiTitle">Myers-Briggs Type Indicator</h2>
+            <h2 class="tempTitle ina">Temprament</h2>
+            <h2 class="enneTitle ina">Enneagram</h2>
+            <p>
+              Lorem Ipsum is simply dummy text of the printing and typesetting
+              industry. Lorem Ipsum has been the industry's standard dummy text
+              ever since the 1500s, when an unknown printer took a galley of
+              type and scrambled it to make a type specimen book. It has
+              survived not only five centuries, but also the leap into
+              electronic typesetting, remaining essentially unchanged. It was
+              popularised in the 1960s with the release of Letraset sheets
+              containing Lorem Ipsum passages, and more recently with desktop
+              publishing software like Aldus PageMaker including versions of
+              Lorem Ipsum.
+            </p>
+
+            <button class="green">Тест өгөх</button>
+          </div>
+        </div>
+      </section>
     </main>
     <script src="/script/home.js"></script>
-</body>
+  </body>
 </html>

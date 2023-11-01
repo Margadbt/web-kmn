@@ -2,19 +2,6 @@ main{
     margin: 50px 20%;
 }
 
-
-.card{
-    /* background-color: var(--color-card-bg);
-    border: var(--border-card);
-    border-radius: var(--border-rad);
-    margin-top: 1em;
-    box-shadow: var(--shadow-card); */
-
-    & .left{
-        width: 50%;
-    }
-}
-
 section{
     margin-bottom: 50px;
 }
@@ -44,73 +31,13 @@ section{
     }
 }
 
-@media(max-width:768px) {
-    .second-card .card .big{
-        display: none;
-    }
-}
-
-
 .left h1, .right p{
     margin-bottom: 20px;
 }
 
-main h1{
-    font-size: 2vw;
-}
-
-
 .category{
     display: flex;
     width: 100%;
-}
-ul.tests{
-    display: flex;
-    margin-bottom: 20px;
-    justify-content: space-between;
-    
-    & li{
-        list-style-type: none;
-        color: black;
-        background-color: var(--color-main-bg);
-        font-weight: 700;
-        padding: 10px 10px;
-        border-radius: 10px;
-        font-size: 0.8em;
-        border: var(--border-card);
-        cursor: pointer;
-
-        & div{
-            display: flex;
-            align-items: center;
-
-            & p{
-                margin: 0;
-                display: inline;
-            }
-        }
-    }
-    & li.active{
-        background-color: var(--color-main);
-        & .icon{
-            background-color: black;
-            color: white;
-            border-radius: 5px;
-            margin-right: 10px;
-            width: 25px;
-            height: 25px;
-            display: inline-flex;
-            justify-content: center;
-            align-items: center;
-            & .enne{
-                fill: white;
-            }
-        }
-    }
-    & li.last{
-        list-style-type: none;
-        margin-right: 0;
-    }
 }
 
 .icon{
@@ -139,4 +66,39 @@ div.icon img{
 }
 .act{
     display: block;
+}
+
+@media(max-width:1050px) {
+    .first-card .card{
+        padding: 15px 30px;
+        width: 100%;
+    
+        & img{
+            display: none;
+        }
+    }
+    .second-card .card .big{
+        display: none;
+    }
+
+    ul.tests{      
+        & li{
+            font-size: 0.8em;
+            padding: 4px 4px;
+            border-radius: 6px;
+        }
+    }
+    .icon{
+        border-radius: 3px;
+    }
+    main h1{
+        font-size: 1.2em;
+    }
+
+}
+
+@media screen and (max-width: 762px){
+    main{
+        margin: 50px 10%;
+    }
 }
