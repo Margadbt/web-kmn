@@ -4,13 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="MBTI Personality test and other fun activities you can do in community">
-    <title>Бүртгүүлэх - MBTI</title>
+    <meta name="description" content="Your Profile Page">
+    <title>Your Profile - MBTI</title>
     <link rel="stylesheet" href="../style/home.css" />
     <link rel="stylesheet" href="../style/header.css" />
     <link rel="stylesheet" href="../style/var.css" />
     <link rel="stylesheet" href="../style/form.css">
-    <title>Register - MBTI</title>
+    <link rel="stylesheet" href="../style/profile.css" /> 
 </head>
 
 <body>
@@ -26,20 +26,21 @@
         </nav>
         <img id="pfp" src="/assets/pfp.png">
     </header>
-    <!-- Login modal -->
+
     <main>
         <section class="second-card">
             <div class="card">
-                <h2>Бүртгүүлэх</h2>
-                <form action="register.js" method="post">
-                    <input type="text" id="username" name="username" required placeholder="Нэр"><br><br>
-                    <input type="email" id="email" name="email" required placeholder="Цахим шуудан"><br><br>
-                    <input type="password" id="password" name="password" required placeholder="Нууц үг"><br><br>
-                    <input type="password" id="password" name="password" required placeholder="Нууц үг давтан оруулах"><br><br>
+                <h2>Profile</h2>
+                <img id="profile-picture" src="/assets/profile_picture.jpg" alt="PFP">
+                <h3>Name</h3>
+                <p>Bio: Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
 
-                    <input class="lgn-btn" type="submit" value="Бүртгүүлэх">
-                    <input class="lgn-btn-2nd" type="submit" value="Нэвтрэх">
-                </form>
+                <!-- Add more profile information here as needed -->
+                <div class="profile-info">
+                    <p>Email: example.email@example.com</p>
+                    <p>Location: Our City Comrade, Country</p>
+                    <p>Joined: January 1, 2023</p>
+                </div>
             </div>
         </section>
     </main>

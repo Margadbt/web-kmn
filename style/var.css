@@ -26,6 +26,9 @@ body{
     --border-rad: 15px;
 
     --shadow-card: 0px 5px 10px rgba(0, 0, 0, 0.03);
+
+    --card-stroke: #00000026;
+    --card-background: #FFFFFF;
 }
 
 h1{
