@@ -69,8 +69,8 @@ div.icon img{
 }
 
 @media(max-width:1050px) {
-    .first-card .card{
-        padding: 2rem 2eem;
+    .first-card .card, .card{
+        padding: 2rem 2rem;
         width: 100%;
     
         & img{
@@ -86,9 +86,6 @@ div.icon img{
 
     main h1{
         font-size: 1.2em;
-    }
-    .card{
-        padding: 15px 30px;
     }
 }
 
