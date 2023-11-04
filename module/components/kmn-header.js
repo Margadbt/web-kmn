@@ -59,12 +59,16 @@ header{
 }
 `;
 class Header extends HTMLElement {
-  constructor() {
-    super();
+    constructor() {
+        super();        
+    }
+    connectedCallback() {
 
-    this.attachShadow({ mode: "open" });
+        const currentPageURL = window.location.pathname
 
-    this.shadowRoot.innerHTML = `
+        this.attachShadow({ mode: "open" });
+
+        this.shadowRoot.innerHTML = `
             <style>
             ${style}
             </style>
@@ -72,16 +76,20 @@ class Header extends HTMLElement {
                 <img id="logo" src="/assets/logoT.svg" />
                 <nav class="desktop">
                     <ul>
-                    <li class="active"><a href="/">Home</a></li>
-                    <li><a href="/pages/test.html">Test</a></li>
-                    <li><a href="/pages/community.html">Community</a></li>
-                    <li class="last"><a href="/pages/plan.html">Plan</a></li>
+                    <li class="${currentPageURL === '/' ? 'active' : ''}"><a href="/">Home</a></li>
+                        <li class="${currentPageURL === '/pages/test.html' ? 'active' : ''}"><a href="/pages/test.html">Test</a></li>
+                        <li class="${currentPageURL === '/pages/community.html' ? 'active' : ''}"><a href="/pages/community.html">Community</a></li>
+                        <li class="${currentPageURL === '/pages/plan.html' ? 'active' : ''} last"><a href="/pages/plan.html">Plan</a></li>
                     </ul>
                 </nav>
                 <img id="pfp" src="/assets/pfp.png" />
             </header>
         `;
-  }
+    }
+
+    adoptedCallback() {
+        //implementation
+    }
 }
 
 customElements.define("kmn-header", Header);
