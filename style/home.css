@@ -1,30 +1,67 @@
-body {
-    margin: 0;
-    padding: 0;
-    overflow: hidden; /* Prevent horizontal scrollbar in some cases */
-}
+
 .hero {
     padding: 0 220px;
     background-image: url("/assets/bg.png");
     background-size: cover;
     background-position: center;
-    background-attachment: fixed;
     height: 100vh;
     width: 100vw;
     display: flex;
     justify-content: center;
+
     & .container{
         display: flex;
         justify-content: space-between;
         align-items: center;
-        gap: 8rem;
+        gap: 3rem;
 
         & .info{
             font-size: 1.6rem;
+
+            & button{
+                margin-top: 1rem;
+            }
         }
 
         & img{
             width: 25rem;
+            transition: all 0.4s ease-in-out;
+        }
+        & img:hover{
+            scale: 1.05;
         }
     }
+}
+
+.stats{
+    padding: 0 300px;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 15rem;
+    background-color: var(--color-main);
+    & .card{
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        width: 12rem;
+        height: 10rem;
+        transition: all 0.4s ease-in-out;
+
+        & h1{
+            font-size: 2rem;
+            color: var(--color-main);
+        }
+        & p{
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+    }
+    & .card:hover{
+        transform: translateY(-1rem);
+    }
+
 }
