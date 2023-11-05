@@ -253,4 +253,7 @@
       }
     }
   }
+  .personality:hover {
+    scale: 1;
+  }
 }
