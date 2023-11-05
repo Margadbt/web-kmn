@@ -9,6 +9,8 @@
 
 body{
     background-color: var(--color-main-bg);
+    margin: 0;
+    padding: 0;
 }
 
 :root{
