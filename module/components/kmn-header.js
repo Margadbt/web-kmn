@@ -1,6 +1,7 @@
 const style = `
 header{    
     position: fixed;
+    z-index: 1000;
     width: 100%;
     
     & nav{
@@ -68,6 +69,7 @@ header{
 
 .mobile{
     position: fixed;
+    z-index: 1001;
     width: 100vw;
     height: 100vh;
     display: none;
