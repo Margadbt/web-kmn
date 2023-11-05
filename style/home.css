@@ -116,57 +116,6 @@
   scale: 1.03;
 }
 
-@media screen and (max-width: 767px) {
-  .hero {
-    padding: 10rem 10vw;
-
-    & .container {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      gap: 3rem;
-
-      & .info {
-        font-size: 1.2rem;
-
-        & button {
-          font-size: 1.2rem;
-        }
-      }
-      & img {
-        width: 15rem;
-        transition: all 0.4s ease-in-out;
-      }
-    }
-  }
-  .stats {
-    flex-direction: column;
-    height: 40rem;
-    padding: 2rem 0;
-    & .card {
-      text-align: center;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-      width: 10rem;
-      height: 8rem;
-      transition: all 0.4s ease-in-out;
-
-      & h1 {
-        font-size: 1.5rem;
-      }
-      & p {
-        font-weight: 700;
-        font-size: 1rem;
-      }
-    }
-  }
-  #header {
-    text-align: center;
-    margin: 50px 25px 25px;
-  }
-}
 @media screen and (max-width: 1023px) {
   .personality {
     margin: 0 10vw;
@@ -255,5 +204,59 @@
   }
   .personality:hover {
     scale: 1;
+  }
+}
+
+
+@media screen and (max-width: 767px) {
+  .hero {
+    padding: 10rem 10vw;
+
+    & .container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 3rem;
+
+      & .info {
+        font-size: 1.2rem;
+
+        & button {
+          font-size: 1.2rem;
+        }
+      }
+      & img {
+        width: 15rem;
+        transition: all 0.4s ease-in-out;
+      }
+    }
+  }
+  .stats {
+    flex-direction: column;
+    height: 30rem;
+    padding: 2rem 0;
+    & .card {
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      width: 10rem;
+      height: 8rem;
+      transition: all 0.4s ease-in-out;
+
+      & h1 {
+        font-size: 1.5rem;
+      }
+      & p {
+        font-weight: 700;
+        font-size: 1rem;
+      }
+    }
+  }
+  #header {
+    text-align: center;
+    margin: 50px 25px 25px;
+
   }
 }
