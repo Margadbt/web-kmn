@@ -147,17 +147,14 @@ header{
     
 `;
 
-
-
-
 class Header extends HTMLElement {
-    constructor() {
-        super();
-        const currentPageURL = window.location.pathname
+  constructor() {
+    super();
+    const currentPageURL = window.location.pathname;
 
-        this.attachShadow({ mode: "open" });
+    this.attachShadow({ mode: "open" });
 
-        this.shadowRoot.innerHTML = `
+    this.shadowRoot.innerHTML = `
             <style>
             ${style}
             </style>
@@ -165,10 +162,20 @@ class Header extends HTMLElement {
                 <nav>
                 <a href="/"><img id="logo" src="/assets/logoT.svg" /></a>
                     <ul class="desktop">
-                    <li class="${currentPageURL === '/' ? 'active' : ''}"><a href="/">Home</a></li>
-                        <li class="${currentPageURL === '/pages/test.html' ? 'active' : ''}"><a href="/pages/test.html">Test</a></li>
-                        <li class="${currentPageURL === '/pages/community.html' ? 'active' : ''}"><a href="/pages/community.html">Community</a></li>
-                        <li class="${currentPageURL === '/pages/plan.html' ? 'active' : ''} last"><a href="/pages/plan.html">Plan</a></li>
+                    <li class="${
+                      currentPageURL === "/" ? "active" : ""
+                    }"><a href="/">Home</a></li>
+                        <li class="${
+                          currentPageURL === "/pages/test.html" ? "active" : ""
+                        }"><a href="/pages/test.html">Test</a></li>
+                        <li class="${
+                          currentPageURL === "/pages/community.html"
+                            ? "active"
+                            : ""
+                        }"><a href="/pages/community.html">Community</a></li>
+                        <li class="${
+                          currentPageURL === "/pages/plan.html" ? "active" : ""
+                        } last"><a href="/pages/plan.html">Plan</a></li>
                     </ul>
                     <div class="right">
                         <img id="pfp" src="/assets/pfp.png" />
@@ -180,35 +187,41 @@ class Header extends HTMLElement {
                 <nav>
                 <h3>Menu</h3>
                 <ul>
-                    <li class="${currentPageURL === '/' || currentPageURL === '/index.html'  ? 'active' : ''}"><a href="/">Home</a></li>
-                    <li class="${currentPageURL === '/pages/test.html' ? 'active' : ''}"><a href="/pages/test.html">Test</a></li>
-                    <li class="${currentPageURL === '/pages/community.html' ? 'active' : ''}"><a href="/pages/community.html">Community</a></li>
-                    <li class="${currentPageURL === '/pages/plan.html' ? 'active' : ''} last"><a href="/pages/plan.html">Plan</a></li>
+                    <li class="${
+                      currentPageURL === "/" || currentPageURL === "/index.html"
+                        ? "active"
+                        : ""
+                    }"><a href="/">Home</a></li>
+                    <li class="${
+                      currentPageURL === "/pages/test.html" ? "active" : ""
+                    }"><a href="/pages/test.html">Test</a></li>
+                    <li class="${
+                      currentPageURL === "/pages/community.html" ? "active" : ""
+                    }"><a href="/pages/community.html">Community</a></li>
+                    <li class="${
+                      currentPageURL === "/pages/plan.html" ? "active" : ""
+                    } last"><a href="/pages/plan.html">Plan</a></li>
                 </ul>
                 </nav>
             </div>
         `;
-    }
-    connectedCallback() {
-        const mbtn = this.shadowRoot.getElementById("mbtn");
-        const mobileDiv = this.shadowRoot.querySelector(".mobile");
+  }
+  connectedCallback() {
+    const mbtn = this.shadowRoot.getElementById("mbtn");
+    const mobileDiv = this.shadowRoot.querySelector(".mobile");
 
-        mbtn.addEventListener("click", () => {
-            mobileDiv.classList.toggle("active");
-        });
+    mbtn.addEventListener("click", () => {
+      mobileDiv.classList.toggle("active");
+    });
 
-        mobileDiv.addEventListener("click", ()=>{
-            mobileDiv.classList.toggle("active");
-        })
+    mobileDiv.addEventListener("click", () => {
+      mobileDiv.classList.toggle("active");
+    });
+  }
 
-    }
-
-    adoptedCallback() {
-        //implementation
-        
-    }
+  adoptedCallback() {
+    //implementation
+  }
 }
-
-
 
 customElements.define("kmn-header", Header);
