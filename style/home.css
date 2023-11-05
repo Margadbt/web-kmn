@@ -211,4 +211,44 @@
       }
     }
   }
+  .stats {
+    height: 20rem;
+    padding: 2rem 0;
+    & .card {
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      width: 10rem;
+      height: 8rem;
+      transition: all 0.4s ease-in-out;
+
+      & h1 {
+        font-size: 1.5rem;
+      }
+      & p {
+        font-weight: 700;
+        font-size: 1rem;
+      }
+    }
+  }
+  .hero {
+
+    & .container {
+      gap: 1.5rem;
+
+      & .info {
+        font-size: 1.2rem;
+
+        & button {
+          font-size: 1.2rem;
+        }
+      }
+      & img {
+        width: 15rem;
+        transition: all 0.4s ease-in-out;
+      }
+    }
+  }
 }
