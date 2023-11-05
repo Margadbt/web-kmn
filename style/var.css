@@ -37,16 +37,6 @@ body{
     --card-background: #FFFFFF;
 }
 
-h1{
-    font-size: var(--fsize-b);
-}
-h2{
-    font-size: var(--fsize-m);
-}
-h3{
-    font-size: var(--fsize-s);
-}
-
 button.green{
     background-color: var(--color-main);
     color: white;

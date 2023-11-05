@@ -118,7 +118,7 @@
 
 @media screen and (max-width: 767px) {
   .hero {
-    padding: 2rem 10vw;
+    padding: 10rem 10vw;
 
     & .container {
       display: flex;
@@ -142,6 +142,7 @@
   .stats {
     flex-direction: column;
     height: 30rem;
+    padding: 2rem 0;
     & .card {
       text-align: center;
       display: flex;
@@ -161,50 +162,14 @@
       }
     }
   }
-  .personality {
-    & .container {
-      gap: 1rem;
-      flex-direction: column;
-      & img {
-        width: 18rem;
-      }
-      & .info {
-        & h1 {
-          font-size: 1.5rem;
-        }
-        & p {
-          margin-bottom: 2rem;
-        }
-        & button {
-          font-size: 1.2rem;
-        }
-      }
-      & .infoleft {
-        display: flex;
-        align-items: end;
-        flex-direction: column;
-        & h1 {
-          margin-bottom: 2rem;
-          font-size: 1.5rem;
-        }
-        & p {
-          margin-bottom: 2rem;
-          text-align: right;
-        }
-        & button {
-          font-size: 1.2rem;
-        }
-      }
-    }
-  }
   #header {
     text-align: center;
-    margin: 50px 0 25px;
+    margin: 50px 25px 25px;
   }
 }
 @media screen and (max-width: 1023px) {
   .personality {
-    margin: 0 20vw;
+    margin: 0 10vw;
     margin-bottom: 5rem;
     transition: all 0.2s ease-in-out;
     & .container {
@@ -219,7 +184,7 @@
       & .info {
         & h1 {
           margin-bottom: 2rem;
-          font-size: 2rem;
+          font-size: 1.5rem;
         }
         & p {
           margin-bottom: 2rem;
@@ -233,11 +198,11 @@
         align-items: end;
         flex-direction: column;
         & h1 {
-          margin-bottom: 2rem;
-          font-size: 2rem;
+          margin-bottom: 1rem;
+          font-size: 1.5rem;
         }
         & p {
-          margin-bottom: 2rem;
+          margin-bottom: 1rem;
           text-align: right;
         }
         & button {

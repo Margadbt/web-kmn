@@ -163,7 +163,7 @@ class Header extends HTMLElement {
             </style>
             <header>
                 <nav>
-                <img id="logo" src="/assets/logoT.svg" />
+                <a href="/"><img id="logo" src="/assets/logoT.svg" /></a>
                     <ul class="desktop">
                     <li class="${currentPageURL === '/' ? 'active' : ''}"><a href="/">Home</a></li>
                         <li class="${currentPageURL === '/pages/test.html' ? 'active' : ''}"><a href="/pages/test.html">Test</a></li>
