@@ -51,7 +51,7 @@
         width: 12rem;
         height: 10rem;
         transition: all 0.4s ease-in-out;
-
+        
         & h1{
             font-size: 2rem;
             color: var(--color-main);
