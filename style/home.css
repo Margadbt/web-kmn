@@ -1,253 +1,249 @@
-
 .hero {
-    padding: 0 10vw;
-    background-image: url("/assets/bg.png");
-    background-size: cover;
+  padding: 0 10vw;
+  background-image: url("/assets/bg.png");
+  background-size: cover;
 
-    background-position: center;
-    height: 100vh;
-    /* width: 100vw; */
+  background-position: center;
+  height: 100vh;
+  /* width: 100vw; */
+  display: flex;
+  justify-content: center;
+
+  & .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 3rem;
+
+    & .info {
+      font-size: 1.6rem;
+
+      & button {
+        margin-top: 1rem;
+      }
+    }
+
+    & img {
+      width: 25rem;
+      transition: all 0.4s ease-in-out;
+    }
+    & img:hover {
+      scale: 1.05;
+    }
+  }
+}
+
+.stats {
+  padding: 0 15vw;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 18rem;
+  background-color: var(--color-main);
+  & .card {
+    text-align: center;
     display: flex;
     justify-content: center;
-
-    & .container{
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        gap: 3rem;
-
-        & .info{
-            font-size: 1.6rem;
-
-            & button{
-                margin-top: 1rem;
-            }
-        }
-
-        & img{
-            width: 25rem;
-            transition: all 0.4s ease-in-out;
-        }
-        & img:hover{
-            scale: 1.05;
-        }
-    }
-}
-
-.stats{
-    padding: 0 15vw;
-    width: 100%;
-    display: flex;
-    justify-content: space-around;
     align-items: center;
-    height: 18rem;
-    background-color: var(--color-main);
-    & .card{
-        text-align: center;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-        width: 12rem;
-        height: 10rem;
+    flex-direction: column;
+    width: 12rem;
+    height: 10rem;
+    transition: all 0.4s ease-in-out;
+
+    & h1 {
+      font-size: 2rem;
+      color: var(--color-main);
+    }
+    & p {
+      font-weight: 700;
+      font-size: 1.2rem;
+    }
+  }
+  & .card:hover {
+    transform: translateY(-1rem);
+  }
+}
+
+#header {
+  text-align: center;
+  margin: 100px 0 50px;
+}
+
+.personality {
+  margin: 0 20vw;
+  margin-bottom: 5rem;
+  transition: all 0.2s ease-in-out;
+  & .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5rem;
+    & img {
+      width: 25rem;
+    }
+    & .info {
+      & h1 {
+        margin-bottom: 2rem;
+        font-size: 2rem;
+      }
+      & p {
+        margin-bottom: 2rem;
+      }
+      & button {
+        font-size: 1.2rem;
+      }
+    }
+    & .infoleft {
+      display: flex;
+      align-items: end;
+      flex-direction: column;
+      & h1 {
+        margin-bottom: 2rem;
+        font-size: 2rem;
+      }
+      & p {
+        margin-bottom: 2rem;
+        text-align: right;
+      }
+      & button {
+        font-size: 1.2rem;
+      }
+    }
+  }
+}
+.personality:hover {
+  scale: 1.03;
+}
+
+@media screen and (max-width: 767px) {
+  .hero {
+    padding: 2rem 10vw;
+
+    & .container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 3rem;
+
+      & .info {
+        font-size: 1.2rem;
+
+        & button {
+          font-size: 1.2rem;
+        }
+      }
+      & img {
+        width: 15rem;
         transition: all 0.4s ease-in-out;
-        
-        & h1{
-            font-size: 2rem;
-            color: var(--color-main);
-        }
-        & p{
-            font-weight: 700;
-            font-size: 1.2rem;
-        }
+      }
     }
-    & .card:hover{
-        transform: translateY(-1rem);
-    }
-}
+  }
+  .stats {
+    flex-direction: column;
+    height: 30rem;
+    & .card {
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      width: 10rem;
+      height: 8rem;
+      transition: all 0.4s ease-in-out;
 
-#header{
+      & h1 {
+        font-size: 1.5rem;
+      }
+      & p {
+        font-weight: 700;
+        font-size: 1rem;
+      }
+    }
+  }
+  .personality {
+    & .container {
+      gap: 1rem;
+      flex-direction: column;
+      & img {
+        width: 18rem;
+      }
+      & .info {
+        & h1 {
+          font-size: 1.5rem;
+        }
+        & p {
+          margin-bottom: 2rem;
+        }
+        & button {
+          font-size: 1.2rem;
+        }
+      }
+      & .infoleft {
+        display: flex;
+        align-items: end;
+        flex-direction: column;
+        & h1 {
+          margin-bottom: 2rem;
+          font-size: 1.5rem;
+        }
+        & p {
+          margin-bottom: 2rem;
+          text-align: right;
+        }
+        & button {
+          font-size: 1.2rem;
+        }
+      }
+    }
+  }
+  #header {
     text-align: center;
-    margin: 100px 0 50px;
+    margin: 50px 0 25px;
+  }
 }
-
-.personality{
+@media screen and (max-width: 1023px) {
+  .personality {
     margin: 0 20vw;
     margin-bottom: 5rem;
     transition: all 0.2s ease-in-out;
-    & .container{
+    & .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 1rem;
+      flex-direction: column;
+      & img {
+        width: 18rem;
+      }
+      & .info {
+        & h1 {
+          margin-bottom: 2rem;
+          font-size: 2rem;
+        }
+        & p {
+          margin-bottom: 2rem;
+        }
+        & button {
+          font-size: 1.2rem;
+        }
+      }
+      & .infoleft {
         display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: 5rem;
-        & img{
-            width: 25rem;
-        }
-        & .info{
-            & h1{
-                margin-bottom: 2rem;
-                font-size: 2rem;
-            }
-            & p{
-                margin-bottom: 2rem;
-            }
-            & button{
-                font-size: 1.2rem;
-            }
-        }
-        & .infoleft{
-            display: flex;
-            align-items: end;
-            flex-direction: column;
-            & h1{
-                margin-bottom: 2rem;
-                font-size: 2rem;
-            }
-            & p{
-                margin-bottom: 2rem;
-                text-align: right;
-            }
-            & button{
-                font-size: 1.2rem;
-            }
-        }
-    }
-}
-.personality:hover{
-    scale: 1.03;
-}
-
-@media screen and (max-width: 767px){
-    .hero {
-        padding: 2rem 10vw;
-    
-        & .container{
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            gap: 3rem;
-    
-            & .info{
-                font-size: 1.2rem;
-    
-                & button{
-                    font-size: 1.2rem;
-                }
-            }
-        }
-    }
-    .stats{
+        align-items: end;
         flex-direction: column;
-        height: 30rem;
-        & .card{
-            text-align: center;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            width: 10rem;
-            height: 8rem;
-            transition: all 0.4s ease-in-out;
-            
-            & h1{
-                font-size: 1.5rem;
-            }
-            & p{
-                font-weight: 700;
-                font-size: 1rem;
-            }
+        & h1 {
+          margin-bottom: 2rem;
+          font-size: 2rem;
         }
-    }
-    .personality{
-        margin: 0 20vw;
-        margin-bottom: 5rem;
-        transition: all 0.2s ease-in-out;
-        & .container{
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 1rem;
-            flex-direction: column;
-            & img{
-                width: 18rem;
-            }
-            & .info{
-                & h1{
-                    margin-bottom: 2rem;
-                    font-size: 2rem;
-                }
-                & p{
-                    margin-bottom: 2rem;
-                }
-                & button{
-                    font-size: 1.2rem;
-                }
-            }
-            & .infoleft{
-                display: flex;
-                align-items: end;
-                flex-direction: column;
-                & h1{
-                    margin-bottom: 2rem;
-                    font-size: 2rem;
-                }
-                & p{
-                    margin-bottom: 2rem;
-                    text-align: right;
-                }
-                & button{
-                    font-size: 1.2rem;
-                }
-            }
+        & p {
+          margin-bottom: 2rem;
+          text-align: right;
         }
-    }
-    #header{
-        text-align: center;
-        margin: 50px 0 25px;
-    }
-}
-@media screen and (max-width: 1023px) {
-    .personality{
-        margin: 0 20vw;
-        margin-bottom: 5rem;
-        transition: all 0.2s ease-in-out;
-        & .container{
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 1rem;
-            flex-direction: column;
-            & img{
-                width: 18rem;
-            }
-            & .info{
-                & h1{
-                    margin-bottom: 2rem;
-                    font-size: 2rem;
-                }
-                & p{
-                    margin-bottom: 2rem;
-                }
-                & button{
-                    font-size: 1.2rem;
-                }
-            }
-            & .infoleft{
-                display: flex;
-                align-items: end;
-                flex-direction: column;
-                & h1{
-                    margin-bottom: 2rem;
-                    font-size: 2rem;
-                }
-                & p{
-                    margin-bottom: 2rem;
-                    text-align: right;
-                }
-                & button{
-                    font-size: 1.2rem;
-                }
-            }
+        & button {
+          font-size: 1.2rem;
         }
+      }
     }
+  }
 }
