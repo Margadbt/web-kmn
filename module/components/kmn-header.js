@@ -160,7 +160,7 @@ class Header extends HTMLElement {
             </style>
             <header>
                 <nav>
-                <a href="/"><img id="logo" src="/assets/logoT.svg" /></a>
+                <a href="/"><img id="logo" src="/assets/logoT.svg" alt="logo"/></a>
                     <ul class="desktop">
                     <li class="${
                       currentPageURL === "/" ? "active" : ""
@@ -178,7 +178,7 @@ class Header extends HTMLElement {
                         } last"><a href="/pages/plan.html">Plan</a></li>
                     </ul>
                     <div class="right">
-                        <img id="pfp" src="/assets/pfp.png" />
+                        <img id="pfp" src="/assets/pfp.png" alt="profile" />
                         <button id="mbtn"><img src="../../assets/menu.png" alt="menu" /></button>
                     </div>
                 </nav>
