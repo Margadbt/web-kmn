@@ -55,6 +55,14 @@ header{
 }
 #mbtn{
     display: none;
+    background-color: white;
+    cursor: pointer;
+    & img{
+        width: 1.7rem;
+        height: 1.7rem;
+    }
+    border: var(--border-card);
+    border-radius: 0.4rem;
 }
 
 
@@ -80,11 +88,15 @@ header{
         box-shadow: var(--shadow-card);
         border: var(--border-card);
         border-radius: var(--border-rad);
+        & h3{
+            margin: 0;
+        }
         & ul{
             display: flex;
             align-items: right;
             flex-direction: column;
             justify-content: right;
+            padding-left:0;
 
             & li{
                 list-style-type: none;
@@ -158,15 +170,15 @@ class Header extends HTMLElement {
                     </ul>
                     <div class="right">
                         <img id="pfp" src="/assets/pfp.png" />
-                        <button id="mbtn">M</button>
+                        <button id="mbtn"><img src="../../assets/menu.png" alt="menu" /></button>
                     </div>
                 </nav>
             </header>
             <div class="mobile">
                 <nav>
-                <h2>Menu</h2>
+                <h3>Menu</h3>
                 <ul>
-                    <li class="${currentPageURL === '/' ? 'active' : ''}"><a href="/">Home</a></li>
+                    <li class="${currentPageURL === '/' || currentPageURL === '/index.html'  ? 'active' : ''}"><a href="/">Home</a></li>
                     <li class="${currentPageURL === '/pages/test.html' ? 'active' : ''}"><a href="/pages/test.html">Test</a></li>
                     <li class="${currentPageURL === '/pages/community.html' ? 'active' : ''}"><a href="/pages/community.html">Community</a></li>
                     <li class="${currentPageURL === '/pages/plan.html' ? 'active' : ''} last"><a href="/pages/plan.html">Plan</a></li>
