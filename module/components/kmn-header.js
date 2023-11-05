@@ -1,15 +1,17 @@
 const style = `
-header{
-    padding: 0 100px;
-    display: flex;
-    justify-content: space-between;
-    background-color: var(--color-card-bg);
-    box-shadow: 0 5px 25px rgb(0, 0, 0, 0.0);
-    align-items: center;
-    height: 4em;
-    border: var(--border-card);
+header{    
+    position: fixed;
+    width: 100%;
     
     & nav{
+        padding: 0 100px;
+        display: flex;
+        justify-content: space-between;
+        background-color: var(--color-card-bg);
+        box-shadow: 0 5px 25px rgb(0, 0, 0, 0.0);
+        align-items: center;
+        height: 4em;
+        border: var(--border-card);
         & ul{
             display: flex;
             align-items: center;
@@ -73,16 +75,18 @@ class Header extends HTMLElement {
             ${style}
             </style>
             <header>
+                
+                <nav>
                 <img id="logo" src="/assets/logoT.svg" />
-                <nav class="desktop">
                     <ul>
                     <li class="${currentPageURL === '/' ? 'active' : ''}"><a href="/">Home</a></li>
                         <li class="${currentPageURL === '/pages/test.html' ? 'active' : ''}"><a href="/pages/test.html">Test</a></li>
                         <li class="${currentPageURL === '/pages/community.html' ? 'active' : ''}"><a href="/pages/community.html">Community</a></li>
                         <li class="${currentPageURL === '/pages/plan.html' ? 'active' : ''} last"><a href="/pages/plan.html">Plan</a></li>
                     </ul>
+                    <img id="pfp" src="/assets/pfp.png" />
                 </nav>
-                <img id="pfp" src="/assets/pfp.png" />
+                
             </header>
         `;
     }

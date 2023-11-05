@@ -1,96 +1,30 @@
-main{
-    margin: 50px 20%;
+body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden; /* Prevent horizontal scrollbar in some cases */
 }
-
-section{
-    margin-bottom: 50px;
-}
-
-.first-card .card{
+.hero {
+    padding: 0 220px;
+    background-image: url("/assets/bg.png");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    height: 100vh;
+    width: 100vw;
     display: flex;
-    align-items: center;
-    padding: 30px 60px;
-    justify-content: space-between;
-
-    & img{
-        width: 100px;
-    }
-}
-
-
-.second-card .card{
-    display: flex;
-    padding: 30px 60px;
-    justify-content: space-between;
-    align-items: center;
-
-    & .big{
-        width: 25%;
-        height: 100%;
-        margin-right: 10%;
-    }
-}
-
-.left h1, .right p{
-    margin-bottom: 20px;
-}
-
-.category{
-    display: flex;
-    width: 100%;
-}
-
-.icon{
-    background-color: var(--color-main);
-    color: black;
-    border-radius: 5px;
-    margin-right: 10px;
-    width: 25px;
-    height: 25px;
-    display: inline-flex;
     justify-content: center;
-    align-items: center;
-    font-size: 1.2em;
-}
+    & .container{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 8rem;
 
-div.icon img{
-    width: 80%;
-}
-
-.right h2{
-    margin-bottom: 18px;
-}
-
-.ina{
-    display: none;
-}
-.act{
-    display: block;
-}
-
-@media(max-width:1050px) {
-    .first-card .card, .card{
-        padding: 2rem 2rem;
-        width: 100%;
-    
-        & img{
-            display: none;
+        & .info{
+            font-size: 1.6rem;
         }
-    }
-    .second-card .card .big{
-        display: none;
-    }
-    .second-card .card{
-        padding: 30px 30px;
-    }
 
-    main h1{
-        font-size: 1.2em;
-    }
-}
-
-@media screen and (max-width: 762px){
-    main{
-        margin: 50px 10%;
+        & img{
+            width: 25rem;
+        }
     }
 }
