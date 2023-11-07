@@ -152,13 +152,6 @@ class Group{
     }
 }
 
-class FilteredGroup{
-    constructor(id){
-        this.filterId = id;
-    }
-
-}
-
 
 var com = new Community();
 com.Init();
