@@ -1,0 +1,50 @@
+[
+    {
+        "id": 1,
+        "category": "group",
+        "groups": [
+            {
+                "id": 1,
+                "name": "MBTI Сонирхогчид"
+            },
+            {
+                "id": 2,
+                "name": "Enneagram Сонирхогчид"
+            },
+            {
+                "id": 3,
+                "name": "Temprament Сонирхогчид"
+            },
+            {
+                "id": 4,
+                "name": "Meme"
+            },
+            {
+                "id": 5,
+                "name": "Mental Health"
+            }
+        ]
+    },
+    {
+        "id": 2,
+        "category": "post",
+        "posts": [
+            {
+                "id": 1,
+                "userId": 1,
+                "groupId": 1,
+                "description": "MBTI",
+                "likeCount": 0,
+                "photoURL": "/assets/post-pic.jpg"
+            },
+            {
+                "id": 2,
+                "userId": 2,
+                "groupId": 2,
+                "description": "Enneagram",
+                "likeCount": 2,
+                "photoURL": "/assets/post-pic.jpg"
+            }
+        ]
+    }
+]
