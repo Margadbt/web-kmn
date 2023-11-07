@@ -9,57 +9,32 @@
     <title>Community - MBTI</title>
     <link rel="stylesheet" href="../style/var.css" />
     <link rel="stylesheet" href="../style/community.css" />
+    <script defer src="/script/community.js"></script>
 </head>
 <body>
     <!-- Header web component shuu eniig copydood door baigaa scriptiig copydooroi headeriiha orond -->
     <kmn-header></kmn-header>
     <main>
         <input class="search" placeholder="Search..." type="text" />
-        <h1>Group Name</h1>
+        <h1 id="group-name">Group Name</h1>
         <section class="container">
             <section class="posts">
-                <article class="card">
-                    <div class="author">
-                        <img class="pfp" src="../assets/pfp.png" alt="profile">
-                        <p>User</p>
-                    </div>
-                    <p>This is description</p>
-                    <img class="psp" src="../assets/post-pic.jpg" alt="post picture">
-                    <div class="reactions">
-                        <img class="like" src="../assets/heart-126.svg" alt="like">
-                        <p>13</p>
-                    </div>
-                    
-                </article>
+                <!-- Postuud end ornoo -->
             </section>
             <aside>
                 <section>
                     <h3>Таны группууд</h3>
                     <div class="card">
-                        <ul>
-                            <li>Group</li>
-                            <li>Group</li>
-                            <li>Group</li>
-                            <li>Group</li>
-                            <li>Group</li>
-                            <li>Group</li>
-                            <li>Group</li>
-                            <li>Group</li>
+                        <ul id="your-groups">
+                            <!-- End groupuud ornoo -->
                         </ul>
                     </div>
                 </section>
                 <section>
                     <h3>Санал болгох группууд</h3>
                     <div class="card">
-                        <ul>
-                            <li>Group</li>
-                            <li>Group</li>
-                            <li>Group</li>
-                            <li>Group</li>
-                            <li>Group</li>
-                            <li>Group</li>
-                            <li>Group</li>
-                            <li>Group</li>
+                        <ul id="rec-groups">
+                            <!-- Sanal bolgoh groupuud end ornoo -->
                         </ul>
                     </div>
                 </section>
