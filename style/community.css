@@ -70,6 +70,23 @@ section ul{
     width: 20px;
     height: 20px;
 }
+#your-groups li a, #rec-groups li a{
+    text-decoration: none;
+    color: black;
+    font-weight: 600;
+}
+#your-groups li, #rec-groups li{
+    background-color: rgb(0, 0, 0, 0.05);
+    padding: 5px 10px;
+    border-radius: 10px;
+    transition: all 0.2s ease-in-out;
+}
+#your-groups li:hover, #rec-groups li:hover{
+    background-color: rgb(0, 0, 0, 0.4);
+    padding: 5px 10px;
+    border-radius: 10px;
+}
+
 @media screen and (max-width: 1023px){
     main{
         margin: 0 5%;

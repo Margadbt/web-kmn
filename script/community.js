@@ -49,7 +49,10 @@
 //     }
 // ];
 
-class App{
+const params = new URLSearchParams(document.location.search);
+const id = params.get("id");
+console.log(params)
+class Community{
     constructor(){
 
     }
@@ -61,13 +64,37 @@ class App{
     
           // Postuud
           const posts = data[1].posts;
-          let htmlPosts = ``;
-          for (const post of posts) {
-            const pos = new Post(post);
-            htmlPosts += pos.Render();
+          //All posts
+          if(params.size == 0){
+            
+            let htmlPosts = ``;
+            for (const post of posts) {
+                const pos = new Post(post);
+                htmlPosts += pos.Render();
+            }
+            document.querySelector(".posts").insertAdjacentHTML("beforeend", htmlPosts);
+            document.getElementById("group-name").innerText = "Бүх постууд"
+          } else{
+                //paramGroup posts
+                const filteredPosts = posts.filter(post => post.id ==  id);
+                let htmlPosts = ``;
+                    for (const post of filteredPosts) {
+                        const pos = new Post(post);
+                        htmlPosts += pos.Render();
+                    }
+                document.querySelector(".posts").insertAdjacentHTML("beforeend", htmlPosts);
+
+                let obj = null;
+                for(const obje of data[0].groups){
+                    if(obje.id == id){
+                        obj = obje;
+                        break;
+                    }
+                }
+                document.getElementById("group-name").innerText = obj.name
+                
           }
-          document.querySelector(".posts").insertAdjacentHTML("beforeend", htmlPosts);
-          //-----------
+          
 
           // Groupuud
           const groups = data[0].groups;
@@ -120,10 +147,18 @@ class Group{
 
     Render(){
         return `
-            <li>${this.name}</li>
+            <li><a href="?id=${this.id}">${this.name}</a></li>
         `
     }
 }
 
-var com = new App();
+class FilteredGroup{
+    constructor(id){
+        this.filterId = id;
+    }
+
+}
+
+
+var com = new Community();
 com.Init();
