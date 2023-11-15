@@ -24,7 +24,7 @@ class Community {
                 }
                 document
                     .querySelector(".posts")
-                    .insertAdjacentHTML("beforeend", htmlPosts);
+                    .insertAdjacentHTML("afterbegin", htmlPosts);
                 document.getElementById("group-name").innerText = "Бүх постууд";
             } else {
                 //paramGroup posts
@@ -36,7 +36,7 @@ class Community {
                 }
                 document
                     .querySelector(".posts")
-                    .insertAdjacentHTML("beforeend", htmlPosts);
+                    .insertAdjacentHTML("afterbegin", htmlPosts);
 
                 let obj = null;
                 for (const obje of data[0].groups) {
@@ -57,10 +57,10 @@ class Community {
             }
             document
                 .getElementById("your-groups")
-                .insertAdjacentHTML("beforeend", htmlGroups);
+                .insertAdjacentHTML("afterbegin", htmlGroups);
             document
                 .getElementById("rec-groups")
-                .insertAdjacentHTML("beforeend", htmlGroups);
+                .insertAdjacentHTML("afterbegin", htmlGroups);
         } catch (error) {
             console.error(error);
         }
