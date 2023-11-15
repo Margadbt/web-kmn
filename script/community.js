@@ -1,7 +1,6 @@
 //URL aas parameter awah
 const params = new URLSearchParams(document.location.search);
 const id = params.get("id");
-console.log(params);
 
 class Community {
     constructor() { }
@@ -26,7 +25,9 @@ class Community {
                     .querySelector(".posts")
                     .insertAdjacentHTML("afterbegin", htmlPosts);
                 document.getElementById("group-name").innerText = "Бүх постууд";
-            } else {
+            }
+            //filter
+            else {
                 //paramGroup posts
                 const filteredPosts = posts.filter((post) => post.id == id);
                 let htmlPosts = ``;
@@ -38,14 +39,14 @@ class Community {
                     .querySelector(".posts")
                     .insertAdjacentHTML("afterbegin", htmlPosts);
 
-                let obj = null;
-                for (const obje of data[0].groups) {
-                    if (obje.id == id) {
-                        obj = obje;
+                let selGroup = null;
+                for (const group of data[0].groups) {
+                    if (group.id == id) {
+                        selGroup = group;
                         break;
                     }
                 }
-                document.getElementById("group-name").innerText = obj.name;
+                document.getElementById("group-name").innerText = selGroup.name;
             }
 
             // Groupuud
