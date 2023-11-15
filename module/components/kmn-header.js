@@ -33,9 +33,12 @@ header{
             }
 
             & li.active{
-                background-color: rgba(112, 151, 116, 0.74);
+                background-color: rgba(112, 151, 116);
                 padding: 8px 15px;
                 border-radius: 8px;
+                & a{
+                    color: white;
+                }
             }
         }
 
@@ -119,6 +122,10 @@ header{
                 border-left: 3px solid var(--color-main);
                 padding-left: 5px;
                 font-weight:800;
+
+                & a{
+                    font-weight: 700;
+                }
             }
         }
     }
