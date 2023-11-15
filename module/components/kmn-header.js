@@ -178,7 +178,7 @@ class Header extends HTMLElement {
                         } last"><a href="/pages/plan.html">Plan</a></li>
                     </ul>
                     <div class="right">
-                        <img id="pfp" src="/assets/pfp.png" alt="profile" />
+                        <a href="/pages/profile.html"><img id="pfp" src="/assets/pfp.png" alt="profile" /></a>
                         <button id="mbtn"><img src="../../assets/menu.png" alt="menu" /></button>
                     </div>
                 </nav>
@@ -202,6 +202,7 @@ class Header extends HTMLElement {
                       currentPageURL === "/pages/plan.html" ? "active" : ""
                     } last"><a href="/pages/plan.html">Plan</a></li>
                 </ul>
+                <a href="/pages/profile.html"><img id="pfp" src="/assets/pfp.png" alt="profile" /></a>
                 </nav>
             </div>
         `;
