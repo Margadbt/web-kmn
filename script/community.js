@@ -7,7 +7,7 @@ class Community {
     async Init() {
         try {
             const response = await fetch(
-                "https://api.jsonbin.io/v3/b/654a5b3012a5d376599624d7"
+                "https://api.jsonbin.io/v3/b/6566979e12a5d37659a06592"
             );
             const datasa = await response.json();
             const data = datasa.record;
