@@ -167,26 +167,26 @@ class Header extends HTMLElement {
             </style>
             <header>
                 <nav>
-                <a href="/"><img id="logo" src="/assets/logoT.svg" alt="logo"/></a>
+                <a href="/"><img id="logo" src="/public/assets/logoT.svg" alt="logo"/></a>
                     <ul class="desktop">
                     <li class="${
                       currentPageURL === "/" ? "active" : ""
-                    }"><a href="/">Home</a></li>
+                    }"><a href="/public/index.html">Home</a></li>
                         <li class="${
-                          currentPageURL === "/pages/test.html" ? "active" : ""
-                        }"><a href="/pages/test.html">Test</a></li>
+                          currentPageURL === "./pages/test.html" ? "active" : ""
+                        }"><a href="./pages/test.html">Test</a></li>
                         <li class="${
-                          currentPageURL === "/pages/community.html"
+                          currentPageURL === "./pages/community.html"
                             ? "active"
                             : ""
-                        }"><a href="/pages/community.html">Community</a></li>
+                        }"><a href="./pages/community.html">Community</a></li>
                         <li class="${
-                          currentPageURL === "/pages/plan.html" ? "active" : ""
-                        } last"><a href="/pages/plan.html">Plan</a></li>
+                          currentPageURL === "./pages/plan.html" ? "active" : ""
+                        } last"><a href="./pages/plan.html">Plan</a></li>
                     </ul>
                     <div class="right">
-                        <a href="/pages/profile.html"><img id="pfp" src="/assets/pfp.png" alt="profile" /></a>
-                        <button id="mbtn"><img src="../../assets/menu.png" alt="menu" /></button>
+                        <a href="/pages/profile.html"><img id="pfp" src="/public/assets/pfp.png" alt="profile" /></a>
+                        <button id="mbtn"><img src="/public/assets/menu.png" alt="menu" /></button>
                     </div>
                 </nav>
             </header>
@@ -195,21 +195,21 @@ class Header extends HTMLElement {
                 <h3>Menu</h3>
                 <ul>
                     <li class="${
-                      currentPageURL === "/" || currentPageURL === "/index.html"
+                      currentPageURL === "/" || currentPageURL === "./index.html"
                         ? "active"
                         : ""
                     }"><a href="/">Home</a></li>
                     <li class="${
-                      currentPageURL === "/pages/test.html" ? "active" : ""
-                    }"><a href="/pages/test.html">Test</a></li>
+                      currentPageURL === "./pages/test.html" ? "active" : ""
+                    }"><a href="./pages/test.html">Test</a></li>
                     <li class="${
-                      currentPageURL === "/pages/community.html" ? "active" : ""
-                    }"><a href="/pages/community.html">Community</a></li>
+                      currentPageURL === "./pages/community.html" ? "active" : ""
+                    }"><a href="./pages/community.html">Community</a></li>
                     <li class="${
-                      currentPageURL === "/pages/plan.html" ? "active" : ""
-                    } last"><a href="/pages/plan.html">Plan</a></li>
+                      currentPageURL === "./pages/plan.html" ? "active" : ""
+                    } last"><a href="./pages/plan.html">Plan</a></li>
                 </ul>
-                <a href="/pages/profile.html"><img id="pfp" src="/assets/pfp.png" alt="profile" /></a>
+                <a href="./pages/profile.html"><img id="pfp" src="/public/assets/pfp.png" alt="profile" /></a>
                 </nav>
             </div>
         `;
