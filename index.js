@@ -30,6 +30,8 @@ app.get('/plan', (req, res)=>{
     res.sendFile('public/pages/plan.html', {root: __dirname });
 })
 
+//api
+
 app.get('/api/posts', (req, res)=>{
     res.send(postsData)
 })
