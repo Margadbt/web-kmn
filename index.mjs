@@ -1,5 +1,5 @@
-import express, { json } from "express";
 import { readFileSync } from "fs";
+import express from 'express';
 
 
 const jsonData = readFileSync("./public/data.json", "utf-8");
