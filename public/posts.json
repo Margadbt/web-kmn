@@ -25,6 +25,14 @@
             "description": "Hello world",
             "likeCount": 999,
             "photoURL": "public/assets/post-pic.jpg"
+        },
+        {
+            "id": 4,
+            "userId": 5,
+            "groupId": 4,
+            "description": "noob khanka",
+            "likeCount": 999,
+            "photoURL": ""
         }
     ]
 }

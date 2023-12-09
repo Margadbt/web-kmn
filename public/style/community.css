@@ -127,6 +127,9 @@ section ul{
     color: black;
     font-weight: 500;
 }
+.post-desc{
+    margin-bottom: 10px;
+}
 
 @media screen and (max-width: 1023px){
     main{

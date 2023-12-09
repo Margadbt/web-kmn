@@ -73,13 +73,14 @@ class Post {
     return `
         <article class="card">
             <div class="author">
-                <img class="pfp" src="${this.photoURL}" alt="profile">
+                <img class="pfp" src="public/assets/pfp.png" alt="profile">
                 <p class="post-username">${this.userId}</p>
                 <p>•</p>
                 <a href="?group=${this.groupId}" class="post-group-name">${this.groupName}</a>
             </div>
-            <p>${this.description}</p>
-            <img class="psp" src="${this.photoURL}" alt="post picture">
+            <p class="post-desc">${this.description}</p>
+            ${this.photoURL ? `<img class="psp" src="${this.photoURL}" alt="post picture"></img>` : ''}
+            
             <div class="reactions">
                 <img class="like" src="public/assets/heart-126.svg" alt="like">
                 <p>${this.likeCount}</p>
