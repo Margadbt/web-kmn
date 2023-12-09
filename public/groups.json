@@ -1,0 +1,26 @@
+{
+    "id": 1,
+    "category": "group",
+    "groups": [
+        {
+            "id": 1,
+            "name": "MBTI Сонирхогчид"
+        },
+        {
+            "id": 2,
+            "name": "Enneagram Сонирхогчид"
+        },
+        {
+            "id": 3,
+            "name": "Temprament Сонирхогчид"
+        },
+        {
+            "id": 4,
+            "name": "Meme"
+        },
+        {
+            "id": 5,
+            "name": "Mental Health"
+        }
+    ]
+}

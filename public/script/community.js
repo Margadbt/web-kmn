@@ -6,62 +6,36 @@ class Community {
     constructor() { }
     async Init() {
         try {
-            const response = await fetch(
-                "https://api.jsonbin.io/v3/b/6566979e12a5d37659a06592"
-            );
-            const datasa = await response.json();
-            const data = datasa.record;
-
-            // Postuud
-            const posts = data[1].posts;
-            //All posts
-            if (params.size == 0) {
-                let htmlPosts = ``;
-                for (const post of posts) {
-                    const pos = new Post(post);
-                    htmlPosts += pos.Render();
-                }
-                document
-                    .querySelector(".posts")
-                    .insertAdjacentHTML("afterbegin", htmlPosts);
-                document.getElementById("group-name").innerText = "Бүх постууд";
+            let response, data, posts;
+            if (id){
+                response = await fetch(`http://localhost:4000/api/posts/${id}`);
+                posts = await response.json();
+            } else{
+                response = await fetch(`http://localhost:4000/api/posts`);
+                data = await response.json();
+                posts = data.posts;
             }
-            //filter
-            else {
-                //paramGroup posts
-                const filteredPosts = posts.filter((post) => post.id == id);
-                let htmlPosts = ``;
-                for (const post of filteredPosts) {
-                    const pos = new Post(post);
-                    htmlPosts += pos.Render();
-                }
-                document
-                    .querySelector(".posts")
-                    .insertAdjacentHTML("afterbegin", htmlPosts);
-
-                let selGroup = null;
-                for (const group of data[0].groups) {
-                    if (group.id == id) {
-                        selGroup = group;
-                        break;
-                    }
-                }
-                document.getElementById("group-name").innerText = selGroup.name;
+            
+            
+            let htmlPosts = ``;
+            for (const post of posts) {
+                const pos = new Post(post);
+                htmlPosts += pos.Render();
             }
+            document.querySelector(".posts").insertAdjacentHTML("afterbegin", htmlPosts);
+            document.getElementById("group-name").innerText = "Бүх постууд";
 
             // Groupuud
-            const groups = data[0].groups;
+            const gresponse = await fetch("http://localhost:4000/api/groups");
+            const gData = await gresponse.json();
+            const groups = gData.groups;
             let htmlGroups = ``;
             for (const group of groups) {
                 const gro = new Group(group);
                 htmlGroups += gro.Render();
             }
-            document
-                .getElementById("your-groups")
-                .insertAdjacentHTML("afterbegin", htmlGroups);
-            document
-                .getElementById("rec-groups")
-                .insertAdjacentHTML("afterbegin", htmlGroups);
+            document.getElementById("your-groups").insertAdjacentHTML("afterbegin", htmlGroups);
+            document.getElementById("rec-groups").insertAdjacentHTML("afterbegin", htmlGroups);
         } catch (error) {
             console.error(error);
         }
