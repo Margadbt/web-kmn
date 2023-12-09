@@ -30,6 +30,18 @@ app.get('/plan', (req, res)=>{
     res.sendFile('public/pages/plan.html', {root: __dirname });
 })
 
+app.get('/profile', (req, res)=>{
+    res.sendFile('public/pages/profile.html', {root: __dirname });
+})
+
+app.get('/login', (req, res)=>{
+    res.sendFile('public/pages/login.html', {root: __dirname });
+})
+
+app.get('/register', (req, res)=>{
+    res.sendFile('public/pages/register.html', {root: __dirname });
+})
+
 //api
 
 app.get('/api/posts', (req, res)=>{

@@ -8,7 +8,7 @@
             "groupId": 1,
             "description": "MBTI",
             "likeCount": 0,
-            "photoURL": "/assets/post-pic.jpg"
+            "photoURL": "public/assets/post-pic.jpg"
         },
         {
             "id": 2,
@@ -16,7 +16,7 @@
             "groupId": 2,
             "description": "Enneagram",
             "likeCount": 2,
-            "photoURL": "/assets/post-pic.jpg"
+            "photoURL": "public/assets/post-pic.jpg"
         }
     ]
 }

@@ -1,6 +1,6 @@
 //URL aas parameter awah
 const params = new URLSearchParams(document.location.search);
-const id = params.get("id");
+const id = params.get("group");
 
 class Community {
   constructor() {}
@@ -27,7 +27,7 @@ class Community {
       document.getElementById("group-name").innerText = "Бүх постууд";
 
       // Groupuud
-      const gresponse = await fetch("http://localhost:4000/api/groups");
+      const gresponse = await fetch("/api/groups");
       const gData = await gresponse.json();
       const groups = gData.groups;
       let htmlGroups = ``;
@@ -82,7 +82,7 @@ class Group {
 
   Render() {
     return `
-            <li><a href="?id=${this.id}">${this.name}</a></li>
+            <li><a href="?group=${this.id}">${this.name}</a></li>
         `;
   }
 }
