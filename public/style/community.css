@@ -17,7 +17,7 @@ main{
     grid-template-columns: repeat(12, 1fr);
 }
 
-.posts{
+#posts{
     grid-column-start: 1;
     grid-column-end: 8;
 }
@@ -44,8 +44,8 @@ section ul{
 }
 
 .pfp{
-    width: 1.7em;
-    height: 1.7em;
+    width: 2rem;
+    height: 2rem;
     border-radius: 100%;
     object-fit: cover;
 }
@@ -87,12 +87,53 @@ section ul{
     border-radius: 10px;
 }
 
+.write-post{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    & .write-post-left{
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        & .write-post-input{
+            border: none;
+            font-size: 1rem;
+            font-weight: 600;
+        }
+        & .write-post-input:focus{
+            outline: none;
+        }
+    }
+}
+.group-info{
+    display: flex;
+    width: 100%;
+    background-color: var(--color-main);
+    color: white;
+    height: 3rem;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    border-radius: 10000px;
+    margin-bottom: 1rem;
+}
+.post-username{
+    font-weight: 600;
+}
+.post-group-name{
+    font-style: italic;
+    text-decoration: none;
+    color: black;
+    font-weight: 500;
+}
+
 @media screen and (max-width: 1023px){
     main{
         margin: 0 5%;
         padding-top: 7rem;
     }
-    .posts{
+    #posts{
         grid-column-start: 1;
         grid-column-end: 9;
     }
