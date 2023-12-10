@@ -47,10 +47,10 @@ class Community {
       if(id>0){
         let gname = groups.find(g => g.id == id);
         document.getElementById("group-name").innerText = gname.name;
-        document.querySelector(".group-info-right").innerHTML = "<button>Группээс гарах</button>";
+        document.querySelector(".group-info-right").innerHTML = `<button class="group-info-leave-button"><img src="/public/assets/icons/group.svg" />Группээс гарах</button>`;
       }
       else{
-        document.getElementById("group-name").innerText = "Бүх постууд";        
+        document.getElementById("group-name").innerText = "Newsfeed";        
       }
 
       } catch (error) {
@@ -82,7 +82,7 @@ class Post {
             ${this.photoURL ? `<img class="psp" src="${this.photoURL}" alt="post picture"></img>` : ''}
             
             <div class="reactions">
-                <img class="like" src="public/assets/heart-126.svg" alt="like">
+                <img class="like" src="public/assets/icons/heart.svg" alt="like">
                 <p>${this.likeCount}</p>
             </div>
         </article>

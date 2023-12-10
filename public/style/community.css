@@ -105,6 +105,11 @@ section ul{
             outline: none;
         }
     }
+    & .write-post-right{
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
 }
 .group-info{
     display: flex;
@@ -117,6 +122,24 @@ section ul{
     padding: 20px;
     border-radius: 10000px;
     margin-bottom: 1rem;
+    & .group-info-left{
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+    & .group-info-right{
+        & .group-info-leave-button{
+            background-color: transparent;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1rem;
+            color: white;
+            & img{
+                width: 20px;
+            }
+        }
+    }
 }
 .post-username{
     font-weight: 600;
@@ -129,6 +152,17 @@ section ul{
 }
 .post-desc{
     margin-bottom: 10px;
+}
+
+.write-post-group-icon{
+    width: 25px;
+}
+.write-post-post-btn{
+    height: 25px;
+    background-color: var(--color-main);
+    color: white;
+    padding: 0 10px;
+
 }
 
 @media screen and (max-width: 1023px){
