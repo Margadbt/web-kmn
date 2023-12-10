@@ -25,6 +25,9 @@ body{
     --color-main-bg: #F5F5F5;
     --color-card-bg: #FFFFFF;
 
+    --color-agree: #3ccb81;
+    --color-disagree: #478cce;
+
     --fsize-m: 1.5em;
     --fsize-b: 1.75em;
     --fsize-s: 1.25em;

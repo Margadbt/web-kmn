@@ -1,0 +1,126 @@
+* {
+    border: 0 solid transparent;
+}
+
+.sp-radio input[type=radio] {
+    cursor: pointer;
+    display: block;
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    opacity: 0;
+}
+
+form {
+    margin-top: 5rem;
+}
+
+
+
+fieldset {
+    padding: 0 0 20px;
+    border-bottom: 1px solid #dddfe2;
+    transition: opacity .5s ease-in-out;
+    width: 60rem;
+    display: flex;
+    flex-direction: column;
+
+    & .group_options {
+        padding: 3em 0 3em 0;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        /* For responsive web app */
+        /* flex-wrap: wrap; */
+    }
+
+    & .question {
+        font-size: 1.4em;
+        text-align: center;
+        padding-top: 2em;
+    }
+
+    & .agree {
+        color: var(--color-agree);
+        font-size: var(--fsize-m);
+    }
+    
+    & .disagree {
+        color: var(--color-disagree);
+        font-size: var(--fsize-m);
+    }
+
+    & .agree, .disagree {
+        padding: 0 2em 0 2em;
+        /* padding-top: 5em; */
+    }
+
+    & #radios {
+        position: relative;
+        width: 100%;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-around;
+    }
+
+    & .container {
+        display: block;
+        position: relative;
+        cursor: pointer;
+        user-select: none;
+        padding-top: 3em;
+    }
+    
+    & .chosen {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 3em;
+        width: 3em;
+        background-color: #ffffff;
+        border-radius: 50%;
+        border: 0.5px solid var(--color-yellow);
+    }
+
+    & input[type="radio"] {
+        position: absolute;
+        opacity: 0;
+        width: auto;
+        padding: 0 5em 0 5em;
+    }
+
+    .container:hover input~.chosen {
+        background-color: #2196F3;
+        opacity: 0.4;
+    }
+
+    .container input:checked~.chosen {
+        background-color: #2196F3;
+    }
+
+    .container input:checked~.chosen:after {
+        display: block;
+    }
+
+    & .neutral {
+        width: 2em;
+        height: 2em;
+        margin: 0.5em 0 0 0;
+    }
+
+    & .slight {
+        width: 2.5em;
+        height: 2.5em;
+        margin: 0.3em 0 0 0;
+    }
+    & .more {
+        width: 3em;
+        height: 3em;
+        margin: 0.2em 0 0 0;
+    }
+    & .very {
+        width: 3.5em;
+        height: 3.5em;
+        margin: 0 0 0 0;
+    }
+}
