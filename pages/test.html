@@ -50,135 +50,103 @@
     </div>
   </main>
   <script>
-    const questions = [
-      {
-        "id": 1,
-        "question": "You regularly make new friends.",
-        "options": [
-          "I strongly agree",
-          "I moderately agree",
-          "I agree",
-          "I am not sure",
-          "I disagree",
-          "I moderately disagree",
-          "I strongly disagree"
-        ]
-      },
-      {
-        "id": 2,
-        "question": "You fell off + L + ratio",
-        "options": [
-          "I strongly agree",
-          "I moderately agree",
-          "I agree",
-          "I am not sure",
-          "I disagree",
-          "I moderately disagree",
-          "I strongly disagree"
-        ]
-      },
-      {
-        "id": 3,
-        "question": "You do be ballin hard",
-        "options": [
-          "I strongly agree",
-          "I moderately agree",
-          "I agree",
-          "I am not sure",
-          "I disagree",
-          "I moderately disagree",
-          "I strongly disagree"
-        ]
-      },
-    ];
 
+    
     let currentQuestionIndex = 0;
     const questionsPerPage = 2;
     var responses = [];
-
+    
     function loadNextQuestion() {
       const quizContainer = document.getElementById('quiz-container');
       const radioButtons = document.getElementsByTagName('input');
+      
+      const apiUrl = `https://api.jsonbin.io/v3/b/6578dbe7266cfc3fde680095/latest`;
 
-      console.log(radioButtons);
+      fetch(apiUrl)
+        .then(response => response.json())
+        .then(data => {
+          const questions = data.record.questions;
 
-      const startQuestionIndex = currentQuestionIndex;
-      const endQuestionIndex = Math.min(currentQuestionIndex + questionsPerPage, questions.length);
+          const startQuestionIndex = currentQuestionIndex;
+          const endQuestionIndex = Math.min(currentQuestionIndex + questionsPerPage, questions.length);
 
+          if (startQuestionIndex < endQuestionIndex) {
+            let questionHTML = '';
+            let qCount = 0; // Question name counter
 
-      if (startQuestionIndex < endQuestionIndex) {
-        let questionHTML = '';
-        let qCount = 0; // Question name counter
-        for (let i = startQuestionIndex; i < endQuestionIndex; i++, qCount++) {
-          const currentQuestion = questions[i];
-          questionHTML += `
-          <fieldset class="">
-            <legend class="question">${currentQuestion.question}</legend>
-            <div class="group_options">
-              <div aria-hidden="true" class="agree">
-                Agree
-              </div>
-              <div id="radios">
-                <label class="container">
-                  <input name="radio-${qCount}" type="radio" value="-3"/>
-                  <span class="chosen very"></span>  
-                </label>
-                <label class="container">
-                  <input name="radio-${qCount}" type="radio" value="-2"/>
-                  <span class="chosen more"></span>  
-                </label>
-                <label class="container">
-                  <input name="radio-${qCount}" type="radio" value="-1"/>
-                  <span class="chosen slight"></span>  
-                </label>
-                <label class="container">
-                  <input name="radio-${qCount}" type="radio" value="0"/>
-                  <span class="chosen neutral"></span>  
-                </label>
-                <label class="container">
-                  <input name="radio-${qCount}" type="radio" value="1"/>
-                  <span class="chosen slight"></span>  
-                </label>
-                <label class="container">
-                  <input name="radio-${qCount}" type="radio" value="2"/>
-                  <span class="chosen more"></span>  
-                </label>
-                <label class="container">
-                  <input name="radio-${qCount}" type="radio" value="3"/>
-                  <span class="chosen very"></span>  
-                </label>
-              </div>
-              <div aria-hidden="false" class="disagree">
-                Disagree
-              </div>
-            </div>
-          </fieldset>
-        `;
-        }
-        const selectedValues = Array.from(radioButtons)
-          .map(radio => ({ originalValue: radio.value, checked: radio.checked }))
-          .filter(obj => obj.checked)
-          .map(obj => obj.originalValue);
-        responses.push({
-          id: currentQuestionIndex,
-          values: selectedValues
-        });
-        // Deploy the questions
-        quizContainer.innerHTML = questionHTML;
-        
-      } else {
-        alert('Quiz completed!'); // Can be modified to edit the innerHTML directly or show results
-        const selectedValues = Array.from(radioButtons)
-          .map(radio => ({ originalValue: radio.value, checked: radio.checked }))
-          .filter(obj => obj.checked)
-          .map(obj => obj.originalValue);
-          responses.push({
-            id: "MBTI",
-            values: selectedValues
-          });
-          console.log(responses);
-        }
-      currentQuestionIndex = endQuestionIndex;
+            for (let i = startQuestionIndex; i < endQuestionIndex; i++, qCount++) {
+              const currentQuestion = questions[i];
+              questionHTML += `
+                <fieldset class="">
+                  <legend class="question">${currentQuestion.question}</legend>
+                  <div class="group_options">
+                    <div aria-hidden="true" class="agree">
+                      Agree
+                    </div>
+                    <div id="radios">
+                      <label class="container">
+                        <input name="radio-${qCount}" type="radio" value="-3"/>
+                        <span class="chosen very"></span>  
+                      </label>
+                      <label class="container">
+                        <input name="radio-${qCount}" type="radio" value="-2"/>
+                        <span class="chosen more"></span>  
+                      </label>
+                      <label class="container">
+                        <input name="radio-${qCount}" type="radio" value="-1"/>
+                        <span class="chosen slight"></span>  
+                      </label>
+                      <label class="container">
+                        <input name="radio-${qCount}" type="radio" value="0"/>
+                        <span class="chosen neutral"></span>  
+                      </label>
+                      <label class="container">
+                        <input name="radio-${qCount}" type="radio" value="1"/>
+                        <span class="chosen slight"></span>  
+                      </label>
+                      <label class="container">
+                        <input name="radio-${qCount}" type="radio" value="2"/>
+                        <span class="chosen more"></span>  
+                      </label>
+                      <label class="container">
+                        <input name="radio-${qCount}" type="radio" value="3"/>
+                        <span class="chosen very"></span>  
+                      </label>
+                    </div>
+                    <div aria-hidden="false" class="disagree">
+                      Disagree
+                    </div>
+                  </div>
+                </fieldset>
+              `;
+            }
+            const selectedValues = Array.from(radioButtons)
+              .map(radio => ({ originalValue: radio.value, checked: radio.checked }))
+              .filter(obj => obj.checked)
+              .map(obj => obj.originalValue);
+            responses.push({
+              id: currentQuestionIndex,
+              values: selectedValues
+            });
+            // Deploy the questions
+            quizContainer.innerHTML = questionHTML;
+          } else {
+            alert('Quiz completed!');
+            const selectedValues = Array.from(document.getElementsByTagName('input'))
+              .map(radio => ({ originalValue: radio.value, checked: radio.checked }))
+              .filter(obj => obj.checked)
+              .map(obj => obj.originalValue);
+
+            responses.push({
+              id: "MBTI",
+              values: selectedValues
+            });
+
+            console.log(responses);
+          }
+          currentQuestionIndex = endQuestionIndex;
+        })
+        .catch(error => console.error('Error fetching data:', error));
     }
 
     loadNextQuestion();
