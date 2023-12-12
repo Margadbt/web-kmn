@@ -19,7 +19,6 @@
   <kmn-header></kmn-header>
   <main>
     <div data-chunk="test-data">
-      <!-- Progress bar for the whole quiz -->
       <div id="progress-wrapper" class="progress-wrapper initial">
         <div class="percentage">0%</div>
         <div class="progress-bar">
@@ -27,10 +26,8 @@
         </div>
       </div>
       <span id="skip-content"></span>
-      <!-- Quiz section -->
       <form>
         <div data-quiz="" class="test-questions comp" id="quiz-container">
-          <!-- Question content will be dynamically added here -->
         </div>
         <div class="action-row" style="">
           <button type="button" onclick="loadNextQuestion()"
@@ -53,7 +50,7 @@
     </div>
   </main>
   <script>
-    // Load questions from JSON
+    const responses = [];
     const questions = [
       {
         "id": 1,
@@ -94,21 +91,25 @@
           "I strongly disagree"
         ]
       },
-      // Add more questions as needed
     ];
 
     let currentQuestionIndex = 0;
     const questionsPerPage = 5;
 
-    // Function to load the next question
     function loadNextQuestion() {
       const quizContainer = document.getElementById('quiz-container');
+      const radioButtons = document.getElementsByTagName('input');
+
+      console.log(radioButtons);
+
       const startQuestionIndex = currentQuestionIndex;
       const endQuestionIndex = Math.min(currentQuestionIndex + questionsPerPage, questions.length);
 
+
       if (startQuestionIndex < endQuestionIndex) {
         let questionHTML = '';
-        for (let i = startQuestionIndex; i < endQuestionIndex; i++) {
+        let qCount = 0; // Question name counter
+        for (let i = startQuestionIndex; i < endQuestionIndex; i++, qCount++) {
           const currentQuestion = questions[i];
           questionHTML += `
           <fieldset class="">
@@ -119,31 +120,31 @@
               </div>
               <div id="radios">
                 <label class="container">
-                  <input name="radio" type="radio" value="-3"/>
+                  <input name="radio-${qCount}" type="radio" value="-3"/>
                   <span class="chosen very"></span>  
                 </label>
                 <label class="container">
-                  <input name="radio" type="radio" value="-2"/>
+                  <input name="radio-${qCount}" type="radio" value="-2"/>
                   <span class="chosen more"></span>  
                 </label>
                 <label class="container">
-                  <input name="radio" type="radio" value="-1"/>
+                  <input name="radio-${qCount}" type="radio" value="-1"/>
                   <span class="chosen slight"></span>  
                 </label>
                 <label class="container">
-                  <input name="radio" type="radio" value="0"/>
+                  <input name="radio-${qCount}" type="radio" value="0"/>
                   <span class="chosen neutral"></span>  
                 </label>
                 <label class="container">
-                  <input name="radio" type="radio" value="1"/>
+                  <input name="radio-${qCount}" type="radio" value="1"/>
                   <span class="chosen slight"></span>  
                 </label>
                 <label class="container">
-                  <input name="radio" type="radio" value="2"/>
+                  <input name="radio-${qCount}" type="radio" value="2"/>
                   <span class="chosen more"></span>  
                 </label>
                 <label class="container">
-                  <input name="radio" type="radio" value="3"/>
+                  <input name="radio-${qCount}" type="radio" value="3"/>
                   <span class="chosen very"></span>  
                 </label>
               </div>
@@ -153,16 +154,23 @@
             </div>
           </fieldset>
         `;
-        }
-        quizContainer.innerHTML = questionHTML;
-        currentQuestionIndex = endQuestionIndex;
-      } else {
-        alert('Quiz completed!');
-        // Handle quiz completion, e.g., submit the form or redirect
       }
+        quizContainer.innerHTML = questionHTML;
+      } else {
+        alert('Quiz completed!'); // Can be modified to edit the innerHTML directly or show results
+        const selectedValues = Array.from(radioButtons)
+          .map(radio => ({ originalValue: radio.value, checked: radio.checked }))
+          .filter(obj => obj.checked)
+          .map(obj => obj.originalValue);
+        responses[currentQuestionIndex] = {
+          id: currentQuestionIndex + 1,
+          values: selectedValues
+        };
+        console.log(responses);
+      }
+      currentQuestionIndex = endQuestionIndex;
     }
 
-    // Initial load of the first question
     loadNextQuestion();
   </script>
 </body>
