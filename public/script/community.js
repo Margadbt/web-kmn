@@ -38,8 +38,8 @@ class Community {
       for (const post of posts) {
         let ggname = groups.find(g => g.id == post.groupId);
         const groupName = ggname.name;
-        const pos = new Post(post, groupName);
-        htmlPosts += pos.Render();
+        
+        htmlPosts += `<kmn-post id="${post.id}" userId="${post.userId}" description="${post.description}" likeCount="${post.likeCount}" photoURL="${post.photoURL}" groupName="${groupName}"></kmn-post>`;
       }
       document
         .getElementById("posts")
@@ -59,36 +59,6 @@ class Community {
   }
 }
 
-class Post {
-  constructor(post, groupName) {
-    this.id = post.id;
-    this.userId = post.userId;
-    this.groupId = post.groupId;
-    this.description = post.description;
-    this.likeCount = post.likeCount;
-    this.photoURL = post.photoURL;
-    this.groupName = groupName
-  }
-  Render() {
-    return `
-        <article class="card">
-            <div class="author">
-                <img class="pfp" src="public/assets/pfp.png" alt="profile">
-                <p class="post-username">${this.userId}</p>
-                <p>•</p>
-                <a href="?group=${this.groupId}" class="post-group-name">${this.groupName}</a>
-            </div>
-            <p class="post-desc">${this.description}</p>
-            ${this.photoURL ? `<img class="psp" src="${this.photoURL}" alt="post picture"></img>` : ''}
-            
-            <div class="reactions">
-                <img class="like" src="public/assets/icons/heart.svg" alt="like">
-                <p>${this.likeCount}</p>
-            </div>
-        </article>
-        `;
-  }
-}
 
 class Group {
   constructor(group) {
