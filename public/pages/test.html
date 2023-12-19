@@ -1,46 +1,154 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="MBTI Personality test and other fun activities you can do in community">
-    <title>Тестүүд - MBTI</title>
-    <link rel="stylesheet" href="public/style/home.css" />
-    <link rel="stylesheet" href="public/style/header.css" />
-    <link rel="stylesheet" href="public/style/var.css" />
-    <link rel="stylesheet" href="public/style/form.css">
-    <script type="module" src="public/module/components/kmn-header.js"></script>
-  </head>
-  <body>
-    <kmn-header></kmn-header>
-    <div class="about-test-types">
-      <div class="div">
-        <div class="overlap-group">
-          <h2 class="tempTitle ina">MBTI</h2>
-          <p class="text-wrapper">
-            Уг тестийг Jungian Typology буюу Cognitive personality theory-ээс эх аван хийсэн. Өөрийнхөө жинхэнэ зан
-            чанараа олж мэдэхийн тулд цаг заваа гаргаж, шударгаар хариулаарай.
-            <button class="green">MBTI</button>
-          </p>
-        </div>
-        <div class="overlap">
-          <h2 class="tempTitle ina">ТЕМПРАМЕНТ</h2>
-          <p class="p">
-            Энэхүү богино тест нь таны сонгодог зан чанарын төрлийг тодорхойлоход туслах зорилготой юм: Сангвиник,
-            Флегматик, Холерик эсвэл Меланхолик. Тест нь зөвхөн найман асуултаас бүрдэнэ; Алдаа гаргахгүйн тулд өөрийн
-            хамгийн ердийн зан үйлийн талаар бодож, зохих ёсоор хариулаарай. Таны давамгайлах даруу бол хамгийн өндөр
-            оноо авсан зан чанар юм.
-            <button class="green">ТЕМПРАМЕНТ</button>
-          </p>
-          <h2 class="tempTitle ina">ENNEAGRAM</h2>
-          <p class="text-wrapper-2">
-            Enneagram нь хувь хүн, бүлэг, хамт олонд гүн гүнзгий ойлголт өгөх есөн төрлөөс бүрдсэн архетип бүтэц юм. 3
-            Тагнуулын төв, 9 Enneagram төрөл, Далавч, 27 Дэд төрөл болон бусад зүйлсээс бүрдэх энэхүү загвар нь хувь
-            хүний ​​хөгжлийн баялаг газрын зургийг санал болгодог.
-            <button class="green">ENNEAGRAM</button>
-          </p>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="MBTI Personality test and other fun activities you can do in community">
+  <title>Тестүүд - MBTI</title>
+  <link rel="stylesheet" href="public/style/home.css" />
+  <link rel="stylesheet" href="public/style/header.css" />
+  <link rel="stylesheet" href="public/style/var.css" />
+  <link rel="stylesheet" href="public/style/form.css">
+  <link rel="stylesheet" href="public/style/test.css">
+  <script type="module" src="public/module/components/kmn-header.js"></script>
+  <!-- <script type="module" src="/module/components/test.js"></script> -->
+</head>
+
+<body>
+  <kmn-header></kmn-header>
+  <main>
+    <div data-chunk="test-data">
+      <div id="progress-wrapper" class="progress-wrapper initial">
+        <div class="percentage">0%</div>
+        <div class="progress-bar">
+          <div class="filler" style="width: 0%;"></div>
         </div>
       </div>
+      <span id="skip-content"></span>
+      <form>
+        <div data-quiz="" class="test-questions comp" id="quiz-container">
+        </div>
+        <div class="action-row" style="">
+          <button type="button" onclick="loadNextQuestion()"
+            class="bt-action"
+            aria-label="Go to next set of questions">
+            <span class="button__text">Next</span>
+            <span data-v-72d36796=""
+              class="sp-icon size--inherit color--inherit icon--rotatable icon--dir-rt icon--arrow button__icon--rt"
+              aria-hidden="true">
+              <svg aria-labelledby="i_y3c3b38oac" viewBox="0 0 48 48" role="img" xmlns="http://www.w3.org/2000/svg">
+                <title id="i_y3c3b38oac">Go</title>
+                <path data-v-72d36796=""
+                  d="M23.296875,3.421875 L22.63125,4.0875 C22.190625,4.528125 22.190625,5.240625 22.63125,5.68125 L39.365625,22.40625 L4.125,22.40625 C3.50625,22.40625 3,22.9125 3,23.53125 L3,24.46875 C3,25.0875 3.50625,25.59375 4.125,25.59375 L39.365625,25.59375 L22.63125,42.328125 C22.190625,42.76875 22.190625,43.48125 22.63125,43.921875 L23.296875,44.5875 C23.7375,45.028125 24.45,45.028125 24.890625,44.5875 L44.68125,24.796875 C45.121875,24.35625 45.121875,23.64375 44.68125,23.203125 L24.890625,3.421875 C24.440625,2.98125 23.7375,2.98125 23.296875,3.421875 Z">
+                </path>
+              </svg>
+            </span>
+          </button>
+        </div>
+      </form>
     </div>
-  </body>
+  </main>
+  <script>
+
+    
+    let currentQuestionIndex = 0;
+    const questionsPerPage = 5;
+    var responses = [];
+    
+    function loadNextQuestion() {
+      const quizContainer = document.getElementById('quiz-container');
+      const radioButtons = document.getElementsByTagName('input');
+      
+      const apiUrl = `https://api.jsonbin.io/v3/b/6578dbe7266cfc3fde680095/latest`;
+
+      fetch(apiUrl)
+        .then(response => response.json())
+        .then(data => {
+          const questions = data.record.questions;
+
+          const startQuestionIndex = currentQuestionIndex;
+          const endQuestionIndex = Math.min(currentQuestionIndex + questionsPerPage, questions.length);
+
+          if (startQuestionIndex < endQuestionIndex) {
+            let questionHTML = '';
+            let qCount = 0; // Question name counter
+
+            for (let i = startQuestionIndex; i < endQuestionIndex; i++, qCount++) {
+              const currentQuestion = questions[i];
+              questionHTML += `
+                <fieldset class="">
+                  <legend class="question">${currentQuestion.question}</legend>
+                  <div class="group_options">
+                    <div aria-hidden="true" class="agree">
+                      Agree
+                    </div>
+                    <div id="radios">
+                      <label class="container">
+                        <input name="radio-${qCount}" type="radio" value="-3"/>
+                        <span class="chosen very"></span>  
+                      </label>
+                      <label class="container">
+                        <input name="radio-${qCount}" type="radio" value="-2"/>
+                        <span class="chosen more"></span>  
+                      </label>
+                      <label class="container">
+                        <input name="radio-${qCount}" type="radio" value="-1"/>
+                        <span class="chosen slight"></span>  
+                      </label>
+                      <label class="container">
+                        <input name="radio-${qCount}" type="radio" value="0"/>
+                        <span class="chosen neutral"></span>  
+                      </label>
+                      <label class="container">
+                        <input name="radio-${qCount}" type="radio" value="1"/>
+                        <span class="chosen slight"></span>  
+                      </label>
+                      <label class="container">
+                        <input name="radio-${qCount}" type="radio" value="2"/>
+                        <span class="chosen more"></span>  
+                      </label>
+                      <label class="container">
+                        <input name="radio-${qCount}" type="radio" value="3"/>
+                        <span class="chosen very"></span>  
+                      </label>
+                    </div>
+                    <div aria-hidden="false" class="disagree">
+                      Disagree
+                    </div>
+                  </div>
+                </fieldset>
+              `;
+            }
+            const selectedValues = Array.from(radioButtons)
+              .map(radio => ({ originalValue: radio.value, checked: radio.checked }))
+              .filter(obj => obj.checked)
+              .map(obj => obj.originalValue);
+            responses.push({
+              values: selectedValues
+            });
+            // Deploy the questions
+            quizContainer.innerHTML = questionHTML;
+          } else {
+            alert('Quiz completed!');
+            const selectedValues = Array.from(document.getElementsByTagName('input'))
+              .map(radio => ({ originalValue: radio.value, checked: radio.checked }))
+              .filter(obj => obj.checked)
+              .map(obj => obj.originalValue);
+
+            responses.push({
+              values: selectedValues
+            });
+
+            console.log(responses);
+          }
+          currentQuestionIndex = endQuestionIndex;
+        })
+        .catch(error => console.error('Error fetching data:', error));
+    }
+
+    loadNextQuestion();
+    </script>
+</body>
+
 </html>
