@@ -92,6 +92,7 @@ fieldset {
     .container:hover input~.chosen {
         background-color: #2196F3;
         opacity: 0.4;
+        
     }
 
     .container input:checked~.chosen {

@@ -95,7 +95,7 @@ app.post("/api/posts/create", (req, res) => {
     }
   );
 });
-//UPDATE
+//DELETE POST
 app.delete("/api/posts/delete/:id", (req, res) => {
   const postId = req.params.id;
 
@@ -105,9 +105,6 @@ app.delete("/api/posts/delete/:id", (req, res) => {
       res.status(500).send('Internal Server Error');
       return;
     }
-
-
-
     // if (result.rows.length === 0) {
     //   res.status(404).send('Post олдсонгүй');
     //   return;
@@ -116,6 +113,17 @@ app.delete("/api/posts/delete/:id", (req, res) => {
     res.json(result.rows[0]);
   });
 });
+//mbti result shideh
+app.post("/api/mbti/result", (req, res)=>{
+  client.query(`INSERT INTO mbtiresult (result) VALUES ('${req.body.result}')`, (err, result)=>{
+    if (err) {
+      console.log(err)
+      res.status(500).send('Internal Server Error');
+      return;
+    }
+    res.status(201).json(result.rows[0]);
+  })
+})
 
 app.listen(port, () => {
   console.log("server listening on ", port);

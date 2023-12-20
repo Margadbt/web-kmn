@@ -7,7 +7,7 @@ async function loadNextQuestion() {
     const quizContainer = document.getElementById("quiz-container");
     const radioButtons = document.getElementsByTagName("input");
 
-    const apiUrl = `https://api.jsonbin.io/v3/b/6578dbe7266cfc3fde680095/latest`;
+    const apiUrl = `https://api.jsonbin.io/v3/b/65823fd41f5677401f10955c`;
 
     const response = await fetch(apiUrl);
     const data = await response.json();
@@ -128,6 +128,31 @@ async function loadNextQuestion() {
       resultsBySummary[4] < 0 ? (finalResult += "T") : (finalResult += "A");
 
       console.log(finalResult);
+
+      const resultBody= {
+        "result": finalResult
+      }
+
+      fetch('/api/mbti/result', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(resultBody),
+      })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.status;
+      })
+      .then(data => {
+        console.log('sucessfullly:', data);
+        // location.reload();
+      })
+      .catch(error => {
+        console.error('Error', error);
+      });
     }
 
     currentQuestionIndex = endQuestionIndex;

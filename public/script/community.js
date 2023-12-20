@@ -41,7 +41,7 @@ class Community {
         let ggname = groups.find(g => g.groupid == post.groupid);
         const groupName = ggname.name;
         
-        htmlPosts += `<kmn-post postid="${post.postid}" userId="${post.userid}" description="${post.description}" likeCount="${post.likecount}" photoURL="${post.photoURL}" commentcount="${post.commentcount}" groupName="${groupName}"></kmn-post>`;
+        htmlPosts += `<kmn-post postid="${post.postid}" groupid="${post.groupid}" userId="${post.userid}" description="${post.description}" likeCount="${post.likecount}" photoURL="${post.photoURL}" commentcount="${post.commentcount}" groupName="${groupName}"></kmn-post>`;
       }
       document
         .getElementById("posts")

@@ -8,6 +8,7 @@ class Post extends HTMLElement {
     this.postid = this.getAttribute("postid");
     this.groupName = this.getAttribute("groupName");
     this.commentcount = this.getAttribute("commentcount");
+    this.groupid = this.getAttribute("groupid");
 
     this.innerHTML = `
         <article class="card">
@@ -15,7 +16,7 @@ class Post extends HTMLElement {
                 <img class="pfp" src="public/assets/pfp.png" alt="profile">
                 <p class="post-username">${this.userid}</p>
                 <p>•</p>
-                <a href="?group=${this.groupId}" class="post-group-name">${this.groupName}</a>
+                <a href="?group=${this.groupid}" class="post-group-name">${this.groupName}</a>
                 ${
                   this.userid == 1
                     ? `<button class="post-delete">delete</button>`
@@ -24,7 +25,7 @@ class Post extends HTMLElement {
             </div>
             <p class="post-desc">${this.description}</p>
             ${
-              !this.photoURL || !" "
+              !this.photoURL
                 ? `<img class="psp" src="${this.photoURL}" alt="post picture"></img>`
                 : ""
             }
