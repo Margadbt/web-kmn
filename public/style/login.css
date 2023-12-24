@@ -1,0 +1,55 @@
+main{
+    display: flex;
+    justify-content: center;
+    height: 100vh;
+    align-items: center;
+    background-image: url("../assets/bg.png");
+    background-size: cover;
+    background-position: center;
+}
+
+@keyframes animatedBackground {
+    from {
+      background-position: 0 0;
+    }
+    to {
+      background-position: 100% 0;
+    }
+  }
+.card{
+    padding: 50px;
+    & h2{
+        margin-bottom: 20px;
+        text-align: center;
+    }
+    & .form-input{
+        padding: 10px 20px;
+        border-radius: 10px;
+        border: 1px solid rgb(0, 0, 0, 0.2);
+        width: 250px;
+    }
+    & .form-input:focus{
+        border: 1.5px solid #67B26F;
+        outline: none;
+
+    }
+    & .form-input:active{
+        outline: none;
+
+    }
+
+    & .lgn-btn{
+        border: none;
+        padding: 10px 20px;
+        border-radius: 10px;
+        font-weight: 600;
+        width: 100%;
+        margin-bottom: 10px;
+        transition: all 0.25s ease-in-out;
+    }
+
+    & .lgn-btn:hover{
+        background-color: var(--color-main);
+        cursor: pointer;
+    }
+}

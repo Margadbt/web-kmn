@@ -40,8 +40,7 @@ class Community {
       for (const post of posts) {
         let ggname = groups.find(g => g.groupid == post.groupid);
         const groupName = ggname.name;
-        
-        htmlPosts += `<kmn-post postid="${post.postid}" groupid="${post.groupid}" userId="${post.userid}" description="${post.description}" likeCount="${post.likecount}" photoURL="${post.photoURL}" commentcount="${post.commentcount}" groupName="${groupName}"></kmn-post>`;
+        htmlPosts += `<kmn-post postid="${post.postid}" groupid="${post.groupid}" userId="${post.userid}" description="${post.description}" likeCount="${post.likecount}" photoURL="${post.photoURL}" commentcount="${post.commentcount}" groupName="${groupName}" username="${post.username}"></kmn-post>`;
       }
       document
         .getElementById("posts")
@@ -81,45 +80,54 @@ com.Init();
 const postBtn = document.querySelector(".write-post-post-btn");
 // postBtn.addEventListener("click", createPost());
 
-function createPost() {
-  console.log("hi");
-  const postInput = document.querySelector(".write-post-input");
-  const description = postInput.value;
+async function createPost() {
+  try{
 
-  if (!description.trim()) {
-    alert("Post хоосон байна!");
-    return;
-  }
+    const response = await fetch("/api/user");
+    const user = await response.json();
 
-  const postData = {
-    userid: 1,
-    groupid: id, 
-    description: description,
-    likecount: 0,
-    photo: "" ,
-    commentcount: 0,
-  };
-
-  fetch('/api/posts/create', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(postData),
-  })
-  .then(response => {
-    if (!response.ok) {
-      throw new Error('Network response was not ok');
+    console.log("hi");
+    const postInput = document.querySelector(".write-post-input");
+    const description = postInput.value;
+  
+    if (!description.trim()) {
+      alert("Post хоосон байна!");
+      return;
     }
-    return response.status;
-  })
-  .then(data => {
-    console.log('Post created successfully:', data);
-    location.reload();
-    // You can also update your UI or do other actions after successful post creation
-  })
-  .catch(error => {
-    console.error('Error creating post:', error);
-    // Handle errors, show an alert, etc.
-  });
+  
+    const postData = {
+      userid: user.user_id,
+      groupid: id, 
+      description: description,
+      likecount: 0,
+      photo: "" ,
+      commentcount: 0,
+      username: user.fullname,
+    };
+  
+    fetch('/api/posts/create', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(postData),
+    })
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      return response.status;
+    })
+    .then(data => {
+      console.log('Post created successfully:', data);
+      location.reload();
+      // You can also update your UI or do other actions after successful post creation
+    })
+    .catch(error => {
+      console.error('Error creating post:', error);
+      // Handle errors, show an alert, etc.
+    });
+  } catch(error){
+    console.log("Not Authorized");
+  }
 }

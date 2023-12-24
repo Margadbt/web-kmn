@@ -9,19 +9,15 @@ class Post extends HTMLElement {
     this.groupName = this.getAttribute("groupName");
     this.commentcount = this.getAttribute("commentcount");
     this.groupid = this.getAttribute("groupid");
+    this.username = this.getAttribute("username");
 
     this.innerHTML = `
         <article class="card">
             <div class="author">
                 <img class="pfp" src="public/assets/pfp.png" alt="profile">
-                <p class="post-username">${this.userid}</p>
+                <p class="post-username">${this.username}</p>
                 <p>•</p>
                 <a href="?group=${this.groupid}" class="post-group-name">${this.groupName}</a>
-                ${
-                  this.userid == 1
-                    ? `<button class="post-delete">delete</button>`
-                    : ""
-                }
             </div>
             <p class="post-desc">${this.description}</p>
             ${
@@ -50,26 +46,6 @@ class Post extends HTMLElement {
     const heartIcon = this.querySelector(".heart-icon");
     const heartActivated = this.querySelector(".another-icon");
     const likeCountElement = this.querySelector(".like-count");
-    if (this.userid == 1) {
-      const postDelete = this?.querySelector(".post-delete");
-
-      postDelete.addEventListener("click", async () => {
-        try {
-          const response = await fetch(`/api/posts/delete/${this.postid}`, {
-            method: "DELETE",
-          });
-
-          if (!response.ok) {
-            throw new Error(`HTTP error! Status: ${response.status}`);
-          }
-
-          this.remove();
-          location.reload();
-        } catch (error) {
-          console.error("Error deleting post:", error);
-        }
-      });
-    }
 
     let isLiked = false;
 

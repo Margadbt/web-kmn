@@ -1,33 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="MBTI Personality test and other fun activities you can do in community">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="MBTI Personality test and other fun activities you can do in community"
+    />
     <title>Нэвтрэх - MBTI</title>
     <link rel="stylesheet" href="public/style/home.css" />
     <link rel="stylesheet" href="public/style/header.css" />
     <link rel="stylesheet" href="public/style/var.css" />
-    <link rel="stylesheet" href="public/style/form.css">
-</head>
-<body>
+    <link rel="stylesheet" href="public/style/login.css" />
+  </head>
+  <body>
     <kmn-header></kmn-header>
     <!-- Login modal -->
     <main>
-        <section class="second-card">
-            <div class="card">
-                <div class="left">
-                    <h2>Нэвтрэх</h2>
-                    <form action="login.js" method="post">
-                        <input type="email" id="email" name="email" required placeholder="Цахим шуудан:"><br><br>
-                        <input type="password" id="password" name="password" required placeholder="Нууц үг:"><br><br>
-                    
-                        <input class="lgn-btn" type="submit" value="Нэвтрэх">
-                        <input class="lgn-btn-2nd" type="submit" value="Бүртгүүлэх">
-                    </form>
-                </div>
-            </div>
-        </section>
+      <section>
+        <div class="card">
+          <h2>Нэвтрэх</h2>
+          <form onsubmit="login(event)">
+            <input
+              class="form-input"
+              type="email"
+              id="email"
+              name="email"
+              required
+              placeholder="Цахим шуудан:"
+            /><br /><br />
+            <input
+              class="form-input"
+              type="password"
+              id="password"
+              name="password"
+              required
+              placeholder="Нууц үг:"
+            /><br /><br />
+
+            <input class="lgn-btn" type="submit" value="Нэвтрэх" />
+            <input class="lgn-btn" type="submit" value="Бүртгүүлэх" />
+          </form>
+        </div>
+      </section>
     </main>
-</body>
+    <script type="module" src="public/module/components/kmn-header.js"></script>
+    <script src="public/script/login.js"></script>
+  </body>
 </html>

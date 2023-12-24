@@ -161,6 +161,7 @@ class Header extends HTMLElement {
 
     this.attachShadow({ mode: "open" });
 
+
     this.shadowRoot.innerHTML = `
             <style>
             ${style}
@@ -176,16 +177,17 @@ class Header extends HTMLElement {
                           currentPageURL === "/test" ? "active" : ""
                         }"><a href="/test">Test</a></li>
                         <li class="${
-                          currentPageURL === "/community"
-                            ? "active"
-                            : ""
+                          currentPageURL === "/community" ? "active" : ""
                         }"><a href="/community">Community</a></li>
                         <li class="${
                           currentPageURL === "/plan" ? "active" : ""
                         } last"><a href="/plan">Plan</a></li>
                     </ul>
                     <div class="right">
-                        <a href="/profile"><img id="pfp" src="public/assets/pfp.png" alt="profile" /></a>
+                        <div class="user-section">
+                            <a href="/login">Login</a>
+                        </div>
+                        
                         <button id="mbtn"><img src="public/assets/menu.png" alt="menu" /></button>
                     </div>
                 </nav>
@@ -195,7 +197,8 @@ class Header extends HTMLElement {
                 <h3>Menu</h3>
                 <ul>
                     <li class="${
-                      currentPageURL === "/" || currentPageURL === "./index.html"
+                      currentPageURL === "/" ||
+                      currentPageURL === "./index.html"
                         ? "active"
                         : ""
                     }"><a href="/">Home</a></li>
@@ -203,16 +206,22 @@ class Header extends HTMLElement {
                       currentPageURL === "./pages/test.html" ? "active" : ""
                     }"><a href="/test">Test</a></li>
                     <li class="${
-                      currentPageURL === "./pages/community.html" ? "active" : ""
+                      currentPageURL === "./pages/community.html"
+                        ? "active"
+                        : ""
                     }"><a href="/community">Community</a></li>
                     <li class="${
                       currentPageURL === "./pages/plan.html" ? "active" : ""
                     } last"><a href="/plan">Plan</a></li>
                 </ul>
-                <a href="/profile"><img id="pfp" src="public/assets/pfp.png" alt="profile" /></a>
+                    <div class="user-section">
+                        <a href="/login">Login</a>
+                    </div>
                 </nav>
             </div>
         `;
+
+    
   }
   connectedCallback() {
     const mbtn = this.shadowRoot.getElementById("mbtn");
@@ -225,6 +234,25 @@ class Header extends HTMLElement {
     mobileDiv.addEventListener("click", () => {
       mobileDiv.classList.toggle("active");
     });
+    const pfpElement = this.shadowRoot.querySelector(".user-section");
+
+
+    async function fetchUser() {
+      try {
+        const response = await fetch("/api/user");
+        const user = await response.json();
+        console.log(user);
+        if (pfpElement) {
+          // Use innerHTML to set both the image and the user's name
+          pfpElement.innerHTML = `<a href="/profile">${user.fullname}</a><a href="/logout">Logout</a>`;
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    // if(!document.cookie.match("session_id")){
+      fetchUser();
+    // } 
   }
 
   adoptedCallback() {

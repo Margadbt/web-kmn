@@ -1,12 +1,14 @@
 const express = require("express");
-const { Client } = require("pg");
+const { Pool } = require("pg");
+const cookieParser = require("cookie-parser");
+const login = require("./login.js");
 
 const app = express();
 const port = 4000;
 
 app.use(express.json());
 
-const client = new Client({
+const pool = new Pool({
   user: "postgres",
   host: "localhost",
   database: "postgres",
@@ -14,7 +16,47 @@ const client = new Client({
   port: 5432,
 });
 
-client.connect();
+pool.connect();
+
+login.users.set('margad@mail.com', { user_id: 1, fullname: "Margad", password: "123" });
+login.users.set('khanka@mail.com', { user_id: 2, fullname: "Khanka", password: "123" });
+login.users.set('nomio@mail.com', { user_id: 3, fullname: "Nomio", password: "123" });
+
+app.use(cookieParser());
+app.post('/login', (req, res) =>{
+  login.verifyLogin(req, res);
+
+});
+
+app.get('/api/user', (req, res) => {
+  console.log(login.sessions.has(Number(req.cookies.session_id)))
+    // if (!login.sessions.has(Number(req.cookies.session_id)))
+    // {
+    //     res.status(401).send("Forbidden");
+    //     return;
+    // }
+
+    if (!login.sessions.has(Number(req.cookies.session_id)))
+    {
+        res.status(401).send("Forbidden");
+        return;
+    }
+    const userInfo = {
+      "fullname" : login.sessions.get(Number(req.cookies.session_id)).fullname,
+      "email" : login.sessions.get(Number(req.cookies.session_id)).user,
+      "user_id" : login.sessions.get(Number(req.cookies.session_id)).user_id 
+    }
+    res.status(200);
+    res.json(userInfo);
+})
+
+app.get('/logout', (req, res) => {
+  const sessionId = req.cookies.session_id;
+  login.logout(sessionId);
+  res.clearCookie('session_id');
+  res.status(200);
+  res.redirect('/login');
+});
 
 app.use("/public", express.static("public"));
 
@@ -24,6 +66,19 @@ app.get("/", (req, res) => {
 
 app.get("/test", (req, res) => {
   res.sendFile("public/pages/test.html", { root: __dirname });
+});
+
+app.get("/login", (req, res) => {
+  if (login.sessions.has(Number(req.cookies.session_id)))
+    {
+        res.redirect('/');
+        return;
+    }
+  res.sendFile("public/pages/login.html", { root: __dirname });
+});
+
+app.get("/register", (req, res) => {
+  res.sendFile("public/pages/register.html", { root: __dirname });
 });
 
 app.get("/community", (req, res) => {
@@ -48,7 +103,7 @@ app.get("/register", (req, res) => {
 
 //api
 app.get("/api/groups", (req, res) => {
-  client.query(`SELECT * FROM groups`, (err, result)=>{
+  pool.query(`SELECT * FROM groups`, (err, result)=>{
     if (err) {
       res.status(500).send("Internal server Error");
       return;
@@ -58,7 +113,7 @@ app.get("/api/groups", (req, res) => {
 });
 //READ
 app.get("/api/posts", (req, res) => {
-  client.query(`Select * from posts ORDER BY postid DESC;`, (err, result) => {
+  pool.query(`Select * from posts ORDER BY postid DESC;`, (err, result) => {
     if (err) {
       res.status(500).send("Internal server Error");
       return;
@@ -68,7 +123,7 @@ app.get("/api/posts", (req, res) => {
 });
 //SINGLE POST READ
 app.get("/api/posts/:id", (req, res) => {
-  client.query(
+  pool.query(
     `select * from posts where groupid=${req.params.id} ORDER BY postid DESC;`,
     (err, result) => {
       if (err) {
@@ -81,10 +136,10 @@ app.get("/api/posts/:id", (req, res) => {
 });
 //CREATE
 app.post("/api/posts/create", (req, res) => {
-  client.query(
-    `INSERT INTO posts (userid, groupid, description, likecount, photourl, commentcount)
+  pool.query(
+    `INSERT INTO posts (userid, groupid, description, likecount, photourl, commentcount, username)
     VALUES ('${req.body.userid}', '${req.body.groupid}', '${req.body.description}',
-    '${req.body.likecount}', '${req.body.photo}', '${req.body.commentcount}' )`,
+    '${req.body.likecount}', '${req.body.photo}', '${req.body.commentcount}', '${req.body.username}' )`,
     (err, result) => {
       if (err) {
         console.log(err)
@@ -99,7 +154,7 @@ app.post("/api/posts/create", (req, res) => {
 app.delete("/api/posts/delete/:id", (req, res) => {
   const postId = req.params.id;
 
-  client.query(`DELETE FROM posts WHERE postid=${postId}`, (err, result) => {
+  pool.query(`DELETE FROM posts WHERE postid=${postId}`, (err, result) => {
     if (err) {
       console.error('Error deleting post:', err);
       res.status(500).send('Internal Server Error');
@@ -115,7 +170,7 @@ app.delete("/api/posts/delete/:id", (req, res) => {
 });
 //mbti result shideh
 app.post("/api/mbti/result", (req, res)=>{
-  client.query(`INSERT INTO mbtiresult (result) VALUES ('${req.body.result}')`, (err, result)=>{
+  pool.query(`INSERT INTO mbtiresult (result) VALUES ('${req.body.result}')`, (err, result)=>{
     if (err) {
       console.log(err)
       res.status(500).send('Internal Server Error');
