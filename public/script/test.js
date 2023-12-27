@@ -7,7 +7,7 @@ async function loadNextQuestion() {
     const quizContainer = document.getElementById("quiz-container");
     const radioButtons = document.getElementsByTagName("input");
 
-    const apiUrl = `https://api.jsonbin.io/v3/b/65823fd41f5677401f10955c`;
+    const apiUrl = `https://api.jsonbin.io/v3/b/6578dbe7266cfc3fde680095`;
 
     const response = await fetch(apiUrl);
     const data = await response.json();

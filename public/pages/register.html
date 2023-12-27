@@ -1,37 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="MBTI Personality test and other fun activities you can do in community">
-    <title>Бүртгүүлэх - MBTI</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="MBTI Personality test and other fun activities you can do in community"
+    />
+    <title>Нэвтрэх - MBTI</title>
     <link rel="stylesheet" href="public/style/home.css" />
     <link rel="stylesheet" href="public/style/header.css" />
     <link rel="stylesheet" href="public/style/var.css" />
-    <link rel="stylesheet" href="public/style/form.css">
-    <title>Register - MBTI</title>
-</head>
-
-<body>
-    
-    <!-- Login modal -->
+    <link rel="stylesheet" href="public/style/login.css" />
+  </head>
+  <body>
+    <kmn-header></kmn-header>
     <main>
-        <section class="second-card">
-            <div class="card">
-                <h2>Бүртгүүлэх</h2>
-                <form action="register.js" method="post">
-                    <input type="text" id="username" name="username" required placeholder="Нэр"><br><br>
-                    <input type="email" id="email" name="email" required placeholder="Цахим шуудан"><br><br>
-                    <input type="password" id="password" name="password" required placeholder="Нууц үг"><br><br>
-                    <input type="password" id="password" name="password" required placeholder="Нууц үг давтан оруулах"><br><br>
+      <section class="second-card">
+        <div class="card">
+          <h2>Бүртгүүлэх</h2>
+          <form action="register.js" method="post">
+            <input
+              class="form-input"
+              type="text"
+              id="username"
+              name="username"
+              required
+              placeholder="Нэр"
+            /><br /><br />
+            <input
+              class="form-input"
+              type="email"
+              id="email"
+              name="email"
+              required
+              placeholder="Цахим шуудан"
+            /><br /><br />
+            <input
+              class="form-input"
+              type="password"
+              id="password"
+              name="password"
+              required
+              placeholder="Нууц үг"
+            /><br /><br />
+            <input
+              class="form-input"
+              type="password"
+              id="password"
+              name="password"
+              required
+              placeholder="Нууц үг давтан оруулах"
+            /><br /><br />
 
-                    <input class="lgn-btn" type="submit" value="Бүртгүүлэх">
-                    <input class="lgn-btn-2nd" type="submit" value="Нэвтрэх">
-                </form>
-            </div>
-        </section>
+            <input class="lgn-btn" type="submit" value="Бүртгүүлэх" />
+            <a class="register-link" href="/register">Нэвтрэх</a>
+          </form>
+        </div>
+      </section>
     </main>
-</body>
-
+    <script type="module" src="public/module/components/kmn-header.js"></script>
+    <script src="public/script/login.js"></script>
+  </body>
 </html>

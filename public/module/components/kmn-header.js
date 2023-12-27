@@ -131,6 +131,21 @@ header{
     }
 }
 
+.login-btn{
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    background-color: var(--color-main);
+    padding: 8px 15px;
+    border-radius: var(--border-rad);
+}
+
+.user-header{
+    color: black;
+    text-decoration: none;
+    font-weight: 600;
+}
+
 @media screen and (max-width: 1023px) {
     ul.desktop {
         display: none;
@@ -185,7 +200,7 @@ class Header extends HTMLElement {
                     </ul>
                     <div class="right">
                         <div class="user-section">
-                            <a href="/login">Login</a>
+                            <a class="login-btn" href="/login">Нэвтрэх</a>
                         </div>
                         
                         <button id="mbtn"><img src="public/assets/menu.png" alt="menu" /></button>
@@ -215,7 +230,7 @@ class Header extends HTMLElement {
                     } last"><a href="/plan">Plan</a></li>
                 </ul>
                     <div class="user-section">
-                        <a href="/login">Login</a>
+                        <a class="login-btn" href="/login">Нэвтрэх</a>
                     </div>
                 </nav>
             </div>
@@ -244,7 +259,7 @@ class Header extends HTMLElement {
         console.log(user);
         if (pfpElement) {
           // Use innerHTML to set both the image and the user's name
-          pfpElement.innerHTML = `<a href="/profile">${user.fullname}</a><a href="/logout">Logout</a>`;
+          pfpElement.innerHTML = `<a class="user-header" href="/profile">${user.fullname}</a><a class="login-btn" style="margin-left: 10px; font-size: 15px;" href="/logout">Гарах</a>`;
         }
       } catch (error) {
         console.log(error);

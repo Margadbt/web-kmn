@@ -24,6 +24,8 @@ class Community {
         .insertAdjacentHTML("afterbegin", htmlGroups);
     
       let response, data, posts;
+      console.log(id);
+
       if (id) {
         response = await fetch(`/api/posts/${id}`);
         posts = await response.json();
@@ -38,15 +40,17 @@ class Community {
 
       let htmlPosts = ``;
       for (const post of posts) {
-        let ggname = groups.find(g => g.groupid == post.groupid);
+        let ggname = groups.find(g => g.group_id == post.group_id);
         const groupName = ggname.name;
-        htmlPosts += `<kmn-post postid="${post.postid}" groupid="${post.groupid}" userId="${post.userid}" description="${post.description}" likeCount="${post.likecount}" photoURL="${post.photoURL}" commentcount="${post.commentcount}" groupName="${groupName}" username="${post.username}"></kmn-post>`;
+        console.log(post);
+        htmlPosts += `<kmn-post post_id="${post.post_id}" group_id="${post.group_id}" user_id="${post.user_id}" description="${post.description}" like_count="${post.like_count}" photo_url="${post.photo_url}" comment_count="${post.comment_count}" groupName="${groupName}"></kmn-post>`;
       }
       document
         .getElementById("posts")
         .insertAdjacentHTML("beforeend", htmlPosts);
       if(id>0){
-        let gname = groups.find(g => g.groupid == id);
+        
+        let gname = groups.find(g => g.group_id == id);
         document.getElementById("group-name").innerText = gname.name;
         document.querySelector(".group-info-right").innerHTML = `<button class="group-info-leave-button"><img src="/public/assets/icons/group.svg" />Группээс гарах</button>`;
       }
@@ -63,13 +67,13 @@ class Community {
 
 class Group {
   constructor(group) {
-    this.groupid = group.groupid;
+    this.group_id = group.group_id;
     this.name = group.name;
   }
 
   Render() {
     return `
-            <li><a href="?group=${this.groupid}">${this.name}</a></li>
+            <li><a href="?group=${this.group_id}">${this.name}</a></li>
         `;
   }
 }
@@ -96,12 +100,12 @@ async function createPost() {
     }
   
     const postData = {
-      userid: user.user_id,
-      groupid: id, 
+      user_id: user.user_id,
+      group_id: id, 
       description: description,
-      likecount: 0,
-      photo: "" ,
-      commentcount: 0,
+      like_count: 0,
+      photo_url: "" ,
+      comment_count: 0,
       username: user.fullname,
     };
   

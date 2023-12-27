@@ -31,16 +31,13 @@ async function login(event) {
 
     } catch (error) {
         console.error("Error during login:", error);
-        // Handle the error, show a message, or perform any other necessary actions.
     }
 }
 
 async function logout() {
     try {
         const response = await fetch("http://localhost:3000/logout");
-        // You might want to handle the response or show a confirmation message to the user.
     } catch (error) {
         console.error("Error during logout:", error);
-        // Handle the error, show a message, or perform any other necessary actions.
     }
 }

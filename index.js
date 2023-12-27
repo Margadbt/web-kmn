@@ -8,15 +8,20 @@ const port = 4000;
 
 app.use(express.json());
 
-const pool = new Pool({
-  user: "postgres",
-  host: "localhost",
-  database: "postgres",
-  password: "postgres",
-  port: 5432,
-});
+// const pool = new Pool({
+//   user: "postgres",
+//   host: "localhost",
+//   database: "postgres",
+//   password: "postgres",
+//   port: 5432,
+// });
 
-pool.connect();
+// pool.connect();
+
+const pool = new Pool({
+  connectionString: "postgres://default:pKvlL1OiN8Ac@ep-nameless-glade-19285305-pooler.ap-southeast-1.postgres.vercel-storage.com:5432/verceldb?sslmode=require",
+})
+
 
 login.users.set('margad@mail.com', { user_id: 1, fullname: "Margad", password: "123" });
 login.users.set('khanka@mail.com', { user_id: 2, fullname: "Khanka", password: "123" });
@@ -25,8 +30,10 @@ login.users.set('nomio@mail.com', { user_id: 3, fullname: "Nomio", password: "12
 app.use(cookieParser());
 app.post('/login', (req, res) =>{
   login.verifyLogin(req, res);
-
+  
 });
+
+app.use("/public", express.static("public"));
 
 app.get('/api/user', (req, res) => {
   console.log(login.sessions.has(Number(req.cookies.session_id)))
@@ -58,7 +65,6 @@ app.get('/logout', (req, res) => {
   res.redirect('/login');
 });
 
-app.use("/public", express.static("public"));
 
 app.get("/", (req, res) => {
   res.sendFile("public/index.html", { root: __dirname });
@@ -113,7 +119,7 @@ app.get("/api/groups", (req, res) => {
 });
 //READ
 app.get("/api/posts", (req, res) => {
-  pool.query(`Select * from posts ORDER BY postid DESC;`, (err, result) => {
+  pool.query(`Select * from posts ORDER BY post_id DESC;`, (err, result) => {
     if (err) {
       res.status(500).send("Internal server Error");
       return;
@@ -124,7 +130,7 @@ app.get("/api/posts", (req, res) => {
 //SINGLE POST READ
 app.get("/api/posts/:id", (req, res) => {
   pool.query(
-    `select * from posts where groupid=${req.params.id} ORDER BY postid DESC;`,
+    `select * from posts where group_id=${req.params.id} ORDER BY post_id DESC;`,
     (err, result) => {
       if (err) {
         res.status(500).send("Internal server Error");
@@ -137,9 +143,9 @@ app.get("/api/posts/:id", (req, res) => {
 //CREATE
 app.post("/api/posts/create", (req, res) => {
   pool.query(
-    `INSERT INTO posts (userid, groupid, description, likecount, photourl, commentcount, username)
-    VALUES ('${req.body.userid}', '${req.body.groupid}', '${req.body.description}',
-    '${req.body.likecount}', '${req.body.photo}', '${req.body.commentcount}', '${req.body.username}' )`,
+    `INSERT INTO posts (user_id, group_id, description, like_count, photo_url, comment_count)
+    VALUES ('${req.body.user_id}', '${req.body.group_id}', '${req.body.description}',
+    '${req.body.like_count}', '${req.body.photo}', '${req.body.comment_count}' )`,
     (err, result) => {
       if (err) {
         console.log(err)
@@ -154,7 +160,7 @@ app.post("/api/posts/create", (req, res) => {
 app.delete("/api/posts/delete/:id", (req, res) => {
   const postId = req.params.id;
 
-  pool.query(`DELETE FROM posts WHERE postid=${postId}`, (err, result) => {
+  pool.query(`DELETE FROM posts WHERE post_id=${postId}`, (err, result) => {
     if (err) {
       console.error('Error deleting post:', err);
       res.status(500).send('Internal Server Error');
@@ -181,5 +187,5 @@ app.post("/api/mbti/result", (req, res)=>{
 })
 
 app.listen(port, () => {
-  console.log("server listening on ", port);
+  console.log(`server listening on http://localhost:${port}/`);
 });

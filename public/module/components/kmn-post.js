@@ -1,40 +1,40 @@
 class Post extends HTMLElement {
   constructor() {
     super();
-    this.userid = this.getAttribute("userid");
+    this.user_id = this.getAttribute("user_id");
     this.description = this.getAttribute("description");
-    this.likeCount = parseInt(this.getAttribute("likeCount")) || 0;
-    this.photoURL = this.getAttribute("photoURL");
-    this.postid = this.getAttribute("postid");
-    this.groupName = this.getAttribute("groupName");
-    this.commentcount = this.getAttribute("commentcount");
-    this.groupid = this.getAttribute("groupid");
+    this.like_count = parseInt(this.getAttribute("like_count"));
+    this.photo_url = this.getAttribute("photo_url");
+    this.post_id = this.getAttribute("post_id");
+    this.group_name = this.getAttribute("groupName");
+    this.comment_count = this.getAttribute("comment_count");
+    this.group_id = this.getAttribute("group_id");
     this.username = this.getAttribute("username");
-
     this.innerHTML = `
         <article class="card">
             <div class="author">
                 <img class="pfp" src="public/assets/pfp.png" alt="profile">
-                <p class="post-username">${this.username}</p>
+                <p class="post-username">${this.user_id}</p>
                 <p>•</p>
-                <a href="?group=${this.groupid}" class="post-group-name">${this.groupName}</a>
+                <a href="?group=${this.group_id}" class="post-group-name">${this.group_name}</a>
             </div>
             <p class="post-desc">${this.description}</p>
             ${
-              !this.photoURL
-                ? `<img class="psp" src="${this.photoURL}" alt="post picture"></img>`
-                : ""
+              // !this.photo_url
+              //   ? `<img class="psp" src="${this.photo_url}" alt="post picture"></img>`
+              //   : ""
+                ""
             }
             
             <div class="reactions">
                 <div class="likes">
                     <img class="heart-icon" src="public/assets/icons/heart.svg" alt="like">
                     <img class="another-icon" src="public/assets/icons/heartA.svg" alt="another">
-                    <p class="like-count">${this.likeCount}</p>
+                    <p class="like-count">${this.like_count}</p>
                 </div>
                 <div class="comment">
                     <img class="comment-icon" src="public/assets/icons/comment.svg" alt="comment">
-                    <p class="comment-count">${this.commentcount}</p>
+                    <p class="comment-count">${this.comment_count}</p>
                 </div>
             </div>
         </article>
@@ -45,7 +45,7 @@ class Post extends HTMLElement {
     const likesDiv = this.querySelector(".likes");
     const heartIcon = this.querySelector(".heart-icon");
     const heartActivated = this.querySelector(".another-icon");
-    const likeCountElement = this.querySelector(".like-count");
+    const like_countElement = this.querySelector(".like-count");
 
     let isLiked = false;
 
@@ -58,14 +58,14 @@ class Post extends HTMLElement {
       if (isLiked) {
         heartIcon.style.display = "none";
         heartActivated.style.display = "inline-block";
-        this.likeCount += 1;
+        this.like_count += 1;
       } else {
         heartIcon.style.display = "inline-block";
         heartActivated.style.display = "none";
-        this.likeCount -= 1;
+        this.like_count -= 1;
       }
 
-      likeCountElement.textContent = this.likeCount;
+      like_countElement.textContent = this.like_count;
     });
   }
 }
