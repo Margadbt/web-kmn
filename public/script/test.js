@@ -7,7 +7,8 @@ async function loadNextQuestion() {
     const quizContainer = document.getElementById("quiz-container");
     const radioButtons = document.getElementsByTagName("input");
 
-    const apiUrl = `https://api.jsonbin.io/v3/b/6578dbe7266cfc3fde680095`;
+    // const apiUrl = `https://api.jsonbin.io/v3/b/6578dbe7266cfc3fde680095`;
+    const apiUrl = `https://api.jsonbin.io/v3/b/65823fd41f5677401f10955c`;
 
     const response = await fetch(apiUrl);
     const data = await response.json();
@@ -88,7 +89,8 @@ async function loadNextQuestion() {
 
       quizContainer.innerHTML = questionHTML;
     } else {
-      alert("Quiz completed!");
+      // alert("Quiz completed!");
+
       const selectedValues = Array.from(document.getElementsByTagName("input"))
         .map((radio) => ({
           originalValue: radio.value,
@@ -114,7 +116,7 @@ async function loadNextQuestion() {
           0
         );
 
-        console.log(`Letter chunk ${i / chunkSize + 1}: ${summary}`);
+        // console.log(`Letter chunk ${i / chunkSize + 1}: ${summary}`);
         resultsBySummary[j] = summary;
       }
 
@@ -129,30 +131,38 @@ async function loadNextQuestion() {
 
       console.log(finalResult);
 
-      const resultBody= {
-        "result": finalResult
-      }
+      const resultBody = {
+        result: finalResult,
+      };
 
-      fetch('/api/mbti/result', {
-        method: 'POST',
+      fetch("/api/mbti/result", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify(resultBody),
       })
-      .then(response => {
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
-        return response.status;
-      })
-      .then(data => {
-        console.log('sucessfullly:', data);
-        // location.reload();
-      })
-      .catch(error => {
-        console.error('Error', error);
-      });
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error("Network response was not ok");
+          }
+          return response.status;
+        })
+        .then((data) => {
+          console.log("sucessfullly:", data);
+          // location.reload();
+        })
+        .catch((error) => {
+          console.error("Error", error);
+        });
+      const notificationPopup = document.getElementById("notification-popup");
+      const resultsDisplay = document.getElementById("results-display");
+      const quizBody = document.getElementById("quiz");
+
+      resultsDisplay.textContent = `${finalResult}`;
+
+      notificationPopup.style.display = "flex";
+      quizBody.style.display = "none";
     }
 
     currentQuestionIndex = endQuestionIndex;
@@ -163,6 +173,16 @@ async function loadNextQuestion() {
   function getOverallResponses() {
     return responses;
   }
+}
+
+function saveResults() {
+  // Redirect to login
+  closeNotificationPopup();
+}
+
+function closeNotificationPopup() {
+  const notificationPopup = document.getElementById("notification-popup");
+  notificationPopup.style.display = "none";
 }
 
 loadNextQuestion();
