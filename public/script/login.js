@@ -36,7 +36,7 @@ async function login(event) {
 
 async function logout() {
     try {
-        const response = await fetch("http://localhost:3000/logout");
+        const response = await fetch("http://localhost:3000/user/logout");
     } catch (error) {
         console.error("Error during logout:", error);
     }

@@ -27,7 +27,7 @@ class Community {
       this.skeletonLoading();
       
 
-      const gresponse = await fetch("/api/groups");
+      const gresponse = await fetch("/api/community/groups");
       const gData = await gresponse.json();
       const groups = gData;
 
@@ -48,10 +48,10 @@ class Community {
       console.log(id);
 
       if (id) {
-        response = await fetch(`/api/posts/${id}`);
+        response = await fetch(`/api/community/posts/group/${id}`);
         posts = await response.json();
       } else {
-        response = await fetch(`/api/posts`);
+        response = await fetch(`/api/community/posts`);
         data = await response.json();
         posts = data;
         document.querySelector(".write-post").style.display="none";
@@ -106,7 +106,7 @@ const postBtn = document.querySelector(".write-post-post-btn");
 
 async function createPost() {
   try {
-    const response = await fetch("/api/user");
+    const response = await fetch("/user");
     const user = await response.json();
 
     console.log("hi");

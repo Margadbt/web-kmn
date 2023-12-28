@@ -254,12 +254,12 @@ class Header extends HTMLElement {
 
     async function fetchUser() {
       try {
-        const response = await fetch("/api/user");
+        const response = await fetch("/user");
         const user = await response.json();
         console.log(user);
         if (pfpElement) {
           // Use innerHTML to set both the image and the user's name
-          pfpElement.innerHTML = `<a class="user-header" href="/profile">${user.fullname}</a><a class="login-btn" style="margin-left: 10px; font-size: 15px;" href="/logout">Гарах</a>`;
+          pfpElement.innerHTML = `<a class="user-header" href="/profile">${user.fullname}</a><a class="login-btn" style="margin-left: 10px; font-size: 15px;" href="/user/logout">Гарах</a>`;
         }
       } catch (error) {
         console.log(error);

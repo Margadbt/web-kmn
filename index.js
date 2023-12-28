@@ -1,23 +1,28 @@
 const express = require("express");
-const { Pool } = require("pg");
 const cookieParser = require("cookie-parser");
 const login = require("./login.js");
 
-const app = express();
-const port = 4000;
 
-app.use(express.json());
+const swaggerui = require("swagger-ui-express");
+const swaggerJsdoc = require('swagger-jsdoc');
 
-// const pool = new Pool({
-//   user: "postgres",
-//   host: "localhost",
-//   database: "postgres",
-//   password: "postgres",
-//   port: 5432,
-// });
+const userRoutes = require('./routes/api/userRoutes.js');
+const communityRoutes = require('./routes/api/communityRoutes.js');
+const mbtiRoutes = require('./routes/api/mbtiRoutes.js');
+const pageRoutes = require('./routes/pageRoutes.js');
 
-// pool.connect();
+const options = {
+  definition: {
+    openapi: '3.0.0',
+    info: {
+      title: 'WEB-KMN API DOCUMENTATION',
+      version: '1.0.0',
+    },
+  },
+  apis: ['./routes/api/*.js'], 
+};
 
+<<<<<<< HEAD
 const pool = new Pool({
   connectionString:
     "postgres://default:pKvlL1OiN8Ac@ep-nameless-glade-19285305-pooler.ap-southeast-1.postgres.vercel-storage.com:5432/verceldb?sslmode=require",
@@ -196,6 +201,27 @@ app.post("/api/mbti/result", (req, res) => {
     }
   );
 });
+=======
+const app = express();
+
+const spacs = swaggerJsdoc(options);
+app.use("/api-docs", swaggerui.serve, swaggerui.setup(spacs));
+
+const port = 4000;
+
+app.use(express.json());
+app.use(cookieParser());
+login.users.set('margad@mail.com', { user_id: 1, fullname: "Margad", password: "123" });
+login.users.set('khanka@mail.com', { user_id: 2, fullname: "Khanka", password: "123" });
+login.users.set('nomio@mail.com', { user_id: 3, fullname: "Nomio", password: "123" });
+app.post('/login', (req, res) =>{
+  login.verifyLogin(req, res);
+});
+app.use('/user', userRoutes);
+app.use('/api/community', communityRoutes);
+app.use('/api/mbti', mbtiRoutes);
+app.use('/', pageRoutes);
+>>>>>>> b31c4ce4f66e3faa62b5839fa5b379393e119aad
 
 app.listen(port, () => {
   console.log(`server listening on http://localhost:${port}/`);
