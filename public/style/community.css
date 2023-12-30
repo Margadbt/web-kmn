@@ -34,14 +34,14 @@ aside {
   padding: 20px;
 }
 
-section ul {
+/* section ul {
   padding: 1em 2em;
 
   & li {
     list-style-type: none;
     margin-bottom: 10px;
   }
-}
+} */
 
 .pfp {
   width: 2rem;
@@ -91,21 +91,23 @@ section ul {
   width: 20px;
   height: 20px;
 }
-#your-groups li a,
-#rec-groups li a {
+#your-groups .group-link,
+#rec-groups .group-link {
+  cursor: pointer;
   text-decoration: none;
   color: black;
   font-weight: 600;
 }
-#your-groups li,
-#rec-groups li {
+#your-groups .group-link,
+#rec-groups .group-link {
   background-color: rgb(0, 0, 0, 0.05);
   padding: 5px 10px;
   border-radius: 10px;
   transition: all 0.2s ease-in-out;
+  margin-bottom: 5px;
 }
-#your-groups li:hover,
-#rec-groups li:hover {
+#your-groups .group-link:hover,
+#rec-groups .group-link:hover {
   background-color: rgb(0, 0, 0, 0.4);
   padding: 5px 10px;
   border-radius: 10px;

@@ -10,20 +10,21 @@ class Post extends HTMLElement {
     this.comment_count = this.getAttribute("comment_count");
     this.group_id = this.getAttribute("group_id");
     this.username = this.getAttribute("username");
+
     this.innerHTML = `
         <article class="card">
             <div class="author">
                 <img class="pfp" src="public/assets/pfp.png" alt="profile">
                 <p class="post-username">${this.user_id}</p>
                 <p>•</p>
-                <a href="?group=${this.group_id}" class="post-group-name">${this.group_name}</a>
+                <p class="post-group-name">${this.group_name}</p>
             </div>
             <p class="post-desc">${this.description}</p>
             ${
               // !this.photo_url
               //   ? `<img class="psp" src="${this.photo_url}" alt="post picture"></img>`
               //   : ""
-                ""
+              ""
             }
             
             <div class="reactions">

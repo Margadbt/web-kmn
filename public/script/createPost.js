@@ -1,0 +1,49 @@
+export async function createPost() {
+    try {
+      const response = await fetch("/user");
+      const user = await response.json();
+  
+      console.log("hi");
+      const postInput = document.querySelector(".write-post-input");
+      const description = postInput.value;
+  
+      if (!description.trim()) {
+        alert("Post хоосон байна!");
+        return;
+      }
+  
+      const postData = {
+        user_id: user.user_id,
+        group_id: 2,
+        description: description,
+        like_count: 0,
+        photo_url: "",
+        comment_count: 0,
+        username: user.fullname,
+      };
+  
+      fetch("/api/community/post/create", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(postData),
+      })
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error("Network response was not ok");
+          }
+          return response.status;
+        })
+        .then((data) => {
+          console.log("Post created successfully:", data);
+          location.reload();
+        })
+        .catch((error) => {
+          console.error("Error creating post:", error);
+        });
+    } catch (error) {
+      console.log("Not Authorized");
+    }
+  }
+  

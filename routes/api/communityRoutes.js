@@ -155,6 +155,15 @@ router.get("/groups", (req, res) => {
     res.json(result.rows);
   })
 });
+router.get("/group/:id", (req, res) => {
+  pool.query(`SELECT * FROM groups where group_id=${req.params.id}`, (err, result)=>{
+    if (err) {
+      res.status(500).send("Internal server Error");
+      return;
+    }
+    res.json(result.rows);
+  })
+});
 //READ
 router.get("/posts", (req, res) => {
   pool.query(`Select * from posts ORDER BY post_id DESC;`, (err, result) => {
