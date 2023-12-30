@@ -17,7 +17,6 @@ export async function createPost() {
         group_id: 2,
         description: description,
         like_count: 0,
-        photo_url: "",
         comment_count: 0,
         username: user.fullname,
       };

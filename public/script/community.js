@@ -1,30 +1,11 @@
 import { createPost } from './createPost.js';
+import { skeletonLoading, skeletonLoadingStop } from './skeletonLoading.js';
 class Community {
   constructor() {}
-  skeletonLoading() {
-    document.getElementById("your-groups").innerHTML =
-      '<div class="loading-skeleton-group"></div>';
-    document.getElementById("rec-groups").innerHTML =
-      '<div class="loading-skeleton-group"></div>';
-    document
-      .getElementById("posts")
-      .insertAdjacentHTML(
-        "beforeend",
-        '<div class="loading-skeleton-post"></div>'
-      );
-    document.getElementById(
-      "group-name"
-    ).innerHTML = `<div class="loading-skeleton"></div>`;
-  }
-  skeletonLoadingStop() {
-    document.getElementById("your-groups").innerHTML = "";
-    document.getElementById("rec-groups").innerHTML = "";
-    document.querySelector(".loading-skeleton-post").style.display = "none";
-    document.getElementById("group-name").innerHTML = ``;
-  }
+  
   async Init() {
     try {
-      this.skeletonLoading();
+      skeletonLoading();
       document.querySelector(".write-post").style.display = "none"
 
       const groupResponse = await fetch("/api/community/groups");
@@ -35,7 +16,7 @@ class Community {
         const groupOBJ = new Group(group);
         htmlGroups += groupOBJ.Render();
       }
-      this.skeletonLoadingStop();
+      skeletonLoadingStop();
       document.getElementById("group-name").innerText = "Newsfeed";
 
       document
@@ -51,7 +32,6 @@ class Community {
       data = await response.json();
       posts = data;
 
-      const postSection = document.querySelector("post-section");
 
       const groupLinks = document.querySelectorAll(".group-link");
 

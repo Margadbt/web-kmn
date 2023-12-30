@@ -15,7 +15,7 @@ class Post extends HTMLElement {
         <article class="card">
             <div class="author">
                 <img class="pfp" src="public/assets/pfp.png" alt="profile">
-                <p class="post-username">${this.user_id}</p>
+                <p class="post-username">${this.username}</p>
                 <p>•</p>
                 <p class="post-group-name">${this.group_name}</p>
             </div>
@@ -47,6 +47,13 @@ class Post extends HTMLElement {
     const heartIcon = this.querySelector(".heart-icon");
     const heartActivated = this.querySelector(".another-icon");
     const like_countElement = this.querySelector(".like-count");
+    const comment_button = this.querySelector(".comment");
+
+    comment_button.addEventListener("click", ()=>{
+      window.dispatchEvent(
+        new CustomEvent("post-comment-clicked", { detail: { post_id: this.post_id } })
+      );
+    });
 
     let isLiked = false;
 

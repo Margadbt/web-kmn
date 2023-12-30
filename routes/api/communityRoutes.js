@@ -9,6 +9,7 @@
  *         - description
  *         - user_id
  *         - group_id
+ *         - username
  *       properties:
  *         post_id:
  *           type: integer
@@ -22,12 +23,12 @@
  *         description:
  *           type: string
  *           description: Post хэсгийн тайлбар
+ *         username:
+ *           type: string
+ *           description: User-ын username
  *         like_count:
  *           type: integer
  *           description: Post-ны Like тоо
- *         photo_url:
- *           type: string
- *           description: Post-ны зургийн URL хаяг
  *         comment_count:
  *           type: integer
  *           description: Comment-ын тоо
@@ -203,9 +204,9 @@ router.get("/post/:id", (req, res) => {
 //CREATE
 router.post("/post/create", (req, res) => {
   pool.query(
-    `INSERT INTO posts (user_id, group_id, description, like_count, photo_url, comment_count)
+    `INSERT INTO posts (user_id, group_id, description, username, comment_count, like_count )
     VALUES ('${req.body.user_id}', '${req.body.group_id}', '${req.body.description}',
-    '${req.body.like_count}', '${req.body.photo}', '${req.body.comment_count}' )`,
+    '${req.body.username}', '${req.body.comment_count}', '${req.body.like_count}' )`,
     (err, result) => {
       if (err) {
         console.log(err)
