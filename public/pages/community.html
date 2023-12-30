@@ -10,10 +10,9 @@
     <title>Community - MBTI</title>
     <link rel="stylesheet" href="public/style/var.css" />
     <link rel="stylesheet" href="public/style/community.css" />
-    <script  type="module" src="public/script/community.js"></script>
+    <script type="module" src="public/script/community.js"></script>
   </head>
   <body>
-    
     <!-- Header web component shuu eniig copydood door baigaa scriptiig copydooroi headeriiha orond -->
     <kmn-header></kmn-header>
     <main>
@@ -46,32 +45,36 @@
                 alt="image"
                 src="/public/assets/icons/img.svg"
               />
-              <button class="write-post-post-btn" onclick="createPost()">
-                Post
-              </button>
+              <button class="write-post-post-btn">Post</button>
             </div>
           </div>
-          <kmn-post-section></kmn-post-section>
+          <kmn-post-section> </kmn-post-section>
+          <!-- <kmn-comment-section></kmn-comment-section> -->
         </section>
-        
+
         <aside>
           <section>
             <h3>Таны группууд</h3>
             <div class="card" id="your-groups">
-                <!-- End groupuud ornoo -->
+              <!-- End groupuud ornoo -->
             </div>
           </section>
           <section>
             <h3>Санал болгох группууд</h3>
             <div class="card" id="rec-groups">
               <!-- End groupuud ornoo -->
-          </div>
+            </div>
           </section>
         </aside>
       </section>
     </main>
     <script type="module" src="public/module/components/kmn-header.js"></script>
     <script type="module" src="public/module/components/kmn-post.js"></script>
-    <script type="module" src="public/module/components/kmn-post-section.js"></script>
+    <script type="module" src="public/module/components/kmn-comment-section.js"></script>
+    <script type="module" src="public/module/components/kmn-comment.js"></script>
+    <script
+      type="module"
+      src="public/module/components/kmn-post-section.js"
+    ></script>
   </body>
 </html>

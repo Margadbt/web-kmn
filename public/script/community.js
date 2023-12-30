@@ -1,50 +1,47 @@
 import { createPost } from './createPost.js';
 import { skeletonLoading, skeletonLoadingStop } from './skeletonLoading.js';
+
 class Community {
   constructor() {}
-  
+
   async Init() {
     try {
       skeletonLoading();
-      document.querySelector(".write-post").style.display = "none"
+      document.querySelector(".write-post").style.display = "none";
 
       const groupResponse = await fetch("/api/community/groups");
       const groups = await groupResponse.json();
 
-      let htmlGroups = ``;
+      let htmlGroups = '';
       for (const group of groups) {
         const groupOBJ = new Group(group);
         htmlGroups += groupOBJ.Render();
       }
+
       skeletonLoadingStop();
       document.getElementById("group-name").innerText = "Newsfeed";
 
-      document
-        .getElementById("your-groups")
-        .insertAdjacentHTML("afterbegin", htmlGroups);
-      document
-        .getElementById("rec-groups")
-        .insertAdjacentHTML("afterbegin", htmlGroups);
-
-      let response, data, posts;
-
-      response = await fetch(`/api/community/posts`);
-      data = await response.json();
-      posts = data;
-
+      document.getElementById("your-groups").insertAdjacentHTML("afterbegin", htmlGroups);
+      document.getElementById("rec-groups").insertAdjacentHTML("afterbegin", htmlGroups);
 
       const groupLinks = document.querySelectorAll(".group-link");
 
-      
-
       groupLinks.forEach((link) => {
-        link.addEventListener("click", async (event) => {
+        link.addEventListener("click", (event) => {
           event.preventDefault();
           const groupId = link.dataset.groupId;
-          window.dispatchEvent(
-            new CustomEvent("groupClicked", { detail: { groupId } })
-          );
+          window.dispatchEvent(new CustomEvent("groupClicked", { detail: { groupId } }));
         });
+      });
+
+      const postBtn = document.querySelector(".write-post-post-btn");
+      postBtn.addEventListener("click", () => {
+        const groupId = window.currentGroupId; // Use a property to store the current group_id
+        if (groupId) {
+          createPost(groupId);
+        } else {
+          console.error("Group ID is not available.");
+        }
       });
     } catch (error) {
       console.error(error);
@@ -59,14 +56,13 @@ class Group {
   }
 
   Render() {
-    return `
-            <div class="group-link" data-group-id="${this.group_id}">${this.name}</div>
-        `;
+    return `<div class="group-link" data-group-id="${this.group_id}">${this.name}</div>`;
   }
 }
 
 var com = new Community();
 com.Init();
 
-const postBtn = document.querySelector(".write-post-post-btn");
-postBtn.addEventListener("click", createPost);
+window.addEventListener("groupClicked", (event) => {
+  window.currentGroupId = event.detail.groupId;
+});

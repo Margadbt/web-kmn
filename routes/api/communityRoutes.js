@@ -142,6 +142,7 @@ const express = require('express');
 const router = express.Router();
 const login = require('../../login');
 const { Pool } = require("pg");
+const { route } = require('./userRoutes');
 
 const pool = new Pool({
   connectionString: "postgres://default:pKvlL1OiN8Ac@ep-nameless-glade-19285305-pooler.ap-southeast-1.postgres.vercel-storage.com:5432/verceldb?sslmode=require",
@@ -235,5 +236,17 @@ router.delete("/post/delete/:id", (req, res) => {
     res.json(result.rows[0]);
   });
 });
+//ALL COMMENTS
+router.get("/comments/:id", (req, res)=>{
+  const postId = req.params.id;
+
+  pool.query(`Select * from comments where post_id=${postId} ORDER BY date DESC`, (err, result)=>{
+    if (err) {
+      res.status(500).send("Internal server Error");
+      return;
+    }
+    res.json(result.rows);
+  })
+})
 
 module.exports = router;

@@ -19,7 +19,7 @@ class Post extends HTMLElement {
                 <p>•</p>
                 <p class="post-group-name">${this.group_name}</p>
             </div>
-            <p class="post-desc">${this.description}</p>
+            <p class="description">${this.description}</p>
             ${
               // !this.photo_url
               //   ? `<img class="psp" src="${this.photo_url}" alt="post picture"></img>`

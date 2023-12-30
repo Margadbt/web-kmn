@@ -62,12 +62,12 @@ button.green:hover{
 }
 
 .card{
-    display: inline-block;
     background-color: var(--color-card-bg);
     border: var(--border-card);
     border-radius: var(--border-rad);
     margin-top: 1em;
     box-shadow: var(--shadow-card);
+    width: 100%;
 }
 
 @media(max-width:768px){

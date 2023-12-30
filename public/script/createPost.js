@@ -1,6 +1,11 @@
-export async function createPost() {
+export async function createPost(group_id) {
     try {
       const response = await fetch("/user");
+      if(response.status == 401){
+        // alert("Нэвтрээгүй байна");
+        window.location.href = '/login';
+        return;
+      }
       const user = await response.json();
   
       console.log("hi");
@@ -14,7 +19,7 @@ export async function createPost() {
   
       const postData = {
         user_id: user.user_id,
-        group_id: 2,
+        group_id: group_id,
         description: description,
         like_count: 0,
         comment_count: 0,
@@ -42,7 +47,8 @@ export async function createPost() {
           console.error("Error creating post:", error);
         });
     } catch (error) {
-      console.log("Not Authorized");
+      console.log(error.status);
+      // if(error.status)
     }
   }
   

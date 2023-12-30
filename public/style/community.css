@@ -20,6 +20,10 @@ main {
 #posts {
   grid-column-start: 1;
   grid-column-end: 8;
+  width: 100%;
+}
+.description{
+  word-break: break-word;
 }
 aside {
   grid-column-start: 9;
@@ -62,6 +66,12 @@ aside {
   align-items: center;
   gap: 8px;
   margin-bottom: 10px;
+}
+
+.single-comment{
+  border-top: 0.5px solid rgb(0, 0, 0, 0.1);
+  /* border-bottom: 0.5px solid rgb(0, 0, 0, 0.1); */
+  padding: 10px 0;
 }
 .reactions {
   border-top: 1px solid rgb(206, 206, 206);

@@ -31,7 +31,6 @@ const port = 4000;
 
 app.use(express.json());
 app.use(cookieParser());
-
 login.users.set('margad@mail.com', { user_id: 1, fullname: "Margad", password: "123" });
 login.users.set('khanka@mail.com', { user_id: 2, fullname: "Khanka", password: "123" });
 login.users.set('nomio@mail.com', { user_id: 3, fullname: "Nomio", password: "123" });
