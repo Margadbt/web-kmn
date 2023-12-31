@@ -82,6 +82,7 @@ fieldset {
         display: flex;
         flex-direction: row;
         align-items: center;
+        width: 55em;
         /* For responsive web app */
         /* flex-wrap: wrap; */
     }
@@ -103,16 +104,19 @@ fieldset {
     }
 
     & .agree, .disagree {
+        width: 5em;
         padding: 0 2em 0 2em;
         /* padding-top: 5em; */
     }
 
     & #radios {
         position: relative;
-        width: 100%;
+        /* width: 40%; */
+        width: 40em;
         margin: 0 auto;
         display: flex;
         justify-content: space-around;
+        /* justify-content: space-between; */
     }
 
     & .container {
@@ -142,13 +146,13 @@ fieldset {
     }
 
     .container:hover input~.chosen {
-        background-color: #2196F3;
+        background-color: var(--color-yellow);
         opacity: 0.4;
         
     }
 
     .container input:checked~.chosen {
-        background-color: #2196F3;
+        background-color: var(--color-yellow);
     }
 
     .container input:checked~.chosen:after {
@@ -158,13 +162,13 @@ fieldset {
     & .neutral {
         width: 2em;
         height: 2em;
-        margin: 0.5em 0 0 0;
+        margin: 0.5em 0 0 0.4em;
     }
 
     & .slight {
         width: 2.5em;
         height: 2.5em;
-        margin: 0.3em 0 0 0;
+        margin: 0.35em 0 0 0.1em;
     }
     & .more {
         width: 3em;
@@ -175,6 +179,7 @@ fieldset {
         width: 3.5em;
         height: 3.5em;
         margin: 0 0 0 0;
+        padding: 0 0 0 0;
     }
 }
 
