@@ -248,5 +248,46 @@ router.get("/comments/:id", (req, res)=>{
     res.json(result.rows);
   })
 })
+//CREATE COMMENT
+router.post("/post/comment/create/:id", (req, res)=>{
+  const postId = req.params.id;
+
+  pool.query(`INSERT INTO comments (post_id, user_id, username, description, date) VALUES (${req.body.post_id}, ${req.body.user_id}, '${req.body.username}', '${req.body.description}', '${req.body.date}') `, (err, result)=>{
+    if (err) {
+      console.log(err)
+      res.status(500).send('Internal Server Error');
+      return;
+    }
+    res.status(201).json(result.rows[0]);
+  })
+})
+
+//Delete Comments
+
+//Update comment count of post
+router.post("/post/comment/update/:id", (req, res)=>{
+  const postId = req.params.id;
+
+  pool.query(`UPDATE posts SET comment_count = '${req.body.comment_count}' WHERE post_id = ${postId}`, (err, result)=>{
+    if (err) {
+      res.status(500).send("Internal server Error");
+      return;
+    }
+    res.json(result.rows);
+  })
+})
+
+//Count number of comments
+router.get("/post/comment/count/:id", (req,res)=>{
+  const postId = req.params.id;
+
+  pool.query(`select count(*) from comments where post_id = ${postId}`, (err, result)=>{
+    if (err) {
+      res.status(500).send("Internal server Error");
+      return;
+    }
+    res.json(result.rows);
+  })
+})
 
 module.exports = router;

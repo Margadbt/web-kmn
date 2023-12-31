@@ -3,6 +3,7 @@ export class KmnCommentSection extends HTMLElement {
         super();
         this.post_id = post_id;
         this.innerHTML = `
+        <kmn-comment-input post_id="${this.post_id}"></kmn-comment-input>
         <div class="card">
             
             <h3 style="margin-bottom: 10px;">Сэтгэгдэлүүд:</h3>

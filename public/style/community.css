@@ -22,6 +22,7 @@ main {
   margin: 0 auto;
   width: 45vw;
   padding-top: 5rem;
+  padding-bottom: 20px;
 }
 
 .search {
@@ -183,6 +184,32 @@ main {
     gap: 0.5rem;
   }
 }
+
+.write-comment {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  & .write-comment-left {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    & .write-comment-input {
+      border: none;
+      font-size: 1rem;
+      font-weight: 600;
+    }
+    & .write-comment-input:focus {
+      outline: none;
+    }
+  }
+  & .write-comment-right {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+}
+
 .group-info {
   display: flex;
   gap: 80px;
@@ -223,6 +250,12 @@ main {
   width: 25px;
 }
 .write-post-post-btn {
+  height: 25px;
+  background-color: var(--color-main);
+  color: white;
+  padding: 0 10px;
+}
+.write-comment-btn {
   height: 25px;
   background-color: var(--color-main);
   color: white;

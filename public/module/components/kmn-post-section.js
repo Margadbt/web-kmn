@@ -1,4 +1,5 @@
 import {KmnCommentSection} from "./kmn-comment-section.js";
+import { updateCommentCount } from "../../script/updateCommentCount.js";
 class PostSection extends HTMLElement {
   connectedCallback() {
     this.render([]);
@@ -50,6 +51,7 @@ class PostSection extends HTMLElement {
       const posts = await response.json();
       let htmlPosts = ``;
       for (const post of posts) {
+        updateCommentCount(post.post_id);
         const groupName = groupData.find(
           (item) => post.group_id == item.group_id
         ).name;

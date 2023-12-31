@@ -47,6 +47,7 @@ class Community {
           console.error("Group ID is not available.");
         }
       });
+
     } catch (error) {
       console.error(error);
     }
