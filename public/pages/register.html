@@ -19,7 +19,7 @@
       <section class="second-card">
         <div class="card">
           <h2>Бүртгүүлэх</h2>
-          <form action="register.js" method="post">
+          <form onsubmit="register(event)">
             <input
               class="form-input"
               type="text"
@@ -47,19 +47,19 @@
             <input
               class="form-input"
               type="password"
-              id="password"
-              name="password"
+              id="password2"
+              name="password2"
               required
               placeholder="Нууц үг давтан оруулах"
             /><br /><br />
 
             <input class="lgn-btn" type="submit" value="Бүртгүүлэх" />
-            <a class="register-link" href="/register">Нэвтрэх</a>
+            <a class="register-link" href="/login">Нэвтрэх</a>
           </form>
         </div>
       </section>
     </main>
     <script type="module" src="public/module/components/kmn-header.js"></script>
-    <script src="public/script/login.js"></script>
+    <script src="public/script/register.js"></script>
   </body>
 </html>
