@@ -1,7 +1,27 @@
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  border-radius: 10px;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgb(103, 178, 111, 0.2); 
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(103, 178, 111, 0.7); 
+}
+
 main {
   margin: 0 auto;
   width: 45vw;
-  padding-top: 7rem;
+  padding-top: 5rem;
 }
 
 .search {
@@ -29,25 +49,29 @@ main {
 }
 
 .left-nav{
-  padding: 100px 30px 0px 30px;
+  padding: 5rem 30px 0px 30px;
   height: 100vh;
-  background-color: white;
+  background-color: rgb(255, 255, 255, 0.5);
   border: var(--border-card);
   position: fixed;
   z-index: 10;
   width: 20vw;
   left: 0;
+  overflow-y: scroll;
 }
 
 .right-nav{
-  padding: 100px 30px 0px 30px;
+  padding: 5rem 30px 0px 30px;
   border: var(--border-card);
   height: 100vh;
-  background-color: white;
+  background-color: rgb(255, 255, 255, 0.5);
+
   position: fixed;
   z-index: 10;
   width: 20vw;
   right: 0;
+  overflow-y: scroll;
+
 }
 
 /* section ul {
@@ -161,32 +185,24 @@ main {
 }
 .group-info {
   display: flex;
+  gap: 80px;
   width: 100%;
   background-color: var(--color-main);
   color: white;
-  height: 3rem;
+  height: 170px;
   align-items: center;
   justify-content: space-between;
-  padding: 20px;
-  border-radius: 10000px;
+  padding: 30px;
+  border-radius: 30px;
   margin-bottom: 1rem;
-  & .group-info-left {
+  & .group-info-left-item {
     display: flex;
     align-items: center;
     gap: 0.5rem;
+    margin-bottom: 10px;
   }
   & .group-info-right {
-    & .group-info-leave-button {
-      background-color: transparent;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      font-size: 1rem;
-      color: white;
-      & img {
-        width: 20px;
-      }
-    }
+    height: 100%;
   }
 }
 .post-username {
@@ -309,7 +325,9 @@ main {
   border-radius: 15px;
   margin-top: 10px;
   cursor: pointer;
-  transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease;
+  background-color: white;
+
 }
 .group-preview:hover{
   box-shadow: 0px 1px 50px rgba(14, 153, 47, 0.5);
@@ -330,4 +348,43 @@ main {
 }
 .sidebar-groups{
   margin-top: 20px;
+}
+.sidebar-menu-item{
+  margin-bottom: 15px;
+  display: flex;
+  gap: 10px;
+  padding: 10px 20px;
+  box-shadow: 0px 1px 50px rgb(0, 0, 0, 0.1 );
+  border-radius: 15px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background-color: white;
+
+}
+.sidebar-menu-item:hover{
+  box-shadow: 0px 1px 50px rgba(14, 153, 47, 0.5);
+  
+}
+.sidebar-menu{
+  margin-bottom:40px;
+  & a{
+    text-decoration: none;
+    color: black;
+  }
+}
+.advertisement{
+  width: 100%;
+  border-radius: 30px;
+  border: var(--border-card);
+  margin-top: 10px;
+  transition: all 0.2s ease;
+
+}
+.advertisement:hover{
+  box-shadow: 0px 0px 20px rgba(14, 153, 47, 0.2);
+
+}
+
+.single-post{
+  padding: 25px 40px;
 }

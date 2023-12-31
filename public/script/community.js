@@ -19,7 +19,8 @@ class Community {
       }
 
       skeletonLoadingStop();
-      document.getElementById("group-name").innerText = "Newsfeed";
+      document.getElementById("group-name").innerText = "Community хэсэг";
+      document.getElementById("group-description").innerText = "Community нь та өөрийн сонирхолоо бусадтай хуваалцах харилцан яриа хэлэлцээр үүсгэх ямар нэгэн зүйлсийн талаар ярилцах боломжтой талбар юм.";
 
       document.getElementById("groups").insertAdjacentHTML("afterbegin", htmlGroups);
 

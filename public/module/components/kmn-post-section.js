@@ -70,6 +70,8 @@ class PostSection extends HTMLElement {
       const posts = await response.json();
       this.render(posts, groupData);
       document.getElementById("group-name").innerText = groupData[0].name;
+      document.getElementById("group-description").innerText = groupData[0].description;
+
     } catch (error) {
       console.error(error);
     }

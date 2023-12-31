@@ -186,7 +186,7 @@ class Header extends HTMLElement {
             <header>
                 <nav>
                 <a href="/"><img id="logo" src="public/assets/logoT.svg" alt="logo"/></a>
-                    <ul class="desktop">
+                    <ul class="desktop" style="${currentPageURL === "/community" ? "display: none;" : ""}">
                     <li class="${
                       currentPageURL === "/" ? "active" : ""
                     }"><a href="/">Home</a></li>

@@ -12,7 +12,7 @@ class Post extends HTMLElement {
     this.username = this.getAttribute("username");
 
     this.innerHTML = `
-        <article class="card">
+        <article class="card single-post">
             <div class="author">
                 <img class="pfp" src="public/assets/pfp.png" alt="profile">
                 <p class="post-username">${this.username}</p>
