@@ -1,8 +1,7 @@
 export const skeletonLoading = () => {
-    document.getElementById("your-groups").innerHTML =
+    document.getElementById("groups").innerHTML =
       '<div class="loading-skeleton-group"></div>';
-    document.getElementById("rec-groups").innerHTML =
-      '<div class="loading-skeleton-group"></div>';
+    
     document
       .getElementById("posts")
       .insertAdjacentHTML(
@@ -14,8 +13,7 @@ export const skeletonLoading = () => {
     ).innerHTML = `<div class="loading-skeleton"></div>`;
   }
 export const skeletonLoadingStop = () => {
-    document.getElementById("your-groups").innerHTML = "";
-    document.getElementById("rec-groups").innerHTML = "";
+    document.getElementById("groups").innerHTML = "";
     document.querySelector(".loading-skeleton-post").style.display = "none";
     document.getElementById("group-name").innerHTML = ``;
 }

@@ -21,10 +21,9 @@ class Community {
       skeletonLoadingStop();
       document.getElementById("group-name").innerText = "Newsfeed";
 
-      document.getElementById("your-groups").insertAdjacentHTML("afterbegin", htmlGroups);
-      document.getElementById("rec-groups").insertAdjacentHTML("afterbegin", htmlGroups);
+      document.getElementById("groups").insertAdjacentHTML("afterbegin", htmlGroups);
 
-      const groupLinks = document.querySelectorAll(".group-link");
+      const groupLinks = document.querySelectorAll(".group-preview");
 
       groupLinks.forEach((link) => {
         link.addEventListener("click", (event) => {
@@ -56,7 +55,17 @@ class Group {
   }
 
   Render() {
-    return `<div class="group-link" data-group-id="${this.group_id}">${this.name}</div>`;
+    return `
+
+    <div class="group-preview" data-group-id="${this.group_id}">
+      <div class="group-preview-icon">
+        <img src="public/assets/icons/group.svg" />
+      </div>
+      <div class="group-preview-right">
+        <h4 class="group-preview-name">${this.name}</h4>
+      </div>
+    </div>
+    `;
   }
 }
 

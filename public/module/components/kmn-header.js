@@ -12,7 +12,7 @@ header{
         box-shadow: 0 5px 25px rgb(0, 0, 0, 0.0);
         align-items: center;
         height: 4em;
-        // border: var(--border-card);
+        border: var(--border-card);
         & ul{
             display: flex;
             align-items: center;

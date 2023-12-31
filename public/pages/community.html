@@ -15,6 +15,30 @@
   <body>
     <!-- Header web component shuu eniig copydood door baigaa scriptiig copydooroi headeriiha orond -->
     <kmn-header></kmn-header>
+    <aside class="left-nav">
+      <section>
+       
+      </section>
+    </aside>
+    <aside class="right-nav">
+      <section>
+        <div class="mini-profile-container">
+          <div class="mini-profile-cover"></div>
+          <img class="mini-profile-picture" src="public/assets/pfp.png" />
+          <div class="mini-profile-info">
+            <h2 id="mini-profile-name">Margad</h2>
+            <h5 id="mini-profile-mbti">ENTJ-A</h5>
+            <button class="mini-profile-btn">Үзэх</button>
+          </div>
+        </div>
+      </section>
+      <section class="sidebar-groups">
+        <h3>Группууд</h3>
+        <div id="groups">
+          
+        </div>
+      </section>
+    </aside>
     <main>
       <!-- <h1 id="group-name"></h1> -->
       <div class="group-info">
@@ -22,7 +46,7 @@
           <img
             class="group-info-group-icon"
             alt="group"
-            src="/public/assets/icons/leave.svg"
+            src="/public/assets/icons/group.svg"
           />
           <h3 id="group-name"></h3>
         </div>
@@ -52,22 +76,9 @@
           <!-- <kmn-comment-section></kmn-comment-section> -->
         </section>
 
-        <aside>
-          <section>
-            <h3>Таны группууд</h3>
-            <div class="card" id="your-groups">
-              <!-- End groupuud ornoo -->
-            </div>
-          </section>
-          <section>
-            <h3>Санал болгох группууд</h3>
-            <div class="card" id="rec-groups">
-              <!-- End groupuud ornoo -->
-            </div>
-          </section>
-        </aside>
       </section>
     </main>
+    
     <script type="module" src="public/module/components/kmn-header.js"></script>
     <script type="module" src="public/module/components/kmn-post.js"></script>
     <script type="module" src="public/module/components/kmn-comment-section.js"></script>
