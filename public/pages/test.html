@@ -17,6 +17,7 @@
 
 <body>
   <kmn-header></kmn-header>
+  <!-- <quiz-component></quiz-component> -->
   <main id="quiz">
     <div data-chunk="test-data" class="data">
       <!-- <div id="progress-wrapper" class="progress-wrapper initial">
@@ -28,7 +29,6 @@
       <span id="skip-content"></span> -->
       <form>
         <div data-quiz="" class="test-questions comp" id="quiz-container">
-          <!-- <quiz-component></quiz-component> -->
         </div>
         <div class="action-row" style="">
           <button type="button" onclick="loadNextQuestion()"
@@ -65,6 +65,39 @@
     </div>
   </div>
   <script src="public/script/test.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      // Set for default
+      const fieldsets = document.getElementsByTagName("fieldset");
+      if (fieldsets.length > 0) {
+        fieldsets[0].style.opacity = 1;
+        for (let i = 1; i < fieldsets.length; i++) {
+          fieldsets[i].style.opacity = 0.5;
+        }
+      }
+
+      document.addEventListener("change", function (event) {
+        const target = event.target;
+        if (target.type === "radio") {
+          const currentFieldset = target.closest("fieldset");
+          if (currentFieldset) {
+            for (let i = 0; i < fieldsets.length; i++) {
+              fieldsets[i].style.opacity = 0.5;
+            }
+
+            const nextFieldset = currentFieldset.nextElementSibling;
+            if (nextFieldset) {
+              nextFieldset.style.opacity = 1;
+              nextFieldset.scrollIntoView({ 
+                behavior: "smooth", 
+                block: 'center',
+                inline: 'center' });
+            }
+          }
+        }
+      });
+    });
+  </script>
 </body>
 
 </html>
