@@ -16,7 +16,7 @@ router.get("/test", (req, res) => {
 
 router.get("/login", (req, res) => {
   if (login.sessions.has(Number(req.cookies.session_id))) {
-    res.redirect('/');
+    res.redirect("/");
     return;
   }
   res.sendFile(path.join(__dirname, "../public/pages/login.html"));

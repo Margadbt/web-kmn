@@ -120,19 +120,19 @@ async function loadNextQuestion() {
         resultsBySummary[j] = summary;
       }
 
-      var finalResult = "";
+      var mbtiResult = "";
       // Assign the letters for results
-      resultsBySummary[0] > 0 ? (finalResult += "E") : (finalResult += "I");
-      resultsBySummary[1] > 0 ? (finalResult += "S") : (finalResult += "N");
-      resultsBySummary[2] > 0 ? (finalResult += "T") : (finalResult += "F");
-      resultsBySummary[3] > 0 ? (finalResult += "J") : (finalResult += "P");
-      finalResult += "-";
-      resultsBySummary[4] < 0 ? (finalResult += "T") : (finalResult += "A");
+      resultsBySummary[0] > 0 ? (mbtiResult += "E") : (mbtiResult += "I");
+      resultsBySummary[1] > 0 ? (mbtiResult += "S") : (mbtiResult += "N");
+      resultsBySummary[2] > 0 ? (mbtiResult += "T") : (mbtiResult += "F");
+      resultsBySummary[3] > 0 ? (mbtiResult += "J") : (mbtiResult += "P");
+      mbtiResult += "-";
+      resultsBySummary[4] < 0 ? (mbtiResult += "T") : (mbtiResult += "A");
 
-      console.log(finalResult);
+      console.log(mbtiResult);
 
       const resultBody = {
-        result: finalResult,
+        result: mbtiResult,
       };
 
       fetch("/api/mbti/result", {
@@ -159,7 +159,7 @@ async function loadNextQuestion() {
       const resultsDisplay = document.getElementById("results-display");
       const quizBody = document.getElementById("quiz");
 
-      resultsDisplay.textContent = `${finalResult}`;
+      resultsDisplay.textContent = `${mbtiResult}`;
 
       notificationPopup.style.display = "flex";
       quizBody.style.display = "none";
