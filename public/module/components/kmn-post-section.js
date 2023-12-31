@@ -34,7 +34,6 @@ class PostSection extends HTMLElement {
   }
 
   render(posts, groupData) {
-    console.log(posts);
     let htmlPosts = ``;
     for (const post of posts) {
       const groupName = post.groupName || "Newsfeed";

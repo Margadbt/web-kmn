@@ -257,7 +257,7 @@ class Header extends HTMLElement {
     async function fetchUser() {
       try {
         const response = await fetch("/user");
-        const user = await response.json();
+        const user = response.status === 200 ? await response.json() : null;
         console.log(user);
         if (pfpElement) {
           // Use innerHTML to set both the image and the user's name
