@@ -12,7 +12,7 @@ header{
         box-shadow: 0 5px 25px rgb(0, 0, 0, 0.0);
         align-items: center;
         height: 4em;
-        border: var(--border-card);
+        // border: var(--border-card);
         & ul{
             display: flex;
             align-items: center;
@@ -44,6 +44,8 @@ header{
 
         & .right{
             display: flex;
+            justify-content: center;
+            align-items: center;
             gap: 5px;
         }
     }
@@ -89,7 +91,7 @@ header{
         flex-direction: column;
         background-color: #fff;
         width: 200px;
-        height: 200px;
+        height: 400px;
         box-shadow: var(--shadow-card);
         border: var(--border-card);
         border-radius: var(--border-rad);

@@ -22,7 +22,7 @@ body{
     --color-yellow: #EAB142;
     --color-red: #FF6B6B;
     --color-blue: #2383DB;
-    --color-main-bg: #F5F5F5;
+    --color-main-bg: #eef3f0;
     --color-card-bg: #FFFFFF;
 
     --color-agree: #3ccb81;
@@ -41,6 +41,7 @@ body{
     --card-background: #FFFFFF;
     
 }
+
 
 button.green{
     background-color: var(--color-main);
@@ -63,7 +64,7 @@ button.green:hover{
 
 .card{
     background-color: var(--color-card-bg);
-    border: var(--border-card);
+    /* border: var(--border-card); */
     border-radius: var(--border-rad);
     margin-top: 1em;
     box-shadow: var(--shadow-card);
@@ -74,5 +75,8 @@ button.green:hover{
     button{
         font-size: 0.9em;
         padding: 8px 10px;
+    }
+    p{
+        font-size: 0.9em;
     }
 }

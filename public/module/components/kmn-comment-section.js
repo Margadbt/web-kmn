@@ -4,6 +4,7 @@ export class KmnCommentSection extends HTMLElement {
         this.post_id = post_id;
         this.innerHTML = `
         <div class="card">
+            
             <h3 style="margin-bottom: 10px;">Сэтгэгдэлүүд:</h3>
             <div class="comments">
             

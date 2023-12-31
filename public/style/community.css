@@ -74,7 +74,7 @@ aside {
   padding: 10px 0;
 }
 .reactions {
-  border-top: 1px solid rgb(206, 206, 206);
+  border-top: 0.5px solid rgb(0, 0, 0, 0.05);
   display: flex;
   justify-content: space-between;
   gap: 5px;
@@ -225,11 +225,14 @@ aside {
     padding-top: 7rem;
   }
   aside {
-    display: none;
+    /* display: none; */
   }
   .container {
-    display: grid;
+    /* display: grid;
     grid-template-columns: repeat(1, 1fr);
+    grid-template-rows: repeat(2, 1fr); */
+    display: flex;
+    flex-direction: column-reverse;
   }
   .psp {
     width: 100%;

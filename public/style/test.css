@@ -231,7 +231,7 @@ fieldset {
 .AllowBtn {
     width: 10em;
     height: 3em;
-    background-color: var(--color-disagree)
+    background-color: var(--color-disagree);
     color: white;
     border: none;
     border-radius: 20px;
