@@ -12,7 +12,7 @@ header{
         box-shadow: 0 5px 25px rgb(0, 0, 0, 0.0);
         align-items: center;
         height: 4em;
-        // border: var(--border-card);
+        border: var(--border-card);
         & ul{
             display: flex;
             align-items: center;
@@ -186,7 +186,7 @@ class Header extends HTMLElement {
             <header>
                 <nav>
                 <a href="/"><img id="logo" src="public/assets/logoT.svg" alt="logo"/></a>
-                    <ul class="desktop">
+                    <ul class="desktop" style="${currentPageURL === "/community" ? "display: none;" : ""}">
                     <li class="${
                       currentPageURL === "/" ? "active" : ""
                     }"><a href="/">Home</a></li>
@@ -257,7 +257,7 @@ class Header extends HTMLElement {
     async function fetchUser() {
       try {
         const response = await fetch("/user");
-        const user = await response.json();
+        const user = response.status === 200 ? await response.json() : null;
         console.log(user);
         if (pfpElement) {
           // Use innerHTML to set both the image and the user's name

@@ -34,7 +34,6 @@ class PostSection extends HTMLElement {
   }
 
   render(posts, groupData) {
-    console.log(posts);
     let htmlPosts = ``;
     for (const post of posts) {
       const groupName = post.groupName || "Newsfeed";
@@ -70,6 +69,8 @@ class PostSection extends HTMLElement {
       const posts = await response.json();
       this.render(posts, groupData);
       document.getElementById("group-name").innerText = groupData[0].name;
+      document.getElementById("group-description").innerText = groupData[0].description;
+
     } catch (error) {
       console.error(error);
     }

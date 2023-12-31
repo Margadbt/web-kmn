@@ -19,12 +19,12 @@ class Community {
       }
 
       skeletonLoadingStop();
-      document.getElementById("group-name").innerText = "Newsfeed";
+      document.getElementById("group-name").innerText = "Community хэсэг";
+      document.getElementById("group-description").innerText = "Community нь та өөрийн сонирхолоо бусадтай хуваалцах харилцан яриа хэлэлцээр үүсгэх ямар нэгэн зүйлсийн талаар ярилцах боломжтой талбар юм.";
 
-      document.getElementById("your-groups").insertAdjacentHTML("afterbegin", htmlGroups);
-      document.getElementById("rec-groups").insertAdjacentHTML("afterbegin", htmlGroups);
+      document.getElementById("groups").insertAdjacentHTML("afterbegin", htmlGroups);
 
-      const groupLinks = document.querySelectorAll(".group-link");
+      const groupLinks = document.querySelectorAll(".group-preview");
 
       groupLinks.forEach((link) => {
         link.addEventListener("click", (event) => {
@@ -34,6 +34,10 @@ class Community {
         });
       });
 
+      const userResponse = await fetch("/user");
+        const user = userResponse.status === 200 ? await userResponse.json() : null;
+        document.getElementById("mini-profile-name").innerText = user?.fullname || "Нэвтрээгүй";
+      
       const postBtn = document.querySelector(".write-post-post-btn");
       postBtn.addEventListener("click", () => {
         const groupId = window.currentGroupId; // Use a property to store the current group_id
@@ -56,7 +60,17 @@ class Group {
   }
 
   Render() {
-    return `<div class="group-link" data-group-id="${this.group_id}">${this.name}</div>`;
+    return `
+
+    <div class="group-preview" data-group-id="${this.group_id}">
+      <div class="group-preview-icon">
+        <img src="public/assets/icons/group.svg" />
+      </div>
+      <div class="group-preview-right">
+        <h4 class="group-preview-name">${this.name}</h4>
+      </div>
+    </div>
+    `;
   }
 }
 
