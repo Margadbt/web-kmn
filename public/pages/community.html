@@ -11,43 +11,65 @@
     <link rel="stylesheet" href="public/style/var.css" />
     <link rel="stylesheet" href="public/style/community.css" />
     <script type="module" src="public/script/community.js"></script>
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="public/assets/favicon/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="public/assets/favicon/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="public/assets/favicon/favicon-16x16.png"
+    />
+    <link rel="manifest" href="public/assets/favicon/site.webmanifest" />
   </head>
   <body>
     <!-- Header web component shuu eniig copydood door baigaa scriptiig copydooroi headeriiha orond -->
     <kmn-header></kmn-header>
     <aside class="left-nav">
       <section>
-       <div class="sidebar-menu">
-        <a href="/">
-          <div class="sidebar-menu-item">
-            <img src="public/assets/icons/home.svg" />
-            <h3>Нүүр хуудас</h3>
-          </div>
-        </a>
-        <a href="/test">
-          <div class="sidebar-menu-item">
-            <img src="public/assets/icons/test.svg" />
-            <h3>MBTI Test</h3>
-          </div>
-        </a>
-        <a href="/community">
-          <div class="sidebar-menu-item">
-            <img src="public/assets/icons/community.svg" />
-            <h3 style="color: var(--color-main);">Community</h3>
-          </div>
-        </a>
-        <a href="/plan">
-          <div class="sidebar-menu-item">
-            <img src="public/assets/icons/plan.svg" />
-            <h3>Plan</h3>
-          </div>
-        </a>
-       </div>
+        <div class="sidebar-menu">
+          <a href="/">
+            <div class="sidebar-menu-item">
+              <img src="public/assets/icons/home.svg" />
+              <h3>Нүүр хуудас</h3>
+            </div>
+          </a>
+          <a href="/test">
+            <div class="sidebar-menu-item">
+              <img src="public/assets/icons/test.svg" />
+              <h3>MBTI Test</h3>
+            </div>
+          </a>
+          <a href="/community">
+            <div class="sidebar-menu-item">
+              <img src="public/assets/icons/community.svg" />
+              <h3 style="color: var(--color-main)">Community</h3>
+            </div>
+          </a>
+          <a href="/plan">
+            <div class="sidebar-menu-item">
+              <img src="public/assets/icons/plan.svg" />
+              <h3>Plan</h3>
+            </div>
+          </a>
+        </div>
       </section>
-      <section style="margin-top: 20px;">
+      <section style="margin-top: 20px">
         <h3>Танд таалагдаж магадгүй</h3>
-        <a href="/"><img class="advertisement" src="public/assets/ad1.png" /></a>
-        <a href="/"><img class="advertisement" src="public/assets/ad1.png" /></a>
+        <a href="/"
+          ><img class="advertisement" src="public/assets/ad1.png"
+        /></a>
+        <a href="/"
+          ><img class="advertisement" src="public/assets/ad1.png"
+        /></a>
       </section>
     </aside>
     <aside class="right-nav">
@@ -64,9 +86,7 @@
       </section>
       <section class="sidebar-groups">
         <h3>Группууд</h3>
-        <div id="groups">
-          
-        </div>
+        <div id="groups"></div>
       </section>
     </aside>
     <main>
@@ -75,16 +95,19 @@
         <div class="group-info-left">
           <div class="group-info-left-item">
             <img
-            class="group-info-group-icon"
-            alt="group"
-            src="/public/assets/icons/group.svg"
+              class="group-info-group-icon"
+              alt="group"
+              src="/public/assets/icons/group.svg"
             />
             <h3 id="group-name"></h3>
           </div>
-          <p id="group-description">
-          </p>
+          <p id="group-description"></p>
         </div>
-        <img class="group-info-right" src="public/assets/icons/group-illustration.svg" alt="group-illustration">
+        <img
+          class="group-info-right"
+          src="public/assets/icons/group-illustration.svg"
+          alt="group-illustration"
+        />
       </div>
       <section class="container">
         <section id="posts">
@@ -107,18 +130,26 @@
             </div>
           </div>
           <kmn-post-section> </kmn-post-section>
-          
+
           <!-- <kmn-comment-section></kmn-comment-section> -->
         </section>
-
       </section>
     </main>
-    
+
     <script type="module" src="public/module/components/kmn-header.js"></script>
     <script type="module" src="public/module/components/kmn-post.js"></script>
-    <script type="module" src="public/module/components/kmn-comment-section.js"></script>
-    <script type="module" src="public/module/components/kmn-comment.js"></script>
-    <script type="module" src="public/module/components/kmn-comment-input.js"></script>
+    <script
+      type="module"
+      src="public/module/components/kmn-comment-section.js"
+    ></script>
+    <script
+      type="module"
+      src="public/module/components/kmn-comment.js"
+    ></script>
+    <script
+      type="module"
+      src="public/module/components/kmn-comment-input.js"
+    ></script>
     <script
       type="module"
       src="public/module/components/kmn-post-section.js"

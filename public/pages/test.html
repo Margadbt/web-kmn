@@ -1,103 +1,137 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="MBTI Personality test and other fun activities you can do in community"
+    />
+    <title>Тестүүд - MBTI</title>
+    <link rel="stylesheet" href="public/style/home.css" />
+    <link rel="stylesheet" href="public/style/header.css" />
+    <link rel="stylesheet" href="public/style/var.css" />
+    <link rel="stylesheet" href="public/style/test.css" />
+    <script type="module" src="public/module/components/kmn-header.js"></script>
+    <script type="module" src="public/module/components/kmn-test.js"></script>
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="public/assets/favicon/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="public/assets/favicon/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="public/assets/favicon/favicon-16x16.png"
+    />
+    <link rel="manifest" href="public/assets/favicon/site.webmanifest" />
+    <!-- <script type="module" src="/module/components/test.js"></script> -->
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="MBTI Personality test and other fun activities you can do in community">
-  <title>Тестүүд - MBTI</title>
-  <link rel="stylesheet" href="public/style/home.css" />
-  <link rel="stylesheet" href="public/style/header.css" />
-  <link rel="stylesheet" href="public/style/var.css" />
-  <link rel="stylesheet" href="public/style/test.css">
-  <script type="module" src="public/module/components/kmn-header.js"></script>
-  <script type="module" src="public/module/components/kmn-test.js"></script>
-  <!-- <script type="module" src="/module/components/test.js"></script> -->
-</head>
-
-<body>
-  <kmn-header></kmn-header>
-  <!-- <quiz-component></quiz-component> -->
-  <main id="quiz">
-    <div data-chunk="test-data" class="data">
-      <!-- <div id="progress-wrapper" class="progress-wrapper initial">
+  <body>
+    <kmn-header></kmn-header>
+    <!-- <quiz-component></quiz-component> -->
+    <main id="quiz">
+      <div data-chunk="test-data" class="data">
+        <!-- <div id="progress-wrapper" class="progress-wrapper initial">
         <div class="percentage">0%</div>
         <div class="progress-bar">
           <div class="filler" style="width: 0%;"></div>
         </div>
       </div>
       <span id="skip-content"></span> -->
-      <form>
-        <div data-quiz="" class="test-questions comp" id="quiz-container">
-        </div>
-        <div class="action-row" style="">
-          <button type="button" onclick="loadNextQuestion()"
-            class="bt-action"
-            aria-label="Go to next set of questions">
-            <span class="button__text">Next</span>
-            <span data-v-72d36796=""
-              class="sp-icon size--inherit color--inherit icon--rotatable icon--dir-rt icon--arrow button__icon--rt"
-              aria-hidden="true">
-              <svg aria-labelledby="i_y3c3b38oac" viewBox="0 0 48 48" role="img" xmlns="http://www.w3.org/2000/svg">
-                <title id="i_y3c3b38oac">Go</title>
-                <path data-v-72d36796=""
-                  d="M23.296875,3.421875 L22.63125,4.0875 C22.190625,4.528125 22.190625,5.240625 22.63125,5.68125 L39.365625,22.40625 L4.125,22.40625 C3.50625,22.40625 3,22.9125 3,23.53125 L3,24.46875 C3,25.0875 3.50625,25.59375 4.125,25.59375 L39.365625,25.59375 L22.63125,42.328125 C22.190625,42.76875 22.190625,43.48125 22.63125,43.921875 L23.296875,44.5875 C23.7375,45.028125 24.45,45.028125 24.890625,44.5875 L44.68125,24.796875 C45.121875,24.35625 45.121875,23.64375 44.68125,23.203125 L24.890625,3.421875 C24.440625,2.98125 23.7375,2.98125 23.296875,3.421875 Z">
-                </path>
-              </svg>
-            </span>
-          </button>
-        </div>
-      </form>
+        <form>
+          <div
+            data-quiz=""
+            class="test-questions comp"
+            id="quiz-container"
+          ></div>
+          <div class="action-row" style="">
+            <button
+              type="button"
+              onclick="loadNextQuestion()"
+              class="bt-action"
+              aria-label="Go to next set of questions"
+            >
+              <span class="button__text">Next</span>
+              <span
+                data-v-72d36796=""
+                class="sp-icon size--inherit color--inherit icon--rotatable icon--dir-rt icon--arrow button__icon--rt"
+                aria-hidden="true"
+              >
+                <svg
+                  aria-labelledby="i_y3c3b38oac"
+                  viewBox="0 0 48 48"
+                  role="img"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <title id="i_y3c3b38oac">Go</title>
+                  <path
+                    data-v-72d36796=""
+                    d="M23.296875,3.421875 L22.63125,4.0875 C22.190625,4.528125 22.190625,5.240625 22.63125,5.68125 L39.365625,22.40625 L4.125,22.40625 C3.50625,22.40625 3,22.9125 3,23.53125 L3,24.46875 C3,25.0875 3.50625,25.59375 4.125,25.59375 L39.365625,25.59375 L22.63125,42.328125 C22.190625,42.76875 22.190625,43.48125 22.63125,43.921875 L23.296875,44.5875 C23.7375,45.028125 24.45,45.028125 24.890625,44.5875 L44.68125,24.796875 C45.121875,24.35625 45.121875,23.64375 44.68125,23.203125 L24.890625,3.421875 C24.440625,2.98125 23.7375,2.98125 23.296875,3.421875 Z"
+                  ></path>
+                </svg>
+              </span>
+            </button>
+          </div>
+        </form>
+      </div>
+    </main>
+    <div class="notificationCard" id="notification-popup">
+      <p class="notificationHeading">Results are up!</p>
+      <svg class="bellIcon" viewBox="0 0 448 512">
+        <path
+          d="M224 0c-17.7 0-32 14.3-32 32V51.2C119 66 64 130.6 64 208v18.8c0 47-17.3 92.4-48.5 127.6l-7.4 8.3c-8.4 9.4-10.4 22.9-5.3 34.4S19.4 416 32 416H416c12.6 0 24-7.4 29.2-18.9s3.1-25-5.3-34.4l-7.4-8.3C401.3 319.2 384 273.9 384 226.8V208c0-77.4-55-142-128-156.8V32c0-17.7-14.3-32-32-32zm45.3 493.3c12-12 18.7-28.3 18.7-45.3H224 160c0 17 6.7 33.3 18.7 45.3s28.3 18.7 45.3 18.7s33.3-6.7 45.3-18.7z"
+        ></path>
+      </svg>
+      <div id="results-display"></div>
+      <p class="notificationPara">Would you like to save your results?</p>
+      <div class="buttonContainer">
+        <button class="AllowBtn">Yes</button>
+        <button class="NotnowBtn">No thanks</button>
+      </div>
     </div>
-  </main>
-  <div class="notificationCard" id="notification-popup">
-    <p class="notificationHeading">Results are up!</p>
-    <svg class="bellIcon" viewBox="0 0 448 512">
-      <path
-        d="M224 0c-17.7 0-32 14.3-32 32V51.2C119 66 64 130.6 64 208v18.8c0 47-17.3 92.4-48.5 127.6l-7.4 8.3c-8.4 9.4-10.4 22.9-5.3 34.4S19.4 416 32 416H416c12.6 0 24-7.4 29.2-18.9s3.1-25-5.3-34.4l-7.4-8.3C401.3 319.2 384 273.9 384 226.8V208c0-77.4-55-142-128-156.8V32c0-17.7-14.3-32-32-32zm45.3 493.3c12-12 18.7-28.3 18.7-45.3H224 160c0 17 6.7 33.3 18.7 45.3s28.3 18.7 45.3 18.7s33.3-6.7 45.3-18.7z">
-      </path>
-    </svg>
-    <div id="results-display"></div>
-    <p class="notificationPara">Would you like to save your results?</p>
-    <div class="buttonContainer">
-      <button class="AllowBtn">Yes</button>
-      <button class="NotnowBtn">No thanks</button>
-    </div>
-  </div>
-  <script src="public/script/test.js"></script>
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      // Set for default
-      const fieldsets = document.getElementsByTagName("fieldset");
-      if (fieldsets.length > 0) {
-        fieldsets[0].style.opacity = 1;
-        for (let i = 1; i < fieldsets.length; i++) {
-          fieldsets[i].style.opacity = 0.5;
-        }
-      }
-
-      document.addEventListener("change", function (event) {
-        const target = event.target;
-        if (target.type === "radio") {
-          const currentFieldset = target.closest("fieldset");
-          if (currentFieldset) {
-            for (let i = 0; i < fieldsets.length; i++) {
-              fieldsets[i].style.opacity = 0.5;
-            }
-
-            const nextFieldset = currentFieldset.nextElementSibling;
-            if (nextFieldset) {
-              nextFieldset.style.opacity = 1;
-              nextFieldset.scrollIntoView({ 
-                behavior: "smooth", 
-                block: 'center',
-                inline: 'center' });
-            }
+    <script src="public/script/test.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // Set for default
+        const fieldsets = document.getElementsByTagName("fieldset");
+        if (fieldsets.length > 0) {
+          fieldsets[0].style.opacity = 1;
+          for (let i = 1; i < fieldsets.length; i++) {
+            fieldsets[i].style.opacity = 0.5;
           }
         }
-      });
-    });
-  </script>
-</body>
 
+        document.addEventListener("change", function (event) {
+          const target = event.target;
+          if (target.type === "radio") {
+            const currentFieldset = target.closest("fieldset");
+            if (currentFieldset) {
+              for (let i = 0; i < fieldsets.length; i++) {
+                fieldsets[i].style.opacity = 0.5;
+              }
+
+              const nextFieldset = currentFieldset.nextElementSibling;
+              if (nextFieldset) {
+                nextFieldset.style.opacity = 1;
+                nextFieldset.scrollIntoView({
+                  behavior: "smooth",
+                  block: "center",
+                  inline: "center",
+                });
+              }
+            }
+          }
+        });
+      });
+    </script>
+  </body>
 </html>
