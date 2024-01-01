@@ -38,14 +38,15 @@ class Login {
 
   registerUser(username, email, password) {
     const user_id = Math.floor(Math.random() * 100_000);
-
+    console.log("Got them usersss");
     this.users.set(email, {
       user_id: user_id,
       password: password,
-      fullname: fullname,
+      fullname: username,
     });
+    console.log("Assigned them users");
 
-    console.log(this.users.values);
+    // console.log(this.users.values);
 
     console.log(`User ${email} registered`);
   }
