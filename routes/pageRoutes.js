@@ -42,7 +42,7 @@ router.get("/login", (req, res) => {
   res.sendFile(path.join(__dirname, "../public/pages/login.html"));
 });
 
-router.get("/register", (req, res) => {
+router.post("/register", (req, res) => {
   res.sendFile(path.join(__dirname, "../public/pages/register.html"));
 });
 

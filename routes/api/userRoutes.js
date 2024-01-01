@@ -44,7 +44,7 @@ router.post("/register", (req, res) => {
     }
 
     pool.query(
-      `INSERT INTO "user" (username, email, password) VALUES ($1, $2, $3, $4) RETURNING user_id`,
+      `INSERT INTO "user" (username, email, password, mtbiResult) VALUES ($1, $2, $3, $4) RETURNING user_id`,
       [username, email, hashedPassword, mbtiResult],
       (err, result) => {
         if (err) {
