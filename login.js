@@ -27,7 +27,6 @@ class Login {
       }
 
       const user = result.rows[0];
-      console.log(user);
 
       const passwordMatch = await bcrypt.compare(password, user.password);
 

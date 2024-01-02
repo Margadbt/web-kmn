@@ -38,6 +38,7 @@ class Community {
       const userResponse = await fetch("/user");
         const user = userResponse.status === 200 ? await userResponse.json() : null;
         document.getElementById("mini-profile-name").innerText = user?.fullname || "Нэвтрээгүй";
+        document.getElementById("mini-profile-mbti").innerText = user?.mbti_result || "";
       
       const postBtn = document.querySelector(".write-post-post-btn");
       postBtn.addEventListener("click", () => {
