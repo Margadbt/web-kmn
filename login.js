@@ -40,7 +40,7 @@ class Login {
         user: email,
         user_id: user.user_id,
         fullname: user.username,
-        mbti: user.mbti,
+        mbti_result: user.mbti_result,
         logged: Date.now(),
       });
 
