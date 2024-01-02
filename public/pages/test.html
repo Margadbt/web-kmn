@@ -80,24 +80,24 @@
     <div id="results-display"></div>
     <p class="notificationPara">Would you like to save your results?</p>
     <div class="buttonContainer">
-      <button class="AllowBtn">Yes</button>
+      <button onclick="saveResults()" class="AllowBtn">Yes</button>
       <button class="NotnowBtn">No thanks</button>
     </div>
   </div>
   <script src="public/script/test.js" defer></script>
   <script>
     document.addEventListener("DOMContentLoaded", function () {
-      // Set for default
-      console.log("DOM fully loaded and parsed");
-      const fieldsets = document.getElementsByTagName("fieldset");
-      console.log(fieldsets.length);
-      if (fieldsets.length > 0) {
-        fieldsets[0].style.opacity = 1;
-        for (let i = 1; i < fieldsets.length; i++) {
-          console.log("Doing the god's work");
-          fieldsets[i].style.opacity = 0.5;
+        // Set for default
+        console.log("DOM fully loaded and parsed");
+        const fieldsets = document.getElementsByTagName("fieldset");
+        console.log(fieldsets.length);
+        if (fieldsets.length > 0) {
+          fieldsets[0].style.opacity = 1;
+          for (let i = 1; i < fieldsets.length; i++) {
+            console.log("Doing the god's work");
+            fieldsets[i].style.opacity = 0.5;
+          }
         }
-      }
 
         document.addEventListener("change", function (event) {
           const target = event.target;
@@ -107,6 +107,7 @@
               for (let i = 0; i < fieldsets.length; i++) {
                 fieldsets[i].style.opacity = 0.5;
               }
+            }
 
             const nextFieldset = currentFieldset.nextElementSibling;
             if (nextFieldset) {

@@ -1,9 +1,12 @@
+import { mbtiResult } from "/public/script/test.js";
+
 async function register(event) {
   event.preventDefault();
 
   const username = document.getElementById("username").value;
   const email = document.getElementById("email").value;
   const password = document.getElementById("password").value;
+  const mbtiResult = sessionStorage.getItem("mbtiResult");
 
   try {
     const response = await fetch("/user/register", {
@@ -16,7 +19,7 @@ async function register(event) {
         username: username,
         email: email,
         password: password,
-        mbti_result: "ESFP-A" // ENIIIG YNZLAARAI
+        mbti_result: mbtiResult,
       }),
     });
 
