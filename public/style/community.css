@@ -229,7 +229,7 @@ main {
     margin-bottom: 10px;
   }
   & .group-info-right {
-    height: 100%;
+    width: 10vw;
   }
 }
 .post-username {
@@ -260,22 +260,6 @@ main {
   background-color: var(--color-main);
   color: white;
   padding: 0 10px;
-}
-
-@media screen and (max-width: 1023px) {
-  main {
-    padding-top: 7rem;
-  }
-}
-@media screen and (max-width: 767px) {
-  main {
-    padding-top: 7rem;
-  }
-  
-  .psp {
-    width: 100%;
-    height: 20rem;
-  }
 }
 
 @keyframes skeletonAnimation {
@@ -420,4 +404,72 @@ main {
 
 .single-post{
   padding: 25px 40px;
+}
+
+#group-toggle{
+  display: none;
+  background-color: var(--color-main);
+  padding: 10px;
+  border-radius: 1000px;
+  width: 50px;
+  height: 50px;
+
+  position: fixed;
+  z-index: 100000;
+  bottom: 10px;
+  right: 10px;
+}
+
+@media screen and (max-width: 1023px) {
+  main{
+    margin-right: 320px;
+  }
+  .right-nav{
+    width: 30%;
+  }
+  .left-nav{
+    width: 10%;
+    & .sidebar-menu-item{
+      justify-content: center;
+      & h3{
+        display: none;
+      }
+    }
+  }
+  #group-description{
+    display: none;
+  }
+  .group-info{
+    height: 100px;
+  }
+  .ad{
+    display: none;
+  }
+}
+@media screen and (max-width: 767px) {
+  
+    main {
+      margin: 0 auto;
+      width: 90%;
+      padding-top: 5rem;
+      padding-bottom: 20px;
+    }
+  
+  .left-nav{
+    display: none;
+  }
+  .right-nav{
+  display: none;
+  background-color: rgb(255, 255, 255, 0.8);
+
+    width: 70%;
+    & .mini-profile-container{
+      display: none;
+      
+    }
+  }
+  #group-toggle{
+    display: inline;
+
+  }
 }

@@ -34,27 +34,18 @@
     <kmn-header></kmn-header>
 
     <main>
-      <section class="second-card">
-        <div class="card">
-          <h2>Profile</h2>
-          <img
-            id="profile-picture"
-            src="public/assets/profile_picture.jpg"
-            alt="PFP"
-          />
-          <h3>Name</h3>
-          <p>Bio: Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-
-          <!-- Add more profile information here as needed -->
-          <div class="profile-info">
-            <p>Email: example.email@example.com</p>
-            <p>Location: Our City Comrade, Country</p>
-            <p>Joined: January 1, 2023</p>
-          </div>
+      <div class="profile-container">
+        <div class="profile-cover"></div>
+        <img class="profile-picture" src="public/assets/pfp.png" />
+        <div class="profile-info">
+          <h2 id="profile-name"></h2>
+          <h3 id="profile-email"></h3>
+          <h5 id="profile-mbti">ENTJ-A</h5>
         </div>
-      </section>
+      </div>
     </main>
 
     <script type="module" src="public/module/components/kmn-header.js"></script>
+    <script src="public/script/profile.js"></script>
   </body>
 </html>

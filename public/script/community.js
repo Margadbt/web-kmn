@@ -48,6 +48,15 @@ class Community {
         }
       });
 
+      const groupToggleBtn = document.getElementById("group-toggle");
+      groupToggleBtn.addEventListener("click", ()=>{
+        if(document.querySelector(".right-nav").style.display == "none"){
+          document.querySelector(".right-nav").style.display = "inline";
+        } else{
+          document.querySelector(".right-nav").style.display = "none";
+        }
+      });
+
     } catch (error) {
       console.error(error);
     }

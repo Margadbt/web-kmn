@@ -35,6 +35,10 @@ router.get("/plan", (req, res) => {
 });
 
 router.get("/profile", (req, res) => {
+  if (!login.sessions.has(Number(req.cookies.session_id))) {
+    res.redirect("/login");
+    return;
+  }
   res.sendFile(path.join(__dirname, "../public/pages/profile.html"));
 });
 
