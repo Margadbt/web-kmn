@@ -44,7 +44,7 @@ router.post("/register", (req, res) => {
     }
 
     pool.query(
-      `INSERT INTO "user" (username, email, password, mtbiResult) VALUES ($1, $2, $3, $4) RETURNING user_id`,
+      `INSERT INTO "user" (username, email, password, mtbi_result) VALUES ($1, $2, $3, $4) RETURNING user_id`,
       [username, email, hashedPassword, mbtiResult],
       (err, result) => {
         if (err) {
@@ -63,6 +63,16 @@ router.post("/register", (req, res) => {
     );
   });
 });
+
+router.get("/all", (req, res)=>{
+  pool.query(`SELECT * from "user"`, (err, result)=>{
+    if (err) {
+      res.status(500).send("Internal server Error");
+      return;
+    }
+    res.json(result.rows);
+  })
+})
 
 router.get("/logout", (req, res) => {
   const sessionId = req.cookies.session_id;
