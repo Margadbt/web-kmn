@@ -30,8 +30,10 @@ router.get("/", (req, res) => {
 });
 
 router.post("/register", (req, res) => {
-  console.log("bruh?????");
-  const { username, email, password, mbtiResult } = req.body;
+  // const mbtiResult = sessionStorage.getItem("mbtiResult");
+  // console.log(mbtiResult + "is should be the string of it ");
+
+  const { username, email, password, mbti_result } = req.body;
 
   if (!username || !email || !password) {
     return res.status(400).json({ message: "Invalid registration data" });
@@ -46,7 +48,7 @@ router.post("/register", (req, res) => {
 
     pool.query(
       `INSERT INTO "user" (username, email, password, mbti_result) VALUES ($1, $2, $3, $4) RETURNING user_id`,
-      [username, email, hashedPassword, mbtiResult],
+      [username, email, hashedPassword, mbti_result],
       (err, result) => {
         if (err) {
           console.log(err);

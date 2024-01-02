@@ -5,6 +5,7 @@ async function register(event) {
   const email = document.getElementById("email").value;
   const password = document.getElementById("password").value;
   const mbtiResult = sessionStorage.getItem("mbtiResult");
+  // console.log(mbtiResult + "is should be the string of it ");
 
   try {
     const response = await fetch("/user/register", {
