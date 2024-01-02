@@ -1,4 +1,5 @@
 const mbtiResult = sessionStorage.getItem("mbtiResult");
+
 class Profile {
   constructor() {}
 
@@ -9,15 +10,15 @@ class Profile {
       const email = document.getElementById("profile-email");
 
       const response = await fetch("/user");
-      if (response.status != 200) {
+      if (response.status !== 200) {
         name.innerText = "Нэвтрээгүй";
         return;
       }
+
       const user = await response.json();
       name.innerText = user.fullname;
       email.innerText = user.email;
-      mbti.innerText = mbtiResult;
-      //   mbti.innerText = user.mbti;
+      mbti.innerText = user.mbti_result;
     } catch (error) {
       console.log(error);
     }

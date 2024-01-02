@@ -15,7 +15,6 @@ router.use(cookieParser());
 router.use(express.json());
 
 router.get("/", (req, res) => {
-
   if (!login.sessions.has(Number(req.cookies.session_id))) {
     res.status(401).send("Forbidden");
     return;
@@ -30,6 +29,7 @@ router.get("/", (req, res) => {
 });
 
 router.post("/register", (req, res) => {
+  console.log("bruh?????");
   const { username, email, password, mbtiResult } = req.body;
 
   if (!username || !email || !password) {
@@ -74,7 +74,7 @@ router.get("/all", (req, res) => {
   });
 });
 
-router.get("/login", async (req, res) => {
+router.post("/login", async (req, res) => {
   console.log("its reaching here tho");
   const { email, password } = req.body;
 
