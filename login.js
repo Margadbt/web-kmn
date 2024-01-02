@@ -59,9 +59,9 @@ class Login {
 
   logout(sessionId) {
     this.sessions.delete(sessionId);
-    console.log(`Session ${sessionId} logged out`);
-    sessionStorage.clear();
-    window.location.href = "/";
+    // console.log(`Session ${sessionId} logged out`);
+    // sessionStorage.clear();
+    // window.location.href = "/";
   }
 
   registerUser(username, email, password) {
