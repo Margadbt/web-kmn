@@ -1,5 +1,3 @@
-import { mbtiResult } from "/public/script/test.js";
-
 async function register(event) {
   event.preventDefault();
 
