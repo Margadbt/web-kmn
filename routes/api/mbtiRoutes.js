@@ -9,14 +9,20 @@ const pool = new Pool({
 });
 
 router.post("/result/change", (req, res) => {
-  pool.query(`UPDATE "user" SET mbti_result='${req.body.mbti_result} WHERE user_id=${req.body.user_id}'`, (err, result)=>{
-    if (err) {
-      console.log(err)
-      res.status(500).send('Internal Server Error');
-      return;
+  const { mbti_result, user_id } = req.body;
+
+  pool.query(
+    'UPDATE "user" SET mbti_result=$1 WHERE user_id=$2',
+    [mbti_result, user_id],
+    (err, result) => {
+      if (err) {
+        console.error(err);
+        res.status(500).json({ error: "Internal Server Error" });
+        return;
+      }
+      res.status(201).json(result.rows[0]);
     }
-    res.status(201).json(result.rows[0]);
-  })
+  );
 });
 
 module.exports = router;

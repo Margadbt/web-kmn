@@ -80,14 +80,14 @@
     <div id="results-display"></div>
     <p class="notificationPara">Would you like to save your results?</p>
     <div class="buttonContainer">
-      <button onclick="saveResults()" class="AllowBtn">Yes</button>
-      <button class="NotnowBtn">No thanks</button>
+      <button onclick="registerToSave()" class="AllowBtn">Register</button>
+      <button onclick="loginToSave()" class="NotnowBtn">Login</button>
     </div>
   </div>
   <script src="public/script/test.js" defer></script>
   <script>
+    // Event listener for focusing/defocusing on fieldsets
     document.addEventListener("DOMContentLoaded", function () {
-        // Set for default
         console.log("DOM fully loaded and parsed");
         const fieldsets = document.getElementsByTagName("fieldset");
         console.log(fieldsets.length);

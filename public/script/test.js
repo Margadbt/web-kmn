@@ -3,6 +3,28 @@ const questionsPerPage = 5;
 const responses = [];
 let mbtiResult = "";
 
+// function checkSessionStorage() {
+//   mbtiResult = sessionStorage.getItem("mbtiResult");
+
+//   if (mbtiResult) {
+//     showSaveOption();
+//   } else {
+//     loadNextQuestion();
+//   }
+// }
+
+function showSaveOption() {
+  const quizContainer = document.getElementById("quiz-container");
+  const saveButton = document.getElementById("save-button");
+
+  saveButton.style.display = "block";
+
+  quizContainer.innerHTML = `
+    <p>You've already completed the test. Your result: ${mbtiResult}</p>
+    <button onclick="saveResults()">Save Result</button>
+  `;
+}
+
 async function loadNextQuestion() {
   try {
     const quizContainer = document.getElementById("quiz-container");
@@ -152,11 +174,85 @@ async function loadNextQuestion() {
   }
 }
 
-function saveResults() {
-  // Redirect to login
+function registerToSave() {
+  // Redirect to register
   sessionStorage.setItem("mbtiResult", mbtiResult);
-  console.log("mbti result have been stored in the session!");
+  console.log(
+    "mbti result have been stored in the session through registration!"
+  );
   closeNotificationPopup();
+  window.location.href = "/register";
+}
+async function loginToSave() {
+  // Redirect to login
+  const mbtiResult = sessionStorage.getItem("mbtiResult");
+
+  if (!mbtiResult) {
+    console.error("MBTi Result not found in sessionStorage");
+    return;
+  }
+
+  try {
+    const userId = await getUserId();
+
+    if (!userId) {
+      console.error("User ID not found");
+      return;
+    }
+
+    const apiUrl = "api/mbti/result/change";
+
+    fetch(apiUrl, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        mbti_result: mbtiResult,
+        user_id: userId,
+      }),
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        // return response.json();
+        return response.status;
+      })
+      .then((data) => {
+        console.log("Result change successful:", data);
+        closeNotificationPopup();
+        window.location.href = "/login";
+      })
+      .catch((error) => {
+        console.error("Error during result change:", error);
+      });
+  } catch (error) {
+    console.error("Error fetching user ID:", error);
+  }
+}
+
+async function getUserId() {
+  try {
+    const response = await fetch("/user");
+    if (response.status !== 200) {
+      console.error("Error fetching user ID");
+      return null;
+    }
+
+    const user = await response.json();
+
+    if (!user || typeof user.user_id !== "number") {
+      console.error("User ID not found or not an integer in the response");
+      return null;
+    }
+
+    console.log("Fetched user ID");
+    return user.user_id;
+  } catch (error) {
+    console.error("Error fetching user ID:", error);
+    return null;
+  }
 }
 
 function closeNotificationPopup() {

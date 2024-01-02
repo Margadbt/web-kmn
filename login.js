@@ -44,6 +44,8 @@ class Login {
         logged: Date.now(),
       });
 
+      // sessionStorage.setItem("user_id", user.user_id);
+
       res.cookie("session_id", sid);
       res.status(200).json({
         result: "OK",
@@ -58,6 +60,8 @@ class Login {
   logout(sessionId) {
     this.sessions.delete(sessionId);
     console.log(`Session ${sessionId} logged out`);
+    sessionStorage.clear();
+    window.location.href = "/";
   }
 
   registerUser(username, email, password) {

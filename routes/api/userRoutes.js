@@ -30,9 +30,6 @@ router.get("/", (req, res) => {
 });
 
 router.post("/register", (req, res) => {
-  // const mbtiResult = sessionStorage.getItem("mbtiResult");
-  // console.log(mbtiResult + "is should be the string of it ");
-
   const { username, email, password, mbti_result } = req.body;
 
   if (!username || !email || !password) {
@@ -78,7 +75,6 @@ router.get("/all", (req, res) => {
 });
 
 router.post("/login", async (req, res) => {
-  console.log("its reaching here tho");
   const { email, password } = req.body;
 
   try {
