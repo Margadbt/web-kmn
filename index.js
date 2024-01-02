@@ -47,8 +47,10 @@ login.users.set("nomio@mail.com", {
 });
 
 app.post("/login", (req, res) => {
+  console.log("bruh");
   login.verifyLogin(req, res);
 });
+
 app.post("/register", (req, res) => {
   const { username, email, password } = req.body;
 
