@@ -40,6 +40,7 @@ class Login {
         user: email,
         user_id: user.user_id,
         fullname: user.username,
+        mbti: user.mbti,
         logged: Date.now(),
       });
 
