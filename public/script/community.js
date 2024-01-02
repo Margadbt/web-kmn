@@ -30,7 +30,8 @@ class Community {
         link.addEventListener("click", (event) => {
           event.preventDefault();
           const groupId = link.dataset.groupId;
-          window.dispatchEvent(new CustomEvent("groupClicked", { detail: { groupId } }));
+          const groupName = link.dataset.groupName;
+          window.dispatchEvent(new CustomEvent("groupClicked", { detail: { groupId, groupName } }));
         });
       });
 
@@ -41,8 +42,9 @@ class Community {
       const postBtn = document.querySelector(".write-post-post-btn");
       postBtn.addEventListener("click", () => {
         const groupId = window.currentGroupId; // Use a property to store the current group_id
-        if (groupId) {
-          createPost(groupId);
+        const groupName = window.currentGroupName; // Use a property to store the current group_id
+        if (groupId && groupName) {
+          createPost(groupId, groupName);
         } else {
           console.error("Group ID is not available.");
         }
@@ -66,18 +68,18 @@ class Community {
 class Group {
   constructor(group) {
     this.group_id = group.group_id;
-    this.name = group.name;
+    this.group_name = group.name;
   }
 
   Render() {
     return `
 
-    <div class="group-preview" data-group-id="${this.group_id}">
+    <div class="group-preview" data-group-id="${this.group_id}" data-group-name="${this.group_name}">
       <div class="group-preview-icon">
         <img src="public/assets/icons/group.svg" />
       </div>
       <div class="group-preview-right">
-        <h4 class="group-preview-name">${this.name}</h4>
+        <h4 class="group-preview-name">${this.group_name}</h4>
       </div>
     </div>
     `;
@@ -89,4 +91,5 @@ com.Init();
 
 window.addEventListener("groupClicked", (event) => {
   window.currentGroupId = event.detail.groupId;
+  window.currentGroupName = event.detail.groupName;
 });

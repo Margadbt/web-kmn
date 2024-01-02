@@ -1,4 +1,4 @@
-export async function createPost(group_id) {
+export async function createPost(group_id ,groupName) {
     try {
       const response = await fetch("/user");
       if(response.status == 401){
@@ -20,6 +20,7 @@ export async function createPost(group_id) {
       const postData = {
         user_id: user.user_id,
         group_id: group_id,
+        group_name: groupName,
         description: description,
         like_count: 0,
         comment_count: 0,

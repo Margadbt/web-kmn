@@ -205,8 +205,8 @@ router.get("/post/:id", (req, res) => {
 //CREATE
 router.post("/post/create", (req, res) => {
   pool.query(
-    `INSERT INTO posts (user_id, group_id, description, username, comment_count, like_count )
-    VALUES ('${req.body.user_id}', '${req.body.group_id}', '${req.body.description}',
+    `INSERT INTO posts (user_id, group_id, group_name, description, username, comment_count, like_count )
+    VALUES ('${req.body.user_id}', '${req.body.group_id}', '${req.body.group_name}', '${req.body.description}',
     '${req.body.username}', '${req.body.comment_count}', '${req.body.like_count}' )`,
     (err, result) => {
       if (err) {
@@ -287,6 +287,32 @@ router.get("/post/comment/count/:id", (req,res)=>{
       return;
     }
     res.json(result.rows);
+  })
+})
+//
+router.post("/post/like/:id", (req, res)=>{
+  const postId = req.params.id;
+
+  pool.query(`INSERT INTO likes (user_id, post_id, username, date) VALUES(${req.body.user_id}, ${postId}, '${req.body.username}', '${req.body.date}')`, (err, result)=>{
+    if (err) {
+      console.log(err)
+      res.status(500).send('Internal Server Error');
+      return;
+    }
+    res.status(201).json(result.rows[0]);
+  })
+})
+
+router.get("/post/like/:id", (req, res)=>{
+  const postId = req.params.id;
+
+  pool.query(`SELECT * FROM likes where post_id=${postId}`, (err, result)=>{
+    if (err) {
+      console.log(err)
+      res.status(500).send('Internal Server Error');
+      return;
+    }
+    res.status(201).json(result.rows[0]);
   })
 })
 

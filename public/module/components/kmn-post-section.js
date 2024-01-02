@@ -20,10 +20,8 @@ class PostSection extends HTMLElement {
       const response = await fetch(`/api/community/post/${post_id}`);
       const dataArray = await response.json();
       const data = await dataArray[0];
-      const groupResponse = await fetch(`api/community/group/${data.group_id}`);
-      const groupData = await groupResponse.json();
       let htmlPosts = ``;
-      htmlPosts += `<kmn-post post_id="${data.post_id}" group_id="${data.group_id}" user_id="${data.user_id}" description="${data.description}" like_count="${data.like_count}" photo_url="${data.photo_url}" comment_count="${data.comment_count}" groupName="${groupData[0].name}" username="${data.username}"></kmn-post>`;
+      htmlPosts += `<kmn-post post_id="${data.post_id}" group_id="${data.group_id}" group_name="${data.group_name}" user_id="${data.user_id}" description="${data.description}" like_count="${data.like_count}" photo_url="${data.photo_url}" comment_count="${data.comment_count}" username="${data.username}"></kmn-post>`;
       this.innerHTML = htmlPosts;
       
       const kmnCommentSection = new KmnCommentSection(post_id);
@@ -38,7 +36,7 @@ class PostSection extends HTMLElement {
     let htmlPosts = ``;
     for (const post of posts) {
       const groupName = post.groupName || "Newsfeed";
-      htmlPosts += `<kmn-post post_id="${post.post_id}" group_id="${post.group_id}" user_id="${post.user_id}" description="${post.description}" like_count="${post.like_count}" photo_url="${post.photo_url}" comment_count="${post.comment_count}" groupName="${groupData[0].name}" username="${post.username}"></kmn-post>`;
+      htmlPosts += `<kmn-post post_id="${post.post_id}" group_id="${post.group_id}" user_id="${post.user_id}" description="${post.description}" like_count="${post.like_count}" photo_url="${post.photo_url}" comment_count="${post.comment_count}" group_name="${post.group_name}" username="${post.username}"></kmn-post>`;
     }
     this.innerHTML = htmlPosts;
   }
@@ -55,7 +53,7 @@ class PostSection extends HTMLElement {
         const groupName = groupData.find(
           (item) => post.group_id == item.group_id
         ).name;
-        htmlPosts += `<kmn-post post_id="${post.post_id}" group_id="${post.group_id}" user_id="${post.user_id}" description="${post.description}" like_count="${post.like_count}" photo_url="${post.photo_url}" comment_count="${post.comment_count}" groupName="${groupName}" username="${post.username}"></kmn-post>`;
+        htmlPosts += `<kmn-post post_id="${post.post_id}" group_id="${post.group_id}" user_id="${post.user_id}" description="${post.description}" like_count="${post.like_count}" photo_url="${post.photo_url}" comment_count="${post.comment_count}" group_name="${post.group_name}" username="${post.username}"></kmn-post>`;
       }
       this.innerHTML = htmlPosts;
     } catch (error) {
