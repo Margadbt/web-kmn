@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const login = require("../../login");
 const cookieParser = require("cookie-parser");
-const bcrypt = require("bcrypt")
+const bcrypt = require("bcrypt");
 
 const { Pool } = require("pg");
 
@@ -64,15 +64,43 @@ router.post("/register", (req, res) => {
   });
 });
 
-router.get("/all", (req, res)=>{
-  pool.query(`SELECT * from "user"`, (err, result)=>{
+router.get("/all", (req, res) => {
+  pool.query(`SELECT * from "user"`, (err, result) => {
     if (err) {
       res.status(500).send("Internal server Error");
       return;
     }
     res.json(result.rows);
-  })
-})
+  });
+});
+
+router.get("/login", async (req, res) => {
+  console.log("its reaching here tho");
+  const { email, password } = req.body;
+
+  try {
+    const result = await pool.query("SELECT * FROM user WHERE email = $1", [
+      email,
+    ]);
+
+    if (result.rows.length === 0) {
+      return res.status(401).json({ error: "Invalid email or password" });
+    }
+
+    const user = result.rows[0];
+
+    const passwordMatch = await bcrypt.compare(password, user.password);
+
+    if (!passwordMatch) {
+      return res.status(401).json({ error: "Invalid email or password" });
+    }
+
+    return res.status(200).json({ message: "Login successful" });
+  } catch (error) {
+    console.error("Error during login:", error);
+    return res.status(500).json({ error: "Internal server error" });
+  }
+});
 
 router.get("/logout", (req, res) => {
   const sessionId = req.cookies.session_id;

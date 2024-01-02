@@ -1,34 +1,57 @@
+const { Pool } = require("pg");
+const bcrypt = require("bcrypt");
+
+const pool = new Pool({
+  connectionString:
+    "postgres://default:pKvlL1OiN8Ac@ep-nameless-glade-19285305-pooler.ap-southeast-1.postgres.vercel-storage.com:5432/verceldb?sslmode=require",
+});
+
 class Login {
   constructor() {
     this.sessions = new Map();
     this.users = new Map();
   }
 
-  verifyLogin(req, res) {
+  async verifyLogin(req, res) {
     const email = req.body.email;
-    const pass = req.body.password;
+    const password = req.body.password;
 
-    if (!this.users.has(email) || this.users.get(email).password !== pass) {
-      res.status(403).end();
-      return;
+    try {
+      const result = await pool.query('SELECT * FROM "user" WHERE email = $1', [
+        email,
+      ]);
+
+      if (result.rows.length === 0) {
+        res.status(403).json({ error: "Invalid email or password" });
+        return;
+      }
+
+      const user = result.rows[0];
+
+      const passwordMatch = await bcrypt.compare(password, user.password);
+
+      if (!passwordMatch) {
+        res.status(403).json({ error: "Invalid email or password" });
+        return;
+      }
+
+      const sid = Math.floor(Math.random() * 100_000_000_000_000);
+      this.sessions.set(sid, {
+        user: email,
+        user_id: user.user_id,
+        fullname: user.fullname,
+        logged: Date.now(),
+      });
+
+      res.cookie("session_id", sid);
+      res.status(200).json({
+        result: "OK",
+        username: user.fullname,
+      });
+    } catch (error) {
+      console.error("Error during login:", error);
+      res.status(500).json({ error: "Internal server error" });
     }
-
-    const sid = Math.floor(Math.random() * 100_000_000_000_000);
-    this.sessions.set(sid, {
-      user: email,
-      user_id: this.users.get(email).user_id,
-      fullname: this.users.get(email).fullname,
-      logged: Date.now(),
-    });
-    console.log(this.sessions);
-
-    res.status(200);
-    res.cookie("session_id", sid);
-    res.send({
-      result: "OK",
-      username: this.users.get(email).fullname,
-    });
-    res.redirect("/");
   }
 
   logout(sessionId) {

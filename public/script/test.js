@@ -130,6 +130,7 @@ async function loadNextQuestion() {
       resultsBySummary[4] < 0 ? (mbtiResult += "T") : (mbtiResult += "A");
 
       console.log(mbtiResult);
+      sessionStorage.setItem("mbtiResult", mbtiResult);
 
       const notificationPopup = document.getElementById("notification-popup");
       const resultsDisplay = document.getElementById("results-display");
@@ -160,7 +161,10 @@ function saveResults() {
 
 function closeNotificationPopup() {
   const notificationPopup = document.getElementById("notification-popup");
+  const quizBody = document.getElementById("quiz");
+
   notificationPopup.style.display = "none";
+  quizBody.style.display = "none";
 }
 
 loadNextQuestion();
