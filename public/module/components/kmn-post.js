@@ -6,10 +6,10 @@ class Post extends HTMLElement {
     this.like_count = parseInt(this.getAttribute("like_count"));
     this.photo_url = this.getAttribute("photo_url");
     this.post_id = this.getAttribute("post_id");
-    this.group_name = this.getAttribute("groupName");
     this.comment_count = this.getAttribute("comment_count");
     this.group_id = this.getAttribute("group_id");
     this.username = this.getAttribute("username");
+    this.group_name = this.getAttribute("group_name");
 
     this.innerHTML = `
         <article class="card single-post">
@@ -60,7 +60,6 @@ class Post extends HTMLElement {
     heartActivated.style.display = "none";
 
     likesDiv.addEventListener("click", () => {
-      // Toggle the like state
       isLiked = !isLiked;
 
       if (isLiked) {
