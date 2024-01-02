@@ -39,7 +39,7 @@ class Login {
       this.sessions.set(sid, {
         user: email,
         user_id: user.user_id,
-        fullname: user.fullname,
+        fullname: user.username,
         logged: Date.now(),
       });
 
