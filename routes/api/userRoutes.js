@@ -23,6 +23,7 @@ router.get("/", (req, res) => {
     fullname: login.sessions.get(Number(req.cookies.session_id)).fullname,
     email: login.sessions.get(Number(req.cookies.session_id)).user,
     user_id: login.sessions.get(Number(req.cookies.session_id)).user_id,
+    mbti_result: login.sessions.get(Number(req.cookies.session_id)).mbti_result,
   };
   res.status(200);
   res.json(userInfo);
