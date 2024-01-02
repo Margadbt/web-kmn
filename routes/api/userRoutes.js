@@ -15,7 +15,6 @@ router.use(cookieParser());
 router.use(express.json());
 
 router.get("/", (req, res) => {
-  console.log(login.sessions.has(Number(req.cookies.session_id)));
 
   if (!login.sessions.has(Number(req.cookies.session_id))) {
     res.status(401).send("Forbidden");
