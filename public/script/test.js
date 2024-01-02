@@ -1,6 +1,7 @@
 let currentQuestionIndex = 0;
 const questionsPerPage = 5;
 const responses = [];
+let mbtiResult = "";
 
 async function loadNextQuestion() {
   try {
@@ -120,7 +121,6 @@ async function loadNextQuestion() {
         resultsBySummary[j] = summary;
       }
 
-      var mbtiResult = "";
       // Assign the letters for results
       resultsBySummary[0] > 0 ? (mbtiResult += "E") : (mbtiResult += "I");
       resultsBySummary[1] > 0 ? (mbtiResult += "S") : (mbtiResult += "N");
@@ -131,30 +131,6 @@ async function loadNextQuestion() {
 
       console.log(mbtiResult);
 
-      const resultBody = {
-        result: mbtiResult,
-      };
-
-      fetch("/api/mbti/result", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(resultBody),
-      })
-        .then((response) => {
-          if (!response.ok) {
-            throw new Error("Network response was not ok");
-          }
-          return response.status;
-        })
-        .then((data) => {
-          console.log("sucessfullly:", data);
-          // location.reload();
-        })
-        .catch((error) => {
-          console.error("Error", error);
-        });
       const notificationPopup = document.getElementById("notification-popup");
       const resultsDisplay = document.getElementById("results-display");
       const quizBody = document.getElementById("quiz");
@@ -177,6 +153,8 @@ async function loadNextQuestion() {
 
 function saveResults() {
   // Redirect to login
+  sessionStorage.setItem("mbtiResult", mbtiResult);
+  console.log("mbti result have been stored in the session!");
   closeNotificationPopup();
 }
 
