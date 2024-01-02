@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const login = require("../../login");
 const cookieParser = require("cookie-parser");
+const bcrypt = require("bcrypt")
 
 const { Pool } = require("pg");
 
@@ -44,7 +45,7 @@ router.post("/register", (req, res) => {
     }
 
     pool.query(
-      `INSERT INTO "user" (username, email, password, mtbi_result) VALUES ($1, $2, $3, $4) RETURNING user_id`,
+      `INSERT INTO "user" (username, email, password, mbti_result) VALUES ($1, $2, $3, $4) RETURNING user_id`,
       [username, email, hashedPassword, mbtiResult],
       (err, result) => {
         if (err) {
@@ -54,9 +55,9 @@ router.post("/register", (req, res) => {
 
         const user_id = result.rows[0].user_id;
 
-        const session_id = login.createSession(user_id, username, email);
+        // const session_id = login.createSession(user_id, username, email);
 
-        res.cookie("session_id", session_id, { httpOnly: true });
+        // res.cookie("session_id", session_id, { httpOnly: true });
 
         res.status(201).json({ user_id });
       }

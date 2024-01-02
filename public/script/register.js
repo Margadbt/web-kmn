@@ -6,7 +6,7 @@ async function register(event) {
   const password = document.getElementById("password").value;
 
   try {
-    const response = await fetch("http://localhost:4000/register", {
+    const response = await fetch("/user/register", {
       method: "POST",
       cache: "no-cache",
       headers: {
@@ -16,6 +16,7 @@ async function register(event) {
         username: username,
         email: email,
         password: password,
+        mbti_result: "ESFP-A" // ENIIIG YNZLAARAI
       }),
     });
 
