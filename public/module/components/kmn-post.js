@@ -58,9 +58,19 @@ class Post extends HTMLElement {
     let isLiked = false;
 
     heartActivated.style.display = "none";
+    if(this.like_count > 9){
+      heartIcon.style.display = "none";
+      heartActivated.style.display = "inline-block";
+    }
 
     likesDiv.addEventListener("click", () => {
+
       isLiked = !isLiked;
+      
+      // if(this.like_count>9){
+      //   heartIcon.style.display = "none";
+      //   heartActivated.style.display = "inline-block";
+      // }
 
       if (isLiked) {
         heartIcon.style.display = "none";
