@@ -1,4 +1,5 @@
 const style = `
+
 header{    
     position: fixed;
     z-index: 1000;
@@ -148,6 +149,62 @@ header{
     font-weight: 600;
 }
 
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 2.8em;
+  height: 1.5em;
+  margin-left: -5em;
+}
+
+.switch input { 
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 1em;
+  width: 1em;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  transform: translateX(1.2em);
+}
+
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
 @media screen and (max-width: 1023px) {
     ul.desktop {
         display: none;
@@ -162,6 +219,9 @@ header{
 }
 
 @media screen and (max-width:767px){
+    .switch {
+        display: none;
+    }
     header{
         & nav{
             padding: 0 10%;
@@ -178,7 +238,6 @@ class Header extends HTMLElement {
 
     this.attachShadow({ mode: "open" });
 
-
     this.shadowRoot.innerHTML = `
             <style>
             ${style}
@@ -186,7 +245,9 @@ class Header extends HTMLElement {
             <header>
                 <nav>
                 <a href="/"><img id="logo" src="public/assets/logoT.svg" alt="logo"/></a>
-                    <ul class="desktop" style="${currentPageURL === "/community" ? "display: none;" : ""}">
+                    <ul class="desktop" style="${
+                      currentPageURL === "/community" ? "display: none;" : ""
+                    }">
                     <li class="${
                       currentPageURL === "/" ? "active" : ""
                     }"><a href="/">Home</a></li>
@@ -207,6 +268,7 @@ class Header extends HTMLElement {
                         
                         <button id="mbtn"><img src="public/assets/menu.png" alt="menu" /></button>
                     </div>
+                    
                 </nav>
             </header>
             <div class="mobile">
@@ -237,12 +299,22 @@ class Header extends HTMLElement {
                 </nav>
             </div>
         `;
-
-    
   }
   connectedCallback() {
     const mbtn = this.shadowRoot.getElementById("mbtn");
     const mobileDiv = this.shadowRoot.querySelector(".mobile");
+
+    const switchInput = this.shadowRoot.querySelector(".switch input");
+
+    if (switchInput.checked) {
+      document.body.classList.add("dark-mode");
+      document.body.classList.add("header-dark-mode");
+    }
+
+    switchInput.addEventListener("change", () => {
+      document.body.classList.toggle("dark-mode");
+      document.body.classList.toggle("header-dark-mode");
+    });
 
     mbtn.addEventListener("click", () => {
       mobileDiv.classList.toggle("active");
@@ -252,7 +324,6 @@ class Header extends HTMLElement {
       mobileDiv.classList.toggle("active");
     });
     const pfpElement = this.shadowRoot.querySelector(".user-section");
-
 
     async function fetchUser() {
       try {
@@ -268,8 +339,8 @@ class Header extends HTMLElement {
       }
     }
     // if(!document.cookie.match("session_id")){
-      fetchUser();
-    // } 
+    fetchUser();
+    // }
   }
 
   adoptedCallback() {
@@ -278,3 +349,10 @@ class Header extends HTMLElement {
 }
 
 customElements.define("kmn-header", Header);
+
+// {
+//   /* <label class="switch">
+//     <input type="checkbox">
+//     <span class="slider round"></span>
+// </label>  */
+// }

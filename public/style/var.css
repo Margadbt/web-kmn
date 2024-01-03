@@ -17,18 +17,32 @@ body{
     padding: 0;
 }
 
+body.dark-mode {
+    background-color: var(--color-main-bg-dark);
+    color: var(--color-primary-text-light) !important;    
+}
+
+body > header > nav.header-dark-mode {
+    background-color: var(--color-main-bg-dark);
+    color: var(--color-primary-text-light);
+}
+
 :root{
     --color-main: #67B26F;
     --color-yellow: #EAB142;
     --color-red: #FF6B6B;
     --color-blue: #2383DB;
+
     --color-main-bg: #eef3f0;
+    --color-main-bg-dark: #14130F;
+    
     --color-card-bg: #FFFFFF;
 
     --color-agree: #3ccb81;
     --color-disagree: #ff3d57;
 
     --color-primary-text:rgba(0, 0, 0, 0.8);
+    --color-primary-text-light:rgba(255, 255, 255, 0.8);
     --color-secondary-text: rgba(0, 37, 108, 0.60);
 
     --fsize-m: 1.5em;
