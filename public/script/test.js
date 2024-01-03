@@ -13,17 +13,17 @@ let mbtiResult = "";
 //   }
 // }
 
-function showSaveOption() {
-  const quizContainer = document.getElementById("quiz-container");
-  const saveButton = document.getElementById("save-button");
+// function showSaveOption() {
+//   const quizContainer = document.getElementById("quiz-container");
+//   const saveButton = document.getElementById("save-button");
 
-  saveButton.style.display = "block";
+//   saveButton.style.display = "block";
 
-  quizContainer.innerHTML = `
-    <p>You've already completed the test. Your result: ${mbtiResult}</p>
-    <button onclick="saveResults()">Save Result</button>
-  `;
-}
+//   quizContainer.innerHTML = `
+//     <p>You've already completed the test. Your result: ${mbtiResult}</p>
+//     <button onclick="saveResults()">Save Result</button>
+//   `;
+// }
 
 async function loadNextQuestion() {
   try {

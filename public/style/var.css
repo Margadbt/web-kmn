@@ -11,16 +11,28 @@ html{
     font-family: 'Montserrat', sans-serif;
 }
 
+*.dark-mode{
+    background-color: var(--color-main-bg-dark);
+    /* background-color: white; */
+    color: var(--color-primary-text-light) !important;  
+
+    & header {
+        & nav {
+            background-color: var(--color-main-bg-dark);
+        }
+    }
+}
+
 body{
     background-color: var(--color-main-bg);
     margin: 0;
     padding: 0;
 }
-
+/* 
 body.dark-mode {
     background-color: var(--color-main-bg-dark);
     color: var(--color-primary-text-light) !important;    
-}
+} */
 
 body > header > nav.header-dark-mode {
     background-color: var(--color-main-bg-dark);
@@ -82,11 +94,16 @@ button.green:hover{
 
 .card{
     background-color: var(--color-card-bg);
+    /* background-color: black; */
     /* border: var(--border-card); */
     border-radius: var(--border-rad);
     margin-top: 1em;
     box-shadow: var(--shadow-card);
     width: 100%;
+}
+
+.card.dark-mode {
+    background-color: var(--color-main-bg-dark);
 }
 
 @media(max-width:768px){
