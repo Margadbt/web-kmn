@@ -157,7 +157,16 @@ async function loadNextQuestion() {
       const notificationPopup = document.getElementById("notification-popup");
       const resultsDisplay = document.getElementById("results-display");
       const quizBody = document.getElementById("quiz");
+      const notNowBtn = document.getElementsByClassName("NotnowBtn");
 
+      const userId = await getUserId();
+
+      if (userId) {
+        console.log("Session Logged in");
+        window.location.href = "/profile";
+        notNowBtn.textContent = "Save Results";
+        return;
+      }
       resultsDisplay.textContent = `${mbtiResult}`;
 
       notificationPopup.style.display = "flex";
