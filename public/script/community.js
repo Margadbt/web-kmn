@@ -7,7 +7,6 @@ class Community {
   async Init() {
     try {
       skeletonLoading();
-      document.querySelector(".write-post").style.display = "none";
 
       const groupResponse = await fetch("/api/community/groups");
       const groups = await groupResponse.json();
