@@ -2,6 +2,35 @@
  * @swagger
  * components:
  *   schemas:
+ *     Comments:
+ *       type: object
+ *       required:
+ *         - comment_id
+ *         - post_id
+ *         - user_id
+ *         - username
+ *         - description
+ *         - date
+ *       properties:
+ *         comment_id:
+ *           type: integer
+ *           description: Нэг comment ID
+ *         post_id:
+ *           type: integer
+ *           description: Post-ны ID
+ *         user_id:
+ *           type: integer
+ *           description: Хэрэглэгчийн ID
+ *         username:
+ *           type: string
+ *           description: Хэрэглэгчийн нэр.
+ *         description:
+ *           type: string
+ *           description: Комментийн агуулга
+ *         date:
+ *           type: string
+ *           format: date-time
+ *           description: Коммент бичсэн хугацаа
  *     Posts:
  *       type: object
  *       required:
@@ -33,14 +62,39 @@
  *           type: integer
  *           description: Comment-ын тоо
  *
- * 
  */
 
 /**
  * @swagger
  * tags:
- *   name: Posts
- *   description: Community хэсгийн post зохицуулах API
+ *   - name: Comments
+ *     description: Post-ны комментууд
+ *   - name: Posts
+ *     description: Community хэсгийн post зохицуулах API
+ * 
+ * /api/community/comments/{id}:
+ *   get:
+ *     summary: Тухайн постны харьяалалтай коммэнтуудын буцаах
+ *     tags: [Comments]
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         schema:
+ *           type: integer
+ *         required: true
+ *         description: Post ID
+ *     responses:
+ *       200:
+ *         description: Амжилттай
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 $ref: '#/components/schemas/Comments'
+ *       500:
+ *         description: Internal Server Error
+ * 
  * /api/community/posts:
  *   get:
  *     summary: Бүх постуудыг буцаах.
@@ -72,32 +126,30 @@
  *               $ref: '#/components/schemas/Posts'
  *       500:
  *         description: Internal Server Error.
+ * 
  * /api/community/post/group/{id}:
- *  get:
- *    summary: Group ID аар нь постуудын шүүж авах.
- *    tags: [Posts]
- *    parameters:
- *      - in: path
- *        name: id
- *        schema:
- *          type: integer
- *        required: true
- *        description: Post-ын ID
- *      - in: group_id
- *        name: group_id
- *        schema:
+ *   get:
+ *     summary: Group ID аар нь постуудын шүүж авах.
+ *     tags: [Posts]
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         schema:
  *           type: integer
- *        required: true
- *        description: Тухайн группын ID.
- *    responses:
- *      200:
- *        description: OK
- *        contens:
- *          application/json:
- *            schema:
- *              $ref: '#/components/schemas/Posts'
- *      404:
- *        description: Not found
+ *         required: true
+ *         description: Group ID
+ *     responses:
+ *       200:
+ *         description: OK
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 $ref: '#/components/schemas/Posts'
+ *       404:
+ *         description: Not found
+ * 
  * /api/community/post/{id}:
  *   get:
  *     summary: ID-аар нь post-ыг авах.
@@ -108,11 +160,11 @@
  *         schema:
  *           type: integer
  *         required: true
- *         description: Post-ын ID
+ *         description: Post ID
  *     responses:
  *       200:
  *         description: Хариу.
- *         contens:
+ *         content:
  *           application/json:
  *             schema:
  *               $ref: '#/components/schemas/Posts'
@@ -125,16 +177,16 @@
  *       - in: path
  *         name: id
  *         schema:
- *           type: string
+ *           type: integer
  *         required: true
- *         description: The book id
- *
+ *         description: Post ID
  *     responses:
  *       200:
- *         description: Post deleted sucessfully.
+ *         description: Post deleted successfully.
  *       404:
  *         description: Post not found.
  */
+
 
 
 

@@ -1,3 +1,138 @@
+/**
+ * @swagger
+ * components:
+ *   schemas:
+ *     User:
+ *       type: object
+ *       required:
+ *         - user_id
+ *         - username
+ *         - password
+ *         - email
+ *       properties:
+ *         user_id:
+ *           type: integer
+ *           description: Хэрэглэгчийн ID
+ *         username:
+ *           type: string
+ *           description: Хэрэглэгчийн нэр
+ *         email:
+ *           type: string
+ *           description: Хэрэглэгчийн email
+ *         password:
+ *           type: string
+ *           description: Хэрэглэгчийн нууц үг
+ *         mbti_result:
+ *           type: string
+ *           description: MBTI Тестийн үр дүн
+ *
+ * 
+ */
+
+/**
+ * @swagger
+ * tags:
+ *   name: User
+ *   description: Community хэсгийн post зохицуулах API
+ * /user:
+ *   get:
+ *     summary: Хэрэглэгчийн мэдээллийг буцаах.
+ *     tags: [User]
+ *     responses:
+ *       200:
+ *         description: Амжилттай хэрэглэгчийн мэдээллийг буцаасан.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 $ref: '#/components/schemas/User'
+ *       401:
+ *         description: Хэрэглэгч
+ * /user/register:
+ *  post:
+ *    summary: Хэрэглэгч үүсгэх
+ *    tags: [User]
+ *    parameters:
+ *      - in: username
+ *        name: username
+ *        schema:
+ *          type: string
+ *        required: true
+ *        description: Хэрэглэгчийн нэр
+ *      - in: email
+ *        name: email
+ *        schema:
+ *           type: string
+ *        required: true
+ *        description: Хэрэглэгчийн email
+ *      - in: password
+ *        name: password
+ *        schema:
+ *          type: string
+ *        required: true
+ *        description: Хэрэглэгчийн нууц үг
+ *    responses:
+ *      201:
+ *        description: Нэвтэрсэн
+ *        contens:
+ *          application/json:
+ *            schema:
+ *              $ref: '#/components/schemas/Posts'
+ *      500:
+ *        description: Internal Server Error
+ * /user/login:
+ *   post:
+ *     summary: Хэрэглэгч нэвтрэх
+ *     tags: [User]
+ *     parameters:
+ *       - in: email
+ *         name: email
+ *         schema:
+ *           type: string
+ *         required: true
+ *         description: Хэрэглэгчийн email
+ *       - in: password
+ *         name: password
+ *         schema:
+ *           type: string
+ *         required: true
+ *         description: Хэрэглэгчийн нууц үг
+ *     responses:
+ *       200:
+ *         description: Login successful
+ *         contens:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Posts'
+ *       401:
+ *         description: Invalid email or password.
+ *       500:
+ *         description: Internal Server Error
+ * /api/mbti/result/change:
+ *    post:
+ *      summary: MBTI Тест хариу хадгалах
+ *      tags: [User]
+ *      parameters:
+ *      - in: mbti_result
+ *        name: mbti_result
+ *        schema:
+ *          type: string
+ *        required: true
+ *        description: MBTI үр дүн
+ *      - in: user_id
+ *        name: user_id
+ *        schema:
+ *          type: integer
+ *        required: true
+ *        description: Хэрэглэгчийн ID
+ *      responses:
+ *        201:
+ *          description: Sucessfully saved
+ *        500:
+ *          description: Internal Server Error
+ */
+
 const express = require("express");
 const router = express.Router();
 const login = require("../../login");
