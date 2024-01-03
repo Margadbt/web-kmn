@@ -267,8 +267,8 @@ class Header extends HTMLElement {
                         </div>
                         
                         <button id="mbtn"><img src="public/assets/menu.png" alt="menu" /></button>
+                        
                     </div>
-                    
                 </nav>
             </header>
             <div class="mobile">
@@ -306,15 +306,15 @@ class Header extends HTMLElement {
 
     const switchInput = this.shadowRoot.querySelector(".switch input");
 
-    if (switchInput.checked) {
-      document.body.classList.add("dark-mode");
-      document.body.classList.add("header-dark-mode");
-    }
+    // if (switchInput.checked) {
+    //   document.body.classList.add("dark-mode");
+    //   document.body.classList.add("header-dark-mode");
+    // }
 
-    switchInput.addEventListener("change", () => {
-      document.body.classList.toggle("dark-mode");
-      document.body.classList.toggle("header-dark-mode");
-    });
+    // switchInput.addEventListener("change", () => {
+    //   document.body.classList.toggle("dark-mode");
+    //   document.body.classList.toggle("header-dark-mode");
+    // });
 
     mbtn.addEventListener("click", () => {
       mobileDiv.classList.toggle("active");
@@ -332,6 +332,7 @@ class Header extends HTMLElement {
         console.log(user);
         if (pfpElement) {
           // Use innerHTML to set both the image and the user's name
+          console.log("Header loads after logged in...");
           pfpElement.innerHTML = `<a class="user-header" href="/profile">${user.fullname}</a><a class="login-btn" style="margin-left: 10px; font-size: 15px;" href="/user/logout">Гарах</a>`;
         }
       } catch (error) {
@@ -354,5 +355,5 @@ customElements.define("kmn-header", Header);
 //   /* <label class="switch">
 //     <input type="checkbox">
 //     <span class="slider round"></span>
-// </label>  */
+// </label> */
 // }

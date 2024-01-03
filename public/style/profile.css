@@ -10,7 +10,7 @@ main{
 .profile-container{
     background-color: white;
     box-shadow: 0px 1px 50px rgb(0, 0, 0, 0.1 );
-    width: 350px;
+    width: 50em;
     height: 25em;
     border-radius: 30px;
   }
@@ -25,18 +25,18 @@ main{
 .profile-picture{
   width: 70px;
   position: absolute;
-  left: 50%;
+  left: 30%;
   transform: translate(-50%, -50%);
 }
 
 .profile-info{
-  padding-top: 2em;
-  margin-top: 40px;
-  text-align: center;
+  margin-top: -2em;
+  padding: 2em 2em 0 10em;
+  color: var(--color-primary-text);
 }
 
 .profile-btn{
-  margin-top: 5em;
+  margin: 6em 0 2em 5em;
   border: none;
   padding: 10px 20px;
   border-radius: 10px;
@@ -48,5 +48,22 @@ main{
 
 .profile-btn:hover {
   background-color: var(--color-main);
+  color: white;
   cursor: pointer;
+}
+
+#profile-mbti {
+  padding-top: 1em;
+  font-weight: 800;
+  font-size: var(--fsize-b);
+  color: var(--color-yellow);
+}
+
+#profile-name {
+  font-size: var(--fsize-m);
+}
+
+#profile-email {
+  font-size: var(--fsize-xs);
+  opacity: 0.6;
 }

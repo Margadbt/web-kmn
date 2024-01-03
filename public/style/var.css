@@ -45,9 +45,10 @@ body > header > nav.header-dark-mode {
     --color-primary-text-light:rgba(255, 255, 255, 0.8);
     --color-secondary-text: rgba(0, 37, 108, 0.60);
 
-    --fsize-m: 1.5em;
     --fsize-b: 1.75em;
+    --fsize-m: 1.5em;
     --fsize-s: 1.25em;
+    --fsize-xs: 1em;
 
     --border-card: 1px solid rgb(0,0,0,0.10);
     --border-rad: 15px;
