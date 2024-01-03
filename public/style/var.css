@@ -28,6 +28,8 @@ body{
     --color-agree: #3ccb81;
     --color-disagree: #ff3d57;
 
+    --color-secondary-text: rgba(0, 37, 108, 0.60);
+
     --fsize-m: 1.5em;
     --fsize-b: 1.75em;
     --fsize-s: 1.25em;
