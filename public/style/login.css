@@ -21,6 +21,7 @@ main{
     & h2{
         margin-bottom: 20px;
         text-align: center;
+        color: var(--color-primary-text);
     }
     & .form-input{
         padding: 10px 20px;
@@ -35,7 +36,10 @@ main{
     }
     & .form-input:active{
         outline: none;
-
+    }
+    & .form-input::placeholder{
+        opacity: 0.6;
+        font-weight: 500;
     }
 
     & .lgn-btn{
@@ -46,10 +50,23 @@ main{
         width: 100%;
         margin-bottom: 10px;
         transition: all 0.25s ease-in-out;
+        background-color: var(--color-main);
+        opacity: 0.7;
+        color: white;
     }
 
     & .lgn-btn:hover{
-        background-color: var(--color-main);
         cursor: pointer;
+        opacity: 1.0;
+    }
+
+    & .register-link {
+        color: var(--color-secondary-text);
+        text-align: center;
+        font-size: 0.75rem;
+        font-style: normal;
+        font-weight: 700;
+        line-height: normal;
+        text-decoration: none;
     }
 }

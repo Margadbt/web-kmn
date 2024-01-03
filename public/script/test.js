@@ -196,7 +196,9 @@ async function loginToSave() {
     const userId = await getUserId();
 
     if (!userId) {
-      console.error("User ID not found");
+      // console.error("User ID not found");
+      console.log("Session Not Logged in");
+      window.location.href = "/login";
       return;
     }
 
