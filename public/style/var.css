@@ -28,6 +28,7 @@ body{
     --color-agree: #3ccb81;
     --color-disagree: #ff3d57;
 
+    --color-primary-text:rgba(0, 0, 0, 0.8);
     --color-secondary-text: rgba(0, 37, 108, 0.60);
 
     --fsize-m: 1.5em;

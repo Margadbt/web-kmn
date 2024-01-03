@@ -21,6 +21,7 @@ main{
     & h2{
         margin-bottom: 20px;
         text-align: center;
+        color: var(--color-primary-text);
     }
     & .form-input{
         padding: 10px 20px;
@@ -35,7 +36,10 @@ main{
     }
     & .form-input:active{
         outline: none;
-
+    }
+    & .form-input::placeholder{
+        opacity: 0.6;
+        font-weight: 500;
     }
 
     & .lgn-btn{
